@@ -1,0 +1,25 @@
+@import 'variables';
+@import 'typography';
+@import 'components/navbar';
+@import 'footer';
+@import 'buttons';
+@import 'mixins';
+
+// Reset básico
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+// Utilidades globales
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}

@@ -1,0 +1,577 @@
+// Navbar principal
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1) !important;
+  
+  &.scrolled {
+    background: $color-white !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    
+    .navbar-nav .nav-link {
+      color: $color-primary;
+      
+      &:hover {
+        color: $color-accent;
+      }
+    }
+    
+    .navbar-brand img {
+      content: url('../assets/images/logo/logo-color.png');
+    }
+    
+    .btn-obra360 img {
+      content: url('../assets/images/logo/log_color-obra360.jpg');
+    }
+    
+    .navbar-toggle .hamburger,
+    .navbar-toggle .hamburger::before,
+    .navbar-toggle .hamburger::after {
+      background: $color-primary;
+    }
+  }
+  
+  .navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    
+    @media (min-width: 768px) {
+      width: 90%;
+    }
+    
+    @media (min-width: 1024px) {
+      width: 80%;
+    }
+  }
+}
+
+// Ocultar hamburguesa cuando el menú está abierto (siempre, incluso sticky)
+.navbar-toggle.menu-open {
+  display: none !important;
+}
+
+// Forzar navbar transparente cuando el menú móvil está abierto (no tocar)
+.mobile-menu.active ~ .navbar {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: none !important;
+}
+
+// En tablet, quitar active visual de links por defecto
+@media (max-width: 1023px) {
+  .mobile-menu .nav-link.active {
+    color: $color-primary;
+    background: none;
+    font-weight: 500;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+// Logo
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(0.95);
+  }
+  
+  img {
+    height: 40px;
+    width: auto;
+    content: url('../assets/images/logo/logo-white.png');
+  }
+}
+
+// Navegación principal
+.navbar-nav {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+  }
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  color: $color-white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-sm;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  
+  &:hover {
+    color: $color-accent;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: $color-accent;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
+  
+  // Ícono para dropdowns en desktop
+  .dropdown-icon {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+}
+
+// Dropdowns
+.dropdown {
+  position: relative;
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: $color-white;
+    border-radius: $radius-md;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    min-width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    padding: $spacing-sm 0;
+    margin-top: $spacing-sm;
+    overflow: hidden;
+  }
+  
+  &:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .dropdown-item {
+    display: block;
+    padding: $spacing-sm $spacing-md;
+    color: $color-primary;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 0;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &:hover {
+      background: $color-bg;
+      color: $color-accent;
+      transform: translateX(5px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+// Botón obra360 (solo visible en desktop)
+.btn-obra360 {
+  display: none;
+  align-items: center;
+  gap: $spacing-sm;
+  background: $color-obra360;
+  color: $color-white;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+  
+  // Estado normal con navbar transparente
+  img {
+    height: 24px;
+    width: auto;
+    content: url('../assets/images/logo/log_white-obra360.png');
+    transition: all 0.3s ease;
+  }
+  
+  // Hover con navbar transparente
+  &:hover {
+    background: $color-white;
+    border-color: $color-obra360;
+    color: $color-obra360;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    
+    img {
+      content: url('../assets/images/logo/log_color-obra360.png');
+    }
+  }
+  
+  .logo-text {
+    font-family: $font-logo;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $color-white;
+    transition: all 0.3s ease;
+  }
+  
+  &:hover .logo-text {
+    color: $color-obra360;
+  }
+  
+  // Estado con navbar scrolled (fondo blanco)
+  .navbar.scrolled & {
+    background: $color-white;
+    border-color: $color-obra360;
+    color: $color-obra360;
+    
+    img {
+      content: url('../assets/images/logo/log_color-obra360.png');
+    }
+    
+    .logo-text {
+      color: $color-obra360;
+    }
+    
+    // Hover con navbar scrolled
+    &:hover {
+      background: $color-obra360;
+      border-color: $color-obra360;
+      color: $color-white;
+      
+      img {
+        content: url('../assets/images/logo/log_white-obra360.png');
+      }
+      
+      .logo-text {
+        color: $color-white;
+      }
+    }
+  }
+}
+
+// Menú hamburguesa para mobile/tablet
+.navbar-toggle {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+  
+  @media (min-width: 1024px) {
+    display: none;
+  }
+  
+  .hamburger {
+    width: 24px;
+    height: 2px;
+    background: $color-white;
+    position: relative;
+    transition: all 0.3s ease;
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background: $color-white;
+      transition: all 0.3s ease;
+    }
+    
+    &::before {
+      top: -8px;
+    }
+    
+    &::after {
+      bottom: -8px;
+    }
+  }
+  
+  &.active .hamburger {
+    background: transparent;
+    
+    &::before {
+      transform: rotate(45deg);
+      top: 0;
+      background: $color-white;
+    }
+    
+    &::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+      background: $color-white;
+    }
+  }
+}
+
+// Botón cerrar para mobile/tablet
+.navbar-close {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+  font-size: 1.5rem;
+  color: $color-white;
+  transition: all 0.3s ease;
+  
+  @media (min-width: 1024px) {
+    display: none;
+  }
+  
+  &:hover {
+    color: $color-accent;
+    transform: scale(1.1);
+  }
+  
+  &.active {
+    display: block;
+  }
+}
+
+// Navbar scrolled - cambiar colores del botón cerrar
+.navbar.scrolled {
+  .navbar-close {
+    color: $color-primary;
+    
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+// Menú móvil
+.mobile-menu {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 100%;
+  max-width: 375px;
+  height: calc(100vh - 80px);
+  background: $color-white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  z-index: 999;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  @media (min-width: 768px) {
+    width: 320px;
+    left: auto;
+    right: 0;
+    max-width: 100vw;
+  }
+
+
+
+  .mobile-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    .nav-item {
+      margin: 0;
+      
+      .nav-link {
+        color: $color-primary;
+        font-size: 1.1rem;
+        padding: $spacing-md $spacing-lg;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $color-bg;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        
+        &:hover {
+          background: $color-bg;
+          color: $color-accent;
+        }
+        
+        .dropdown-icon {
+          font-size: 0.9rem;
+          transition: transform 0.3s ease;
+        }
+        
+        &.active .dropdown-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    
+    .dropdown-menu {
+      position: static;
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: $color-bg;
+      margin: 0;
+      padding: 0;
+      
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        max-height: 400px;
+      }
+      
+      .dropdown-item {
+        padding: $spacing-md $spacing-xl;
+        margin: $spacing-xs 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        color: $color-primary;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        line-height: 1.5;
+        
+        &:last-child {
+          border-bottom: none;
+          margin-bottom: $spacing-sm;
+        }
+        
+        &:first-child {
+          margin-top: $spacing-sm;
+        }
+        
+        &:hover {
+          color: $color-accent;
+          background: rgba(52, 152, 219, 0.1);
+        }
+      }
+    }
+    
+    // Botón obra360 en móvil
+    .mobile-obra360 {
+      margin: 0;
+      padding: $spacing-lg;
+      border-top: 1px solid $color-bg;
+      
+      .btn-obra360 {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        background: $color-obra360;
+        color: $color-white;
+        padding: $spacing-md;
+        border-radius: $radius-md;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        justify-content: center;
+        
+        &:hover {
+          background: $color-obra360-light;
+          transform: translateY(-2px);
+        }
+        
+        img {
+          height: 24px;
+          width: auto;
+          content: url('../assets/images/logo/log_white-obra360.png');
+        }
+        
+        .logo-text {
+          font-family: $font-logo;
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: $color-white;
+        }
+      }
+    }
+  }
+} 
+
+// Desactivar efectos en mobile y tablet
+@media (max-width: 1023px) {
+  .mobile-menu .nav-link,
+  .mobile-menu .dropdown-item {
+    &:hover,
+    &:focus {
+      background: none !important;
+      color: $color-primary !important;
+      box-shadow: none !important;
+      outline: none !important;
+      transition: none !important;
+    }
+  }
+  .mobile-menu .dropdown-icon {
+    transition: none !important;
+  }
+  .mobile-menu .nav-link.active .dropdown-icon {
+    transform: none !important;
+  }
+  .mobile-menu .nav-link {
+    border-bottom: 1px solid $color-bg !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    &.active,
+    &:hover,
+    &:focus {
+      border-bottom: 1px solid $color-bg !important;
+      box-shadow: none !important;
+      text-decoration: none !important;
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+    }
+  }
+  .mobile-menu .nav-link::after {
+    display: none !important;
+    content: none !important;
+  }
+  .mobile-menu .nav-link.active::after {
+    display: none !important;
+    content: none !important;
+  }
+} 

@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Comfortaa:wght@700&family=Montserrat:wght@700&display=swap');
+
+body {
+  font-family: $font-body;
+  color: $color-black;
+  background: $color-bg;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-title;
+  color: $color-primary;
+  font-weight: 700;
+  margin-bottom: $spacing-sm;
+}
+
+.logo-text {
+  font-family: $font-logo;
+  letter-spacing: 1px;
+  color: $color-accent;
+}

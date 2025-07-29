@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITECH CORP - Soluciones Tecnológicas Profesionales</title>
+    <link rel="stylesheet" href="styles/inicio.css">
+    <link rel="icon" href="assets/images/logo/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <a href="index.html" class="navbar-brand">
+                <img src="assets/images/logo/logo-white.png" alt="DIGITECH CORP">
+            </a>
+            
+            <!-- Navegación Desktop -->
+            <ul class="navbar-nav">
+                <!-- Servicios Dropdown -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">
+                        Servicios
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="pages/servicios/software-medida.html" class="dropdown-item">Software a medida</a>
+                        <a href="pages/servicios/apps-moviles.html" class="dropdown-item">App's móviles</a>
+                        <a href="pages/servicios/gobierno-digital.html" class="dropdown-item">Gobierno Digital</a>
+                        <a href="pages/servicios/metodologia-bim.html" class="dropdown-item">Metodología BIM</a>
+                        <a href="pages/servicios/transformacion-digital.html" class="dropdown-item">Transformación Digital</a>
+                        <a href="pages/servicios/consultoria-tecnologica.html" class="dropdown-item">Consultoría Tecnológica</a>
+                    </div>
+                </li>
+                
+                <!-- Sectores Dropdown -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">
+                        Sectores
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="pages/sectores/sector-privado.html" class="dropdown-item">Sector Privado</a>
+                        <a href="pages/sectores/sector-publico.html" class="dropdown-item">Sector Público</a>
+                        <a href="pages/sectores/sector-construccion.html" class="dropdown-item">Sector Construcción</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="pages/clientes/index.html" class="nav-link">Clientes</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="pages/noticias/index.html" class="nav-link">Noticias</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="pages/contacto/index.html" class="nav-link">Contacto</a>
+                </li>
+            </ul>
+            
+            <!-- Botón obra360 (solo desktop) -->
+            <a href="pages/obra360/index.html" class="btn-obra360" target="_blank">
+                <img src="assets/images/logo/log_white-obra360.png" alt="obra360">
+                <span class="logo-text">obra360</span>
+            </a>
+            
+            <!-- Menú hamburguesa para mobile/tablet -->
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Abrir menú de navegación">
+                <div class="hamburger"></div>
+            </button>
+            
+            <!-- Botón cerrar para mobile/tablet -->
+            <button class="navbar-close" id="navbarClose" aria-label="Cerrar menú de navegación">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Menú móvil -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav">
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link" data-dropdown="servicios">
+                    Servicios
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </a>
+                <div class="dropdown-menu" id="servicios-dropdown">
+                    <a href="pages/servicios/software-medida.html" class="dropdown-item">Software a medida</a>
+                    <a href="pages/servicios/apps-moviles.html" class="dropdown-item">App's móviles</a>
+                    <a href="pages/servicios/gobierno-digital.html" class="dropdown-item">Gobierno Digital</a>
+                    <a href="pages/servicios/metodologia-bim.html" class="dropdown-item">Metodología BIM</a>
+                    <a href="pages/servicios/transformacion-digital.html" class="dropdown-item">Transformación Digital</a>
+                    <a href="pages/servicios/consultoria-tecnologica.html" class="dropdown-item">Consultoría Tecnológica</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link" data-dropdown="sectores">
+                    Sectores
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </a>
+                <div class="dropdown-menu" id="sectores-dropdown">
+                    <a href="pages/sectores/sector-privado.html" class="dropdown-item">Sector Privado</a>
+                    <a href="pages/sectores/sector-publico.html" class="dropdown-item">Sector Público</a>
+                    <a href="pages/sectores/sector-construccion.html" class="dropdown-item">Sector Construcción</a>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="pages/clientes/index.html" class="nav-link">Clientes</a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="pages/noticias/index.html" class="nav-link">Noticias</a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="pages/contacto/index.html" class="nav-link">Contacto</a>
+            </li>
+            
+            <!-- Botón obra360 en móvil -->
+            <li class="nav-item mobile-obra360">
+                <a href="pages/obra360/index.html" class="btn-obra360" target="_blank">
+                    <img src="assets/images/logo/log_white-obra360.png" alt="obra360">
+                    <span class="logo-text">obra360</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Contenido de la página -->
+    <main>
+        <!-- Header 100vh -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Header 100vh - Contenido temporal</h1>
+                <p>Esta sección ocupa toda la altura de la pantalla para probar el efecto sticky del navbar</p>
+            </div>
+        </section>
+        
+        <!-- Sección de prueba para scroll -->
+        <section class="test-section">
+            <div class="container">
+                <h2>Sección de Prueba</h2>
+                <p>Esta sección es para probar el efecto sticky del navbar. Haz scroll hacia abajo para ver cómo cambia el navbar de transparente a fondo blanco.</p>
+                
+                <div class="test-content">
+                    <h3>Contenido de prueba</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+                
+                <div class="test-content">
+                    <h3>Más contenido de prueba</h3>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    
+                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="scripts/inicio.js"></script>
+</body>
+</html>
