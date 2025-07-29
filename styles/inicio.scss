@@ -1,93 +1,311 @@
 @import '../design-system/global';
 
-// Estilos específicos de la página de inicio
-.hero-section {
-  height: 100vh;
-  background: linear-gradient(135deg, $color-primary 0%, $color-accent 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: $color-white;
+// Hero Carousel
+.hero-carousel {
   position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
   
-  &::before {
-    content: '';
+  .carousel-slide {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 0 $spacing-md;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
     
-    h1 {
-      font-size: 3rem;
-      margin-bottom: $spacing-md;
-      color: $color-white;
+    &.active {
+      opacity: 1;
+    }
+    
+    .slide-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+    
+    // Imágenes específicas para cada slide
+    &[data-slide="1"] .slide-background {
+      background-image: url('../assets/images/hero/software-medida.jpeg');
       
-      @media (max-width: 768px) {
-        font-size: 2rem;
+      @media (max-width: 1023px) {
+        background-image: url('../assets/images/hero/m-software-medida.jpeg');
       }
     }
     
-    p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+    &[data-slide="2"] .slide-background {
+      background-image: url('../assets/images/hero/apps-moviles.jpeg');
       
-      @media (max-width: 768px) {
-        font-size: 1rem;
+      @media (max-width: 1023px) {
+        background-image: url('../assets/images/hero/m-apps-moviles.jpeg');
+      }
+    }
+    
+    &[data-slide="3"] .slide-background {
+      background-image: url('../assets/images/hero/gobierno-digital.jpg');
+      
+      @media (max-width: 1023px) {
+        background-image: url('../assets/images/hero/m-gobierno-digital.jpg');
+      }
+    }
+    
+    &[data-slide="4"] .slide-background {
+      background-image: url('../assets/images/hero/bim.jpg');
+      
+      @media (max-width: 1023px) {
+        background-image: url('../assets/images/hero/m-bim.jpeg');
+      }
+    }
+    
+    &[data-slide="5"] .slide-background {
+      background-image: url('../assets/images/hero/transformacion-digital.jpeg');
+      
+      @media (max-width: 1023px) {
+        background-image: url('../assets/images/hero/m-transformacion-digital.jpeg');
+      }
+    }
+    
+    &[data-slide="6"] .slide-background {
+      background-image: url('../assets/images/hero/consultoria-tecnologica.jpeg');
+      
+      @media (max-width: 1023px) {
+        background-image: url('../assets/images/hero/m-consultoria-tecnologica.jpeg');
+      }
+    }
+    
+    .slide-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 33, 65, 0.2);
+      z-index: 2;
+    }
+    
+    .slide-content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+      color: $color-white;
+      
+      .container {
+        max-width: 800px;
+        padding: 0 $spacing-xl;
+        margin-left: 10%;
+        
+        @media (max-width: 768px) {
+          margin-left: 5%;
+          padding: 0 $spacing-lg;
+        }
+        
+        @media (max-width: 480px) {
+          margin-left: 0;
+          padding: 0 $spacing-md;
+        }
+      }
+      
+      .slide-title {
+        font-family: $font-title;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: $spacing-lg;
+        line-height: 1.2;
+        color: $color-white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        
+        @media (max-width: 768px) {
+          font-size: 2.5rem;
+        }
+        
+        @media (max-width: 480px) {
+          font-size: 2rem;
+        }
+      }
+      
+      .slide-description {
+        font-family: $font-body;
+        font-size: 1.25rem;
+        line-height: 1.6;
+        margin-bottom: $spacing-xl;
+        color: $color-white;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        
+        @media (max-width: 768px) {
+          font-size: 1.1rem;
+        }
+        
+        @media (max-width: 480px) {
+          font-size: 1rem;
+        }
+      }
+      
+      .slide-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+        z-index: 3;
+        position: relative;
+        
+        @media (min-width: 768px) {
+          flex-direction: row;
+          gap: 1.5rem;
+          justify-content: flex-start;
+        }
+        
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 1rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          border: 2px solid transparent;
+          min-width: 160px;
+          
+          @media (min-width: 768px) {
+            min-width: 180px;
+          }
+          
+          &.btn-primary {
+            background: $color-primary;
+            color: $color-white;
+            border-color: $color-primary;
+            
+            &:hover {
+              background: $color-primary-dark;
+              border-color: $color-primary-dark;
+              transform: translateY(-2px);
+              box-shadow: 0 8px 25px rgba(0, 33, 65, 0.3);
+            }
+          }
+          
+          &.btn-secondary {
+            background: transparent;
+            color: $color-white;
+            border-color: $color-white;
+            
+            &:hover {
+              background: $color-white;
+              color: $color-primary;
+              transform: translateY(-2px);
+              box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+            }
+            
+            i {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // Controles del carousel
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 4;
+    backdrop-filter: blur(10px);
+    
+    @media (max-width: 768px) {
+      display: none;
+    }
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    &.prev {
+      left: 32px;
+    }
+    
+    &.next {
+      right: 32px;
+    }
+  }
+  
+  // Indicadores del carousel
+  .carousel-indicators {
+    position: absolute;
+    bottom: $spacing-xl;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: $spacing-sm;
+    z-index: 4;
+    
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: scale(1.2);
+      }
+      
+      &.active {
+        background: $color-obra360;
+        transform: scale(1.3);
       }
     }
   }
 }
 
+// Sección de prueba para scroll
 .test-section {
   padding: $spacing-xl 0;
-  background: $color-white;
+  background: $color-bg;
   
   .container {
-    max-width: 800px;
-  }
-  
-  h2 {
     text-align: center;
-    margin-bottom: $spacing-lg;
-    color: $color-primary;
-  }
-  
-  > .container > p {
-    text-align: center;
-    font-size: 1.1rem;
-    color: $color-text-secondary;
-    margin-bottom: $spacing-xl;
-  }
-  
-  .test-content {
-    margin-bottom: $spacing-xl;
-    padding: $spacing-lg;
-    background: $color-bg;
-    border-radius: $radius-md;
     
-    h3 {
+    h2 {
       color: $color-primary;
-      margin-bottom: $spacing-md;
+      margin-bottom: $spacing-lg;
     }
     
     p {
       color: $color-text-secondary;
-      line-height: 1.8;
-      margin-bottom: $spacing-md;
-      
-      &:last-child {
-        margin-bottom: 0;
-      }
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
   }
 }
