@@ -227,7 +227,8 @@ class InnovationAnimations {
         // Configuración para secciones con animaciones
         const sections = [
             { selector: '.obra360-section', name: 'Obra360' },
-            { selector: '.services-section', name: 'Services' }
+            { selector: '.services-section', name: 'Services' },
+            { selector: '.sectors-section', name: 'Sectors' }
         ];
         
         sections.forEach(({ selector, name }) => {
@@ -537,6 +538,148 @@ class ServicesCarousel {
 }
 
 // ========================================
+// CLASE SECTORS CAROUSEL
+// ========================================
+
+class SectorsCarousel {
+    constructor() {
+        this.carousel = document.querySelector('.sectors-carousel');
+        this.track = this.carousel?.querySelector('.carousel-track');
+        this.cards = this.track?.querySelectorAll('.sector-card');
+        this.prevBtn = this.carousel?.querySelector('.carousel-prev');
+        this.nextBtn = this.carousel?.querySelector('.carousel-next');
+        this.indicators = this.carousel?.querySelectorAll('.indicator');
+        
+        this.currentSlide = 0;
+        this.slidesPerView = 1;
+        this.totalSlides = this.cards?.length || 0;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.carousel || !this.track) {
+            console.log('SectorsCarousel: Carousel no encontrado');
+            return;
+        }
+        
+        console.log('SectorsCarousel: Inicializando carousel');
+        this.updateSlidesPerView();
+        this.setupEventListeners();
+        this.updateControls();
+        this.updateIndicators();
+    }
+    
+    updateSlidesPerView() {
+        const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+        this.slidesPerView = isTablet ? 2 : 1;
+        console.log('SectorsCarousel: Slides por vista:', this.slidesPerView);
+    }
+    
+    setupEventListeners() {
+        // Botones de navegación
+        this.prevBtn?.addEventListener('click', () => this.prevSlide());
+        this.nextBtn?.addEventListener('click', () => this.nextSlide());
+        
+        // Indicadores
+        this.indicators?.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Touch events para mobile
+        let startX = 0;
+        let endX = 0;
+        
+        this.track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        this.track.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            this.handleSwipe(startX, endX);
+        });
+        
+        // Resize para actualizar slides por vista
+        window.addEventListener('resize', () => {
+            this.updateSlidesPerView();
+            this.updateControls();
+        });
+    }
+    
+    handleSwipe(startX, endX) {
+        const swipeThreshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                this.nextSlide();
+            } else {
+                this.prevSlide();
+            }
+        }
+    }
+    
+    prevSlide() {
+        this.currentSlide--;
+        
+        // Carousel infinito: ir al final si estamos al inicio
+        if (this.currentSlide < 0) {
+            this.currentSlide = this.totalSlides - 1;
+        }
+        
+        this.updateCarousel();
+    }
+    
+    nextSlide() {
+        this.currentSlide++;
+        
+        // Carousel infinito: volver al inicio si llegamos al final
+        if (this.currentSlide >= this.totalSlides) {
+            this.currentSlide = 0;
+        }
+        
+        this.updateCarousel();
+    }
+    
+    goToSlide(index) {
+        this.currentSlide = index;
+        this.updateCarousel();
+    }
+    
+    updateCarousel() {
+        const cardWidth = this.cards[0]?.offsetWidth || 0;
+        const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+        const gap = isTablet ? 32 : 0; // 2rem en tablet, 0 en mobile
+        const translateX = -(this.currentSlide * (cardWidth + gap));
+        
+        this.track.style.transform = `translateX(${translateX}px)`;
+        this.updateControls();
+        this.updateIndicators();
+        
+        console.log('SectorsCarousel: Slide actual:', this.currentSlide, 'de', this.totalSlides);
+    }
+    
+    updateControls() {
+        // En un carousel infinito, los botones nunca se deshabilitan
+        if (this.prevBtn) {
+            this.prevBtn.disabled = false;
+        }
+        
+        if (this.nextBtn) {
+            this.nextBtn.disabled = false;
+        }
+    }
+    
+    updateIndicators() {
+        this.indicators?.forEach((indicator, index) => {
+            // Para carousel infinito, mostrar el indicador correspondiente al slide actual
+            const activeIndex = this.currentSlide % this.totalSlides;
+            indicator.classList.toggle('active', index === activeIndex);
+        });
+    }
+}
+
+// ========================================
 // CLASE UTILITIES
 // ========================================
 
@@ -588,6 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const backToTop = new BackToTop();
         const innovationAnimations = new InnovationAnimations();
         const servicesCarousel = new ServicesCarousel();
+        const sectorsCarousel = new SectorsCarousel();
         
         // Agregar animaciones a otras secciones
         InnovationAnimations.addSectionAnimations();
@@ -622,4 +766,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Exportar clases para uso en otros módulos si es necesario
-export { HeroCarousel, BackToTop, InnovationAnimations, ServicesCarousel, Utilities };
+export { HeroCarousel, BackToTop, InnovationAnimations, ServicesCarousel, SectorsCarousel, Utilities };

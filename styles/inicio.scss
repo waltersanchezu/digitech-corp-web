@@ -1457,6 +1457,346 @@
 }
 
 // ========================================
+// SECCIÓN DE SECTORES
+// ========================================
+
+.sectors-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, $color-white 0%, #f8fafc 100%);
+  position: relative;
+  overflow: hidden;
+  
+  // Patrón de fondo sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M 25 0 L 0 0 0 25" fill="none" stroke="rgba(59,130,246,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.8;
+    z-index: 1;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  // Header de la sección
+  .sectors-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    
+    @media (max-width: 768px) {
+      margin-bottom: 3rem;
+    }
+    
+    .sectors-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $color-text-primary;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, $color-primary, $color-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+      
+      @media (max-width: 480px) {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .sectors-subtitle {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: $color-text-secondary;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  // Carousel para mobile y tablet
+  .sectors-carousel {
+    display: block;
+    
+    @media (min-width: 1024px) {
+      display: none;
+    }
+    
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 0;
+      
+      @media (min-width: 768px) {
+        gap: 2rem;
+      }
+    }
+    
+    .sector-card {
+      flex: 0 0 100%;
+      min-width: 100%;
+      
+      @media (min-width: 768px) {
+        flex: 0 0 calc(50% - 1rem);
+        min-width: calc(50% - 1rem);
+      }
+    }
+    
+    // Controles del carousel
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      
+      .carousel-btn {
+        width: 48px;
+        height: 48px;
+        border: none;
+        border-radius: 50%;
+        background: $color-white;
+        color: $color-accent;
+        font-size: 1.2rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &:hover {
+          background: $color-accent;
+          color: $color-white;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba($color-accent, 0.3);
+        }
+        
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          transform: none;
+        }
+      }
+      
+      .carousel-indicators {
+        display: flex;
+        gap: 0.5rem;
+        
+        .indicator {
+          width: 12px;
+          height: 12px;
+          border: none;
+          border-radius: 50%;
+          background: rgba($color-accent, 0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          
+          &.active {
+            background: $color-accent;
+            transform: scale(1.2);
+          }
+          
+          &:hover {
+            background: $color-accent;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+  
+  // Grid para desktop
+  .sectors-grid {
+    display: none;
+    
+    @media (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
+  
+  // Tarjetas de sector
+  .sector-card {
+    background: $color-white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    
+    &:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15);
+      
+      .sector-image {
+        .sector-overlay {
+          opacity: 1;
+          background: linear-gradient(135deg, rgba($color-accent, 0.9), rgba($color-accent-light, 0.9));
+        }
+        
+        .sector-img {
+          transform: scale(1.05);
+        }
+      }
+    }
+    
+    // Imagen del sector
+    .sector-image {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      
+      @media (max-width: 768px) {
+        height: 200px;
+      }
+      
+      .sector-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      
+      .sector-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba($color-accent, 0.8), rgba($color-accent-light, 0.8));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.4s ease;
+        
+        .sector-icon {
+          width: 80px;
+          height: 80px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(10px);
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          
+          i {
+            font-size: 2rem;
+            color: $color-white;
+            
+            @media (max-width: 768px) {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+    
+    // Contenido del sector
+    .sector-content {
+      padding: 2.5rem;
+      
+      @media (max-width: 768px) {
+        padding: 2rem;
+      }
+      
+      .sector-name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: $color-text-primary;
+        margin: 0 0 1rem 0;
+        
+        @media (max-width: 768px) {
+          font-size: 1.4rem;
+        }
+      }
+      
+      .sector-description {
+        font-family: 'Be Vietnam Pro', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        color: $color-text-secondary;
+        line-height: 1.6;
+        margin: 0 0 2rem 0;
+        
+        @media (max-width: 768px) {
+          font-size: 0.95rem;
+        }
+      }
+      
+      .sector-services {
+        h4 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: $color-text-primary;
+          margin: 0 0 1rem 0;
+          
+          @media (max-width: 768px) {
+            font-size: 1rem;
+          }
+        }
+        
+        .services-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          
+          li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: $color-text-secondary;
+            line-height: 1.4;
+            
+            @media (max-width: 768px) {
+              font-size: 0.85rem;
+            }
+            
+            i {
+              color: $color-accent;
+              font-size: 0.8rem;
+              flex-shrink: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ========================================
 // ANIMACIONES PARA SECCIÓN DE SERVICIOS
 // ========================================
 
@@ -1504,6 +1844,29 @@
       &:nth-child(4) { animation-delay: 1.2s; }
       &:nth-child(5) { animation-delay: 1.4s; }
       &:nth-child(6) { animation-delay: 1.6s; }
+    }
+  }
+}
+
+// Clases para animaciones de sectores
+.sectors-section {
+  &.animate {
+    .sectors-header {
+      .sectors-title {
+        animation: slideInFromLeft 0.8s ease-out 0.2s both;
+      }
+      
+      .sectors-subtitle {
+        animation: slideInFromLeft 0.8s ease-out 0.4s both;
+      }
+    }
+    
+    .sector-card {
+      animation: fadeInScale 0.8s ease-out both;
+      
+      &:nth-child(1) { animation-delay: 0.6s; }
+      &:nth-child(2) { animation-delay: 0.8s; }
+      &:nth-child(3) { animation-delay: 1.0s; }
     }
   }
 }
