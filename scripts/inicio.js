@@ -229,7 +229,8 @@ class InnovationAnimations {
             { selector: '.obra360-section', name: 'Obra360' },
             { selector: '.services-section', name: 'Services' },
             { selector: '.sectors-section', name: 'Sectors' },
-            { selector: '.clients-section', name: 'Clients' }
+            { selector: '.clients-section', name: 'Clients' },
+            { selector: '.cta-section', name: 'CTA' }
         ];
         
         sections.forEach(({ selector, name }) => {
