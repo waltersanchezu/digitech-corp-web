@@ -20,14 +20,26 @@ class ComponentLoader {
         const currentPath = window.location.pathname;
         const pathSegments = currentPath.split('/').filter(segment => segment !== '');
         
+        console.log('📍 Current path:', currentPath);
+        console.log('📍 Path segments:', pathSegments);
+        
         // If at root (index.html)
         if (pathSegments.length === 0 || pathSegments[0] === 'index.html') {
+            console.log('📍 At root, returning empty string');
             return '';
         }
         
-        // If in a subfolder (pages/contacto/contacto.html)
+        // If in pages folder (pages/contacto.html, pages/servicios/software-medida.html, etc.)
+        if (pathSegments.includes('pages')) {
+            console.log('📍 In pages folder, returning ../');
+            return '../';
+        }
+        
+        // If in other subfolders
         const depth = pathSegments.length - 1;
-        return '../'.repeat(depth);
+        const result = '../'.repeat(depth);
+        console.log('📍 In other subfolder, returning:', result);
+        return result;
     }
 
     /**
@@ -62,20 +74,28 @@ class ComponentLoader {
      * Ajusta las rutas relativas en el componente cargado
      */
     adjustRelativePaths(container) {
-        const elementsWithSrc = container.querySelectorAll('img[src]');
-        elementsWithSrc.forEach(el => {
-            if (el.src.includes('assets/') && !el.src.startsWith('http')) {
-                el.src = el.src.replace(/^.*?assets\//, `${this.basePath}assets/`);
+        console.log('🔧 Ajustando rutas relativas...');
+        console.log('📍 Base path:', this.basePath);
+        
+        // Ajustar todas las imágenes
+        const images = container.querySelectorAll('img[src]');
+        images.forEach(img => {
+            const src = img.getAttribute('src');
+            if (src && !src.startsWith('http') && !src.startsWith('data:')) {
+                const newSrc = this.basePath + src;
+                img.setAttribute('src', newSrc);
+                console.log(`🖼️ Imagen: ${src} → ${newSrc}`);
             }
         });
 
-        const elementsWithHref = container.querySelectorAll('a[href]');
-        elementsWithHref.forEach(el => {
-            if (el.href.includes('pages/') && !el.href.startsWith('http')) {
-                el.href = el.href.replace(/^.*?pages\//, `${this.basePath}pages/`);
-            }
-            if (el.href.includes('index.html') && !el.href.startsWith('http')) {
-                el.href = el.href.replace(/^.*?index\.html/, `${this.basePath}index.html`);
+        // Ajustar todos los enlaces
+        const links = container.querySelectorAll('a[href]');
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+                const newHref = this.basePath + href;
+                link.setAttribute('href', newHref);
+                console.log(`🔗 Enlace: ${href} → ${newHref}`);
             }
         });
     }
