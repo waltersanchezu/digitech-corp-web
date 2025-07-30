@@ -22,6 +22,16 @@
   .container {
     position: relative;
     z-index: 2;
+    max-width: 1200px;
+    padding: 0 $spacing-lg;
+    
+    @media (max-width: 768px) {
+      padding: 0 $spacing-xl;
+    }
+    
+    @media (max-width: 480px) {
+      padding: 0 $spacing-lg;
+    }
   }
   
   // Sección principal del footer
@@ -118,8 +128,174 @@
     }
   }
   
-  // Sección de contacto
+  // Sección de contacto (móvil y tablet)
+  .footer-contact-mobile {
+    display: block;
+    margin-top: 2rem;
+    
+    @media (min-width: 1024px) {
+      display: none;
+    }
+    
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $color-white;
+      margin-bottom: 1.5rem;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: $color-accent;
+        border-radius: 2px;
+      }
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      
+      .contact-icon {
+        width: 20px;
+        height: 20px;
+        background: $color-accent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        margin-top: 0.2rem;
+        flex-shrink: 0;
+        
+        i {
+          font-size: 0.8rem;
+          color: $color-white;
+        }
+      }
+      
+      .contact-info {
+        flex: 1;
+        
+        .contact-label {
+          font-size: 0.8rem;
+          color: rgba(255, 255, 255, 0.6);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 0.2rem;
+        }
+        
+        .contact-value {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 0.95rem;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+  
+  // Sección de contacto (desktop)
+  .footer-contact-desktop {
+    display: none;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
+    @media (min-width: 1024px) {
+      display: block;
+    }
+    
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $color-white;
+      margin-bottom: 1.5rem;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: $color-accent;
+        border-radius: 2px;
+      }
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      
+      .contact-icon {
+        width: 20px;
+        height: 20px;
+        background: $color-accent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        margin-top: 0.2rem;
+        flex-shrink: 0;
+        
+        i {
+          font-size: 0.8rem;
+          color: $color-white;
+        }
+      }
+      
+      .contact-info {
+        flex: 1;
+        
+        .contact-label {
+          font-size: 0.8rem;
+          color: rgba(255, 255, 255, 0.6);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 0.2rem;
+        }
+        
+        .contact-value {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 0.95rem;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+  
+  // Sección de contacto (legacy - mantener para compatibilidad)
   .footer-contact {
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $color-white;
+      margin-bottom: 1.5rem;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: $color-accent;
+        border-radius: 2px;
+      }
+    }
+    
     .contact-item {
       display: flex;
       align-items: flex-start;

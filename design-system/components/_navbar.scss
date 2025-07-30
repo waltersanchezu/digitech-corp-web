@@ -18,6 +18,7 @@
       
       &:hover {
         color: $color-accent;
+        text-decoration: none;
       }
     }
     
@@ -26,7 +27,7 @@
     }
     
     .btn-obra360 img {
-      content: url('../assets/images/logo/log_color-obra360.jpg');
+      content: url('../assets/images/logo/log_color-obra360.png');
     }
     
     .navbar-toggle .hamburger,
@@ -117,7 +118,7 @@
 
 .nav-link {
   color: $color-white;
-  text-decoration: none;
+  text-decoration: none !important;
   font-weight: 500;
   font-size: 1rem;
   padding: $spacing-sm $spacing-md;
@@ -132,22 +133,23 @@
     color: $color-accent;
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
+    text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
   }
   
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: $color-accent;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
+  &:focus,
+  &:active {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
   }
   
-  &:hover::after {
-    width: 100%;
+  // Eliminar cualquier pseudo-elemento que pueda crear subrayado
+  &::after,
+  &::before {
+    display: none !important;
+    content: none !important;
   }
   
   // Ícono para dropdowns en desktop
@@ -224,15 +226,22 @@
   transition: all 0.3s ease;
   border: 2px solid transparent;
   
+  // Solo mostrar en desktop
   @media (min-width: 1024px) {
     display: flex;
+  }
+  
+  // Ocultar completamente en mobile y tablet (solo para el navbar principal)
+  .navbar .navbar-container & {
+    @media (max-width: 1023px) {
+      display: none !important;
+    }
   }
   
   // Estado normal con navbar transparente
   img {
     height: 24px;
     width: auto;
-    content: url('../assets/images/logo/log_white-obra360.png');
     transition: all 0.3s ease;
   }
   
@@ -243,10 +252,6 @@
     color: $color-obra360;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    
-    img {
-      content: url('../assets/images/logo/log_color-obra360.png');
-    }
   }
   
   .logo-text {
@@ -255,6 +260,7 @@
     font-weight: 700;
     color: $color-white;
     transition: all 0.3s ease;
+    text-decoration: none;
   }
   
   &:hover .logo-text {
@@ -267,10 +273,6 @@
     border-color: $color-obra360;
     color: $color-obra360;
     
-    img {
-      content: url('../assets/images/logo/log_color-obra360.png');
-    }
-    
     .logo-text {
       color: $color-obra360;
     }
@@ -280,10 +282,6 @@
       background: $color-obra360;
       border-color: $color-obra360;
       color: $color-white;
-      
-      img {
-        content: url('../assets/images/logo/log_white-obra360.png');
-      }
       
       .logo-text {
         color: $color-white;
@@ -513,15 +511,22 @@
         }
         
         img {
-          height: 24px;
+          height: 28px;
           width: auto;
           content: url('../assets/images/logo/log_white-obra360.png');
+          transition: all 0.3s ease;
         }
         
         .logo-text {
           font-family: $font-logo;
           font-size: 1.1rem;
           font-weight: 700;
+          color: $color-white;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+        
+        &:hover .logo-text {
           color: $color-white;
         }
       }
@@ -566,12 +571,5 @@
       border-right: none !important;
     }
   }
-  .mobile-menu .nav-link::after {
-    display: none !important;
-    content: none !important;
-  }
-  .mobile-menu .nav-link.active::after {
-    display: none !important;
-    content: none !important;
-  }
+
 } 
