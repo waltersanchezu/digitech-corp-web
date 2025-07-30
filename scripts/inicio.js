@@ -3,114 +3,122 @@ import './components/navbar.js';
 
 // Carousel functionality
 class HeroCarousel {
-  constructor() {
-    this.currentSlide = 1;
-    this.totalSlides = 6;
-    this.autoPlayInterval = null;
-    this.autoPlayDelay = 5000; // 5 segundos
-    
-    this.init();
-  }
-  
-  init() {
-    this.bindEvents();
-    this.startAutoPlay();
-  }
-  
-  bindEvents() {
-    // Controles de navegación
-    const prevBtn = document.getElementById('carouselPrev');
-    const nextBtn = document.getElementById('carouselNext');
-    
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => this.prevSlide());
+    constructor() {
+        this.currentSlide = 0;
+        this.slides = document.querySelectorAll('.carousel-slide');
+        this.indicators = document.querySelectorAll('.indicator');
+        this.prevBtn = document.getElementById('carouselPrev');
+        this.nextBtn = document.getElementById('carouselNext');
+        this.autoPlayInterval = null;
+        
+        this.init();
     }
     
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => this.nextSlide());
+    init() {
+        if (this.slides.length === 0) return;
+        
+        this.setupEventListeners();
+        this.startAutoPlay();
+        this.updateIndicators();
     }
     
-    // Indicadores
-    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
-    indicators.forEach(indicator => {
-      indicator.addEventListener('click', (e) => {
-        const slideNumber = parseInt(e.target.dataset.slide);
-        this.goToSlide(slideNumber);
-      });
-    });
-    
-    // Pausar autoplay al hacer hover
-    const carousel = document.querySelector('.hero-carousel');
-    if (carousel) {
-      carousel.addEventListener('mouseenter', () => this.pauseAutoPlay());
-      carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+    setupEventListeners() {
+        // Botones de navegación
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.prevSlide());
+        }
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+        
+        // Indicadores
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Pausar autoplay en hover
+        const carousel = document.querySelector('.hero-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
+            carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+        }
     }
     
-    // Navegación con teclado
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        this.prevSlide();
-      } else if (e.key === 'ArrowRight') {
-        this.nextSlide();
-      }
-    });
-  }
-  
-  goToSlide(slideNumber) {
-    // Ocultar slide actual
-    const currentSlide = document.querySelector(`.carousel-slide[data-slide="${this.currentSlide}"]`);
-    const currentIndicator = document.querySelector(`.indicator[data-slide="${this.currentSlide}"]`);
-    
-    if (currentSlide) {
-      currentSlide.classList.remove('active');
-    }
-    if (currentIndicator) {
-      currentIndicator.classList.remove('active');
+    goToSlide(index) {
+        if (index < 0 || index >= this.slides.length) return;
+        
+        // Ocultar slide actual
+        this.slides[this.currentSlide].classList.remove('active');
+        this.indicators[this.currentSlide].classList.remove('active');
+        
+        // Mostrar nuevo slide
+        this.currentSlide = index;
+        this.slides[this.currentSlide].classList.add('active');
+        this.indicators[this.currentSlide].classList.add('active');
     }
     
-    // Mostrar nuevo slide
-    const newSlide = document.querySelector(`.carousel-slide[data-slide="${slideNumber}"]`);
-    const newIndicator = document.querySelector(`.indicator[data-slide="${slideNumber}"]`);
-    
-    if (newSlide) {
-      newSlide.classList.add('active');
-    }
-    if (newIndicator) {
-      newIndicator.classList.add('active');
+    nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
     }
     
-    this.currentSlide = slideNumber;
-  }
-  
-  nextSlide() {
-    const nextSlideNumber = this.currentSlide === this.totalSlides ? 1 : this.currentSlide + 1;
-    this.goToSlide(nextSlideNumber);
-  }
-  
-  prevSlide() {
-    const prevSlideNumber = this.currentSlide === 1 ? this.totalSlides : this.currentSlide - 1;
-    this.goToSlide(prevSlideNumber);
-  }
-  
-  startAutoPlay() {
-    if (this.autoPlayInterval) {
-      clearInterval(this.autoPlayInterval);
+    prevSlide() {
+        const prevIndex = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+        this.goToSlide(prevIndex);
     }
     
-    this.autoPlayInterval = setInterval(() => {
-      this.nextSlide();
-    }, this.autoPlayDelay);
-  }
-  
-  pauseAutoPlay() {
-    if (this.autoPlayInterval) {
-      clearInterval(this.autoPlayInterval);
-      this.autoPlayInterval = null;
+    updateIndicators() {
+        this.indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentSlide);
+        });
     }
-  }
+    
+    startAutoPlay() {
+        this.stopAutoPlay(); // Limpiar intervalo anterior
+        this.autoPlayInterval = setInterval(() => {
+            this.nextSlide();
+        }, 5000); // Cambiar cada 5 segundos
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+            this.autoPlayInterval = null;
+        }
+    }
 }
 
-// Inicializar el carousel cuando el DOM esté listo
+// Funcionalidad del botón "volver arriba"
+class BackToTop {
+    constructor() {
+        this.button = document.getElementById('backToTop');
+        this.init();
+    }
+    
+    init() {
+        if (!this.button) return;
+        
+        // Mostrar/ocultar botón según scroll
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                this.button.classList.add('visible');
+            } else {
+                this.button.classList.remove('visible');
+            }
+        });
+        
+        // Scroll suave al hacer clic
+        this.button.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
+// Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-  new HeroCarousel();
+    new HeroCarousel();
+    new BackToTop();
 });
