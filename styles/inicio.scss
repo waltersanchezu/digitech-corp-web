@@ -1797,6 +1797,208 @@
 }
 
 // ========================================
+// SECCIÓN DE CLIENTES
+// ========================================
+
+.clients-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, $color-white 0%, #f8fafc 100%);
+  position: relative;
+  overflow: hidden;
+  
+  // Patrón de fondo sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(59,130,246,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.6;
+    z-index: 1;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  // Header de la sección
+  .clients-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    
+    @media (max-width: 768px) {
+      margin-bottom: 3rem;
+    }
+    
+    .clients-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $color-text-primary;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, $color-primary, $color-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+      
+      @media (max-width: 480px) {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .clients-subtitle {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: $color-text-secondary;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  // Carousel de clientes
+  .clients-carousel {
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 0;
+      
+      @media (min-width: 768px) {
+        gap: 3rem;
+      }
+      
+      @media (min-width: 1024px) {
+        gap: 4rem;
+      }
+    }
+    
+    .client-logo {
+      flex: 0 0 100%;
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      
+      @media (min-width: 768px) {
+        flex: 0 0 calc(50% - 1.5rem);
+        min-width: calc(50% - 1.5rem);
+      }
+      
+      @media (min-width: 1024px) {
+        flex: 0 0 calc(25% - 3rem);
+        min-width: calc(25% - 3rem);
+      }
+      
+      .logo-img {
+        max-width: 100%;
+        max-height: 120px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          filter: grayscale(0%);
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+          max-height: 150px; // Aumentado de 100px a 150px (50% más)
+        }
+      }
+    }
+    
+    // Controles del carousel
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      
+      .carousel-btn {
+        width: 48px;
+        height: 48px;
+        border: none;
+        border-radius: 50%;
+        background: $color-white;
+        color: $color-accent;
+        font-size: 1.2rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &:hover {
+          background: $color-accent;
+          color: $color-white;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba($color-accent, 0.3);
+        }
+        
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          transform: none;
+        }
+      }
+      
+      .carousel-indicators {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        .indicator {
+          width: 10px;
+          height: 10px;
+          border: none;
+          border-radius: 50%;
+          background: rgba($color-accent, 0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          
+          &.active {
+            background: $color-accent;
+            transform: scale(1.2);
+          }
+          
+          &:hover {
+            background: $color-accent;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ========================================
 // ANIMACIONES PARA SECCIÓN DE SERVICIOS
 // ========================================
 
@@ -1867,6 +2069,33 @@
       &:nth-child(1) { animation-delay: 0.6s; }
       &:nth-child(2) { animation-delay: 0.8s; }
       &:nth-child(3) { animation-delay: 1.0s; }
+    }
+  }
+}
+
+// Clases para animaciones de clientes
+.clients-section {
+  &.animate {
+    .clients-header {
+      .clients-title {
+        animation: slideInFromLeft 0.8s ease-out 0.2s both;
+      }
+      
+      .clients-subtitle {
+        animation: slideInFromLeft 0.8s ease-out 0.4s both;
+      }
+    }
+    
+    .client-logo {
+      animation: fadeInScale 0.8s ease-out both;
+      
+      &:nth-child(1) { animation-delay: 0.6s; }
+      &:nth-child(2) { animation-delay: 0.8s; }
+      &:nth-child(3) { animation-delay: 1.0s; }
+      &:nth-child(4) { animation-delay: 1.2s; }
+      &:nth-child(5) { animation-delay: 1.4s; }
+      &:nth-child(6) { animation-delay: 1.6s; }
+      &:nth-child(7) { animation-delay: 1.8s; }
     }
   }
 }
