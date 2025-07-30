@@ -222,6 +222,50 @@ class InnovationAnimations {
         this.init();
     }
     
+    // Método para agregar animaciones a otras secciones
+    static addSectionAnimations() {
+        const obra360Section = document.querySelector('.obra360-section');
+        if (obra360Section) {
+            // Configuración más sensible para mobile
+            const isMobile = window.innerWidth <= 768;
+            const options = {
+                threshold: isMobile ? 0.1 : 0.3, // Más sensible en mobile
+                rootMargin: isMobile ? '-30px' : '-50px' // Menos margen en mobile
+            };
+            
+            console.log('Obra360 animations: Configurando observer para', isMobile ? 'mobile' : 'desktop');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    console.log('Obra360 animations: Intersection ratio:', entry.intersectionRatio);
+                    
+                    if (entry.isIntersecting) {
+                        console.log('Obra360 animations: Activando animaciones');
+                        entry.target.classList.add('animate');
+                    } else {
+                        console.log('Obra360 animations: Desactivando animaciones');
+                        entry.target.classList.remove('animate');
+                    }
+                });
+            }, options);
+            
+            observer.observe(obra360Section);
+            
+            // Fallback para mobile: activar animaciones si la sección está visible al cargar
+            if (isMobile) {
+                setTimeout(() => {
+                    const rect = obra360Section.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible && !obra360Section.classList.contains('animate')) {
+                        console.log('Obra360 animations: Fallback mobile - activando animaciones');
+                        obra360Section.classList.add('animate');
+                    }
+                }, 1000);
+            }
+        }
+    }
+    
     init() {
         if (!this.section) {
             console.warn('InnovationAnimations: No se encontró la sección innovation-section');
@@ -393,6 +437,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroCarousel = new HeroCarousel();
         const backToTop = new BackToTop();
         const innovationAnimations = new InnovationAnimations();
+        
+        // Agregar animaciones a otras secciones
+        InnovationAnimations.addSectionAnimations();
+        
+        // Reajustar animaciones en cambios de orientación
+        window.addEventListener('resize', () => {
+            const isMobile = window.innerWidth <= 768;
+            console.log('Resize detectado, mobile:', isMobile);
+            
+            // Recrear las animaciones si cambió el tamaño
+            InnovationAnimations.addSectionAnimations();
+        });
         
         // Optimizar scroll performance
         const optimizedScrollHandler = Utilities.throttle(() => {
