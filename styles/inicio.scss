@@ -1172,30 +1172,345 @@
 }
 
 // ========================================
-// ANIMACIONES PARA SECCIÓN INNOVACIÓN
+// SECCIÓN DE SERVICIOS
 // ========================================
 
-@keyframes slideInFromRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
+.services-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+  overflow: hidden;
+  
+  // Patrón de fondo sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(59,130,246,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.5;
+    z-index: 1;
   }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  // Header de la sección
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    
+    @media (max-width: 768px) {
+      margin-bottom: 3rem;
+    }
+    
+    .services-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $color-text-primary;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, $color-primary, $color-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+      
+      @media (max-width: 480px) {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .services-subtitle {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: $color-text-secondary;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  // Carousel para mobile y tablet
+  .services-carousel {
+    display: block;
+    
+    @media (min-width: 1024px) {
+      display: none;
+    }
+    
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 0;
+      
+      @media (min-width: 768px) {
+        gap: 2rem;
+      }
+    }
+    
+    .service-card {
+      flex: 0 0 100%;
+      min-width: 100%;
+      
+      @media (min-width: 768px) {
+        flex: 0 0 calc(50% - 1rem);
+        min-width: calc(50% - 1rem);
+      }
+    }
+    
+    // Controles del carousel
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      
+      .carousel-btn {
+        width: 48px;
+        height: 48px;
+        border: none;
+        border-radius: 50%;
+        background: $color-white;
+        color: $color-accent;
+        font-size: 1.2rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &:hover {
+          background: $color-accent;
+          color: $color-white;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba($color-accent, 0.3);
+        }
+        
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          transform: none;
+        }
+      }
+      
+      .carousel-indicators {
+        display: flex;
+        gap: 0.5rem;
+        
+        .indicator {
+          width: 12px;
+          height: 12px;
+          border: none;
+          border-radius: 50%;
+          background: rgba($color-accent, 0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          
+          &.active {
+            background: $color-accent;
+            transform: scale(1.2);
+          }
+          
+          &:hover {
+            background: $color-accent;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+  
+  // Grid para desktop
+  .services-grid {
+    display: none;
+    
+    @media (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
+  
+  // Tarjetas de servicio
+  .service-card {
+    background: $color-white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      
+      .service-image {
+        .service-img {
+          transform: scale(1.1);
+        }
+      }
+      
+      .service-link {
+        color: $color-accent;
+        
+        i {
+          transform: translateX(5px);
+        }
+      }
+    }
+    
+    // Imagen del servicio
+    .service-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      
+      @media (max-width: 768px) {
+        height: 180px;
+      }
+      
+      .service-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+    }
+    
+    // Contenido del servicio
+    .service-content {
+      padding: 2rem;
+      
+      @media (max-width: 768px) {
+        padding: 1.5rem;
+      }
+      
+      .service-name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $color-text-primary;
+        margin: 0 0 1rem 0;
+        
+        @media (max-width: 768px) {
+          font-size: 1.3rem;
+        }
+      }
+      
+      .service-description {
+        font-family: 'Be Vietnam Pro', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: $color-text-secondary;
+        line-height: 1.6;
+        margin: 0 0 1.5rem 0;
+        
+        @media (max-width: 768px) {
+          font-size: 0.9rem;
+        }
+      }
+      
+      .service-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $color-accent;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: $color-accent-light;
+        }
+        
+        i {
+          font-size: 0.8rem;
+          transition: transform 0.3s ease;
+        }
+      }
+    }
   }
 }
 
-@keyframes slideInFromLeft {
+// ========================================
+// ANIMACIONES PARA SECCIÓN DE SERVICIOS
+// ========================================
+
+@keyframes slideInFromBottom {
   0% {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateY(50px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Clases para animaciones de servicios
+.services-section {
+  &.animate {
+    .services-header {
+      .services-title {
+        animation: slideInFromLeft 0.8s ease-out 0.2s both;
+      }
+      
+      .services-subtitle {
+        animation: slideInFromLeft 0.8s ease-out 0.4s both;
+      }
+    }
+    
+    .service-card {
+      animation: fadeInScale 0.8s ease-out both;
+      
+      &:nth-child(1) { animation-delay: 0.6s; }
+      &:nth-child(2) { animation-delay: 0.8s; }
+      &:nth-child(3) { animation-delay: 1.0s; }
+      &:nth-child(4) { animation-delay: 1.2s; }
+      &:nth-child(5) { animation-delay: 1.4s; }
+      &:nth-child(6) { animation-delay: 1.6s; }
+    }
+  }
+}
+
+// ========================================
+// ANIMACIONES PARA SECCIÓN INNOVACIÓN
+// ========================================
 
 @keyframes fadeInUp {
   0% {
