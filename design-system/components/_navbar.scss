@@ -1,14 +1,26 @@
+// ========================================
+// NAVBAR COMPONENT - REFACTORIZADO
+// ========================================
+
+// Variables específicas del navbar
+$navbar-height: 80px;
+$navbar-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$mobile-menu-width: 320px;
+$mobile-menu-width-tablet: 375px;
+
 // Navbar principal
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: $navbar-height;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: $navbar-transition;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.1);
   
+  // Estado scrolled
   &.scrolled {
     background: $color-white !important;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
@@ -18,65 +30,71 @@
       
       &:hover {
         color: $color-accent;
-        text-decoration: none;
       }
     }
     
-    .navbar-brand img {
-      content: url('../assets/images/logo/logo-color.png');
+    .logo-white {
+      display: none;
     }
     
-    .btn-obra360 img {
-      content: url('../assets/images/logo/log_color-obra360.png');
+    .logo-color {
+      display: block;
     }
     
-    .navbar-toggle .hamburger,
-    .navbar-toggle .hamburger::before,
-    .navbar-toggle .hamburger::after {
+    .hamburger-line {
       background: $color-primary;
     }
+    
+    .btn-obra360 {
+      background: transparent;
+      border: 2px solid $color-primary;
+      color: $color-primary;
+      
+      .obra360-icon {
+        display: block;
+        content: url('../assets/images/logo/log_color-obra360.png');
+      }
+      
+      .obra360-text {
+        display: block;
+        font-family: 'Comfortaa', cursive;
+        font-weight: 600;
+      }
+      
+      &:hover {
+        background: $color-primary;
+        color: $color-white;
+        
+        .obra360-text {
+          color: $color-white;
+        }
+        
+        .obra360-icon {
+          display: block;
+          content: url('../assets/images/logo/log_white-obra360.png');
+        }
+      }
+    }
+  }
+}
+
+// Contenedor del navbar
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  @media (min-width: 768px) {
+    width: 90%;
   }
   
-  .navbar-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 $spacing-md;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
-    
-    @media (min-width: 768px) {
-      width: 90%;
-    }
-    
-    @media (min-width: 1024px) {
-      width: 80%;
-    }
-  }
-}
-
-// Ocultar hamburguesa cuando el menú está abierto (siempre, incluso sticky)
-.navbar-toggle.menu-open {
-  display: none !important;
-}
-
-// Forzar navbar transparente cuando el menú móvil está abierto (no tocar)
-.mobile-menu.active ~ .navbar {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-  box-shadow: none !important;
-}
-
-// En tablet, quitar active visual de links por defecto
-@media (max-width: 1023px) {
-  .mobile-menu .nav-link.active {
-    color: $color-primary;
-    background: none;
-    font-weight: 500;
-    border: none;
-    box-shadow: none;
+  @media (min-width: 1024px) {
+    width: 80%;
   }
 }
 
@@ -91,29 +109,61 @@
     transform: scale(0.95);
   }
   
-  img {
+  .logo-white {
     height: 40px;
     width: auto;
-    content: url('../assets/images/logo/logo-white.png');
+    display: block;
+  }
+  
+  .logo-color {
+    height: 40px;
+    width: auto;
+    display: none;
   }
 }
 
-// Navegación principal
+// Navegación desktop
 .navbar-nav {
   display: none;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: $spacing-lg;
   
   @media (min-width: 1024px) {
     display: flex;
     align-items: center;
-    gap: $spacing-lg;
   }
 }
 
 .nav-item {
   position: relative;
+  
+  &.dropdown {
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+      cursor: pointer;
+      
+      i {
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+      }
+    }
+    
+    &:hover {
+      i {
+        transform: rotate(180deg);
+      }
+      
+      .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+  }
 }
 
 .nav-link {
@@ -123,8 +173,7 @@
   font-size: 1rem;
   padding: $spacing-sm $spacing-md;
   border-radius: $radius-sm;
-  transition: all 0.3s ease;
-  position: relative;
+  transition: $navbar-transition;
   display: flex;
   align-items: center;
   gap: $spacing-xs;
@@ -133,443 +182,327 @@
     color: $color-accent;
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
-    text-decoration: none !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
   }
   
-  &:focus,
-  &:active {
-    text-decoration: none !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
-  }
-  
-  // Eliminar cualquier pseudo-elemento que pueda crear subrayado
+  // Eliminar subrayados
   &::after,
   &::before {
     display: none !important;
     content: none !important;
   }
-  
-  // Ícono para dropdowns en desktop
-  .dropdown-icon {
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover .dropdown-icon {
-    transform: rotate(180deg);
-  }
 }
 
-// Dropdowns
-.dropdown {
-  position: relative;
+// Dropdowns desktop
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: $color-white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: $navbar-transition;
+  padding: 0.75rem 0;
+  margin-top: $spacing-sm;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   
-  .dropdown-menu {
+  &::before {
+    content: '';
     position: absolute;
-    top: 100%;
-    left: 0;
-    background: $color-white;
-    border-radius: $radius-md;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    min-width: 250px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    padding: $spacing-sm 0;
-    margin-top: $spacing-sm;
-    overflow: hidden;
-  }
-  
-  &:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid $color-white;
   }
   
   .dropdown-item {
     display: block;
-    padding: $spacing-sm $spacing-md;
+    padding: 0.875rem 1.5rem;
     color: $color-primary;
     text-decoration: none;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    margin: 0;
-    
-    &:last-child {
-      border-bottom: none;
-    }
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: $navbar-transition;
     
     &:hover {
-      background: $color-bg;
+      background: linear-gradient(135deg, rgba($color-accent, 0.08) 0%, rgba($color-accent, 0.12) 100%);
       color: $color-accent;
-      transform: translateX(5px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transform: translateX(4px);
+    }
+    
+    &:first-child {
+      border-radius: 12px 12px 0 0;
+    }
+    
+    &:last-child {
+      border-radius: 0 0 12px 12px;
     }
   }
 }
 
-// Botón obra360 (solo visible en desktop)
+// Botón Obra360 (solo desktop)
 .btn-obra360 {
   display: none;
   align-items: center;
   gap: $spacing-sm;
-  background: $color-obra360;
-  color: $color-white;
+  background: transparent;
+  border: 2px solid $color-white;
+  border-radius: 25px;
   padding: $spacing-sm $spacing-md;
-  border-radius: $radius-md;
+  color: $color-white;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+  font-size: 0.9rem;
+  transition: $navbar-transition;
   
-  // Solo mostrar en desktop
   @media (min-width: 1024px) {
     display: flex;
   }
   
-  // Ocultar completamente en mobile y tablet (solo para el navbar principal)
-  .navbar .navbar-container & {
+  &.desktop-only {
     @media (max-width: 1023px) {
       display: none !important;
     }
   }
   
-  // Estado normal con navbar transparente
-  img {
-    height: 24px;
+  .obra360-icon {
+    height: 20px;
     width: auto;
-    transition: all 0.3s ease;
-  }
-  
-  // Hover con navbar transparente
-  &:hover {
-    background: $color-white;
-    border-color: $color-obra360;
-    color: $color-obra360;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .logo-text {
-    font-family: $font-logo;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: $color-white;
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-  
-  &:hover .logo-text {
-    color: $color-obra360;
-  }
-  
-  // Estado con navbar scrolled (fondo blanco)
-  .navbar.scrolled & {
-    background: $color-white;
-    border-color: $color-obra360;
-    color: $color-obra360;
-    
-    .logo-text {
-      color: $color-obra360;
-    }
-    
-    // Hover con navbar scrolled
-    &:hover {
-      background: $color-obra360;
-      border-color: $color-obra360;
-      color: $color-white;
-      
-      .logo-text {
-        color: $color-white;
-      }
-    }
-  }
-}
-
-// Menú hamburguesa para mobile/tablet
-.navbar-toggle {
-  display: block;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: $spacing-sm;
-  
-  @media (min-width: 1024px) {
     display: none;
   }
   
-  .hamburger {
-    width: 24px;
-    height: 2px;
-    background: $color-white;
-    position: relative;
-    transition: all 0.3s ease;
-    
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      width: 24px;
-      height: 2px;
-      background: $color-white;
-      transition: all 0.3s ease;
-    }
-    
-    &::before {
-      top: -8px;
-    }
-    
-    &::after {
-      bottom: -8px;
-    }
+  .obra360-text {
+    display: block;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 600;
   }
   
-  &.active .hamburger {
-    background: transparent;
+  &:hover {
+    background: $color-white;
+    color: $color-primary;
+    text-decoration: none;
     
-    &::before {
-      transform: rotate(45deg);
-      top: 0;
-      background: $color-white;
-    }
-    
-    &::after {
-      transform: rotate(-45deg);
-      bottom: 0;
-      background: $color-white;
+    .obra360-icon {
+      display: block;
+      content: url('../assets/images/logo/log_white-obra360.png');
     }
   }
 }
 
-// Botón cerrar para mobile/tablet
-.navbar-close {
+// Botón hamburguesa
+.navbar-toggler {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: $spacing-sm;
-  font-size: 1.5rem;
-  color: $color-white;
-  transition: all 0.3s ease;
+  flex-direction: column;
+  gap: 4px;
+  transition: $navbar-transition;
   
-  @media (min-width: 1024px) {
-    display: none;
+  @media (max-width: 1023px) {
+    display: flex;
   }
   
-  &:hover {
-    color: $color-accent;
-    transform: scale(1.1);
+  .hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: $color-white;
+    transition: $navbar-transition;
+    border-radius: 1px;
   }
   
   &.active {
-    display: block;
-  }
-}
-
-// Navbar scrolled - cambiar colores del botón cerrar
-.navbar.scrolled {
-  .navbar-close {
-    color: $color-primary;
-    
-    &:hover {
-      color: $color-accent;
+    .hamburger-line {
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
     }
   }
 }
 
-// Menú móvil
+// ========================================
+// MENÚ MÓVIL
+// ========================================
+
 .mobile-menu {
   position: fixed;
-  top: 80px;
+  top: $navbar-height;
   right: 0;
   width: 100%;
-  max-width: 375px;
-  height: calc(100vh - 80px);
+  max-width: $mobile-menu-width-tablet;
+  height: calc(100vh - #{$navbar-height});
   background: $color-white;
   transform: translateX(100%);
-  transition: transform 0.3s ease;
+  transition: $navbar-transition;
   overflow-y: auto;
   z-index: 999;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 768px) {
+    max-width: $mobile-menu-width;
+  }
 
   &.active {
     transform: translateX(0);
   }
+}
 
-  @media (min-width: 768px) {
-    width: 320px;
-    left: auto;
-    right: 0;
-    max-width: 100vw;
+// Navegación móvil
+.mobile-nav {
+  padding: $spacing-lg 0 0 0;
+}
+
+// Navegación móvil
+.mobile-nav {
+  padding: 0;
+}
+
+.mobile-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-item {
+  margin: 0;
+  
+  &.dropdown {
+    .mobile-link {
+      width: 100%;
+      justify-content: space-between;
+      
+      i {
+        transition: transform 0.3s ease;
+        color: $color-accent;
+      }
+      
+      &.active i {
+        transform: rotate(180deg);
+      }
+    }
   }
+}
 
+.mobile-link {
+  color: $color-primary;
+  font-size: 1.1rem;
+  padding: $spacing-md $spacing-lg;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $color-bg;
+  transition: $navbar-transition;
+  text-decoration: none;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  
+  &:hover {
+    background: linear-gradient(135deg, rgba($color-accent, 0.05) 0%, rgba($color-accent, 0.08) 100%);
+    color: $color-accent;
+    transform: translateX(4px);
+  }
+  
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.025em;
+}
 
-
-  .mobile-nav {
-    list-style: none;
-    padding: 0;
+// Dropdowns móviles
+.mobile-dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px;
+    padding: $spacing-sm 0;
+  }
+  
+  li {
     margin: 0;
     
-    .nav-item {
+    a {
+      padding: $spacing-md $spacing-xl;
       margin: 0;
+      border-bottom: 1px solid $color-bg;
+      color: $color-primary;
+      text-decoration: none;
+      transition: $navbar-transition;
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
       
-      .nav-link {
-        color: $color-primary;
-        font-size: 1.1rem;
-        padding: $spacing-md $spacing-lg;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid $color-bg;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        
-        &:hover {
-          background: $color-bg;
-          color: $color-accent;
-        }
-        
-        .dropdown-icon {
-          font-size: 0.9rem;
-          transition: transform 0.3s ease;
-        }
-        
-        &.active .dropdown-icon {
-          transform: rotate(180deg);
-        }
-      }
-    }
-    
-    .dropdown-menu {
-      position: static;
-      opacity: 0;
-      visibility: hidden;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background: $color-bg;
-      margin: 0;
-      padding: 0;
-      
-      &.active {
-        opacity: 1;
-        visibility: visible;
-        max-height: 400px;
+      &:last-child {
+        border-bottom: none;
       }
       
-      .dropdown-item {
-        padding: $spacing-md $spacing-xl;
-        margin: $spacing-xs 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        color: $color-primary;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-size: 1rem;
-        line-height: 1.5;
-        
-        &:last-child {
-          border-bottom: none;
-          margin-bottom: $spacing-sm;
-        }
-        
-        &:first-child {
-          margin-top: $spacing-sm;
-        }
-        
-        &:hover {
-          color: $color-accent;
-          background: rgba(52, 152, 219, 0.1);
-        }
+      &:hover {
+        color: $color-accent;
+        background: rgba($color-accent, 0.05);
       }
-    }
-    
-    // Botón obra360 en móvil
-    .mobile-obra360 {
-      margin: 0;
-      padding: $spacing-lg;
-      border-top: 1px solid $color-bg;
       
-      .btn-obra360 {
-        display: flex;
-        align-items: center;
-        gap: $spacing-sm;
-        background: $color-obra360;
-        color: $color-white;
-        padding: $spacing-md;
-        border-radius: $radius-md;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        justify-content: center;
-        
-        &:hover {
-          background: $color-obra360-light;
-          transform: translateY(-2px);
-        }
-        
-        img {
-          height: 28px;
-          width: auto;
-          content: url('../assets/images/logo/log_white-obra360.png');
-          transition: all 0.3s ease;
-        }
-        
-        .logo-text {
-          font-family: $font-logo;
-          font-size: 1.1rem;
-          font-weight: 700;
-          color: $color-white;
-          text-decoration: none;
-          transition: all 0.3s ease;
-        }
-        
-        &:hover .logo-text {
-          color: $color-white;
-        }
-      }
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0.025em;
     }
   }
-} 
+}
 
-// Desactivar efectos en mobile y tablet
-@media (max-width: 1023px) {
-  .mobile-menu .nav-link,
-  .mobile-menu .dropdown-item {
-    &:hover,
-    &:focus {
-      background: none !important;
-      color: $color-primary !important;
-      box-shadow: none !important;
-      outline: none !important;
-      transition: none !important;
-    }
+// Botón Obra360 móvil
+.mobile-obra360 {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  background: $color-obra360;
+  color: $color-white;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  text-decoration: none;
+  font-weight: 500;
+  transition: $navbar-transition;
+  justify-content: center;
+  margin: $spacing-lg;
+  
+  &:hover {
+    background: $color-obra360-light;
+    transform: translateY(-2px);
+    text-decoration: none;
   }
-  .mobile-menu .dropdown-icon {
-    transition: none !important;
+  
+  img {
+    height: 28px;
+    width: auto;
   }
-  .mobile-menu .nav-link.active .dropdown-icon {
-    transform: none !important;
+  
+  span {
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $color-white;
   }
-  .mobile-menu .nav-link {
-    border-bottom: 1px solid $color-bg !important;
-    box-shadow: none !important;
-    text-decoration: none !important;
-    border-top: none !important;
-    border-left: none !important;
-    border-right: none !important;
-    &.active,
-    &:hover,
-    &:focus {
-      border-bottom: 1px solid $color-bg !important;
-      box-shadow: none !important;
-      text-decoration: none !important;
-      border-top: none !important;
-      border-left: none !important;
-      border-right: none !important;
-    }
-  }
-
 } 
