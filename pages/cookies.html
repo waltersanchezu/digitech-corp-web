@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Política de Cookies - DIGITECH CORP</title>
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +107,39 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
+        /* Estilos para tabla responsive en móvil */
+        @media (max-width: 768px) {
+            .cookie-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                border-radius: 6px;
+                margin: 15px 0;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .cookie-table table {
+                min-width: 600px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cookie-table {
+                margin: 12px 0;
+                border-radius: 4px;
+            }
+            
+            .cookie-table table {
+                min-width: 500px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .cookie-table table {
+                min-width: 450px;
+            }
+        }
+        
         .cookie-table th {
             background: #002141;
             color: white;
@@ -176,33 +212,345 @@
         }
         
         @media (max-width: 768px) {
+            .policy-hero {
+                padding: 80px 0 60px;
+            }
+            
             .policy-hero h1 {
                 font-size: 2rem;
+                margin-bottom: 0.75rem;
             }
             
             .policy-hero p {
                 font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .policy-content {
+                padding: 40px 0;
             }
             
             .policy-section {
-                padding: 25px;
+                padding: 25px 20px;
+                margin-bottom: 20px;
+                border-radius: 8px;
             }
             
             .policy-section h2 {
                 font-size: 1.5rem;
+                margin-bottom: 15px;
             }
             
             .policy-section h3 {
                 font-size: 1.25rem;
+                margin: 20px 0 10px;
+            }
+            
+            .policy-section p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 12px;
+            }
+            
+            .policy-section ul {
+                margin: 12px 0;
+                padding-left: 18px;
+            }
+            
+            .policy-section li {
+                font-size: 0.95rem;
+                margin-bottom: 6px;
+                line-height: 1.5;
+            }
+            
+            .last-updated {
+                padding: 15px;
+                margin-bottom: 20px;
+                font-size: 0.9rem;
             }
             
             .cookie-table {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
+                margin: 15px 0;
             }
             
             .cookie-table th,
             .cookie-table td {
+                padding: 8px 6px;
+                vertical-align: top;
+            }
+            
+            .cookie-type {
+                font-size: 0.7rem;
+                padding: 3px 6px;
+            }
+            
+            .cookie-settings {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .cookie-settings h4 {
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+            }
+            
+            .cookie-settings h5 {
+                font-size: 1rem;
+                margin: 15px 0 8px;
+            }
+            
+            .cookie-settings ul {
+                margin: 8px 0;
+            }
+            
+            .cookie-settings li {
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+            
+            .contact-info {
+                padding: 15px;
+                margin-top: 15px;
+            }
+            
+            .contact-info h4 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            .contact-info p {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .policy-hero {
+                padding: 60px 0 40px;
+            }
+            
+            .policy-hero h1 {
+                font-size: 1.75rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .policy-hero p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            .policy-content {
+                padding: 30px 0;
+            }
+            
+            .policy-section {
+                padding: 20px 15px;
+                margin-bottom: 15px;
+                border-radius: 6px;
+            }
+            
+            .policy-section h2 {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+            
+            .policy-section h3 {
+                font-size: 1.1rem;
+                margin: 15px 0 8px;
+            }
+            
+            .policy-section p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 10px;
+            }
+            
+            .policy-section ul {
+                margin: 10px 0;
+                padding-left: 16px;
+            }
+            
+            .policy-section li {
+                font-size: 0.9rem;
+                margin-bottom: 5px;
+                line-height: 1.4;
+            }
+            
+            .last-updated {
+                padding: 12px;
+                margin-bottom: 15px;
+                font-size: 0.85rem;
+            }
+            
+            .cookie-table {
+                font-size: 0.75rem;
+                margin: 12px 0;
+                border-radius: 6px;
+            }
+            
+            .cookie-table th,
+            .cookie-table td {
+                padding: 6px 4px;
+                vertical-align: top;
+            }
+            
+            .cookie-type {
+                font-size: 0.65rem;
+                padding: 2px 4px;
+            }
+            
+            .cookie-settings {
+                padding: 12px;
+                margin: 12px 0;
+            }
+            
+            .cookie-settings h4 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .cookie-settings h5 {
+                font-size: 0.95rem;
+                margin: 12px 0 6px;
+            }
+            
+            .cookie-settings ul {
+                margin: 6px 0;
+            }
+            
+            .cookie-settings li {
+                font-size: 0.85rem;
+                margin-bottom: 3px;
+            }
+            
+            .contact-info {
+                padding: 12px;
+                margin-top: 12px;
+            }
+            
+            .contact-info h4 {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            
+            .contact-info p {
+                font-size: 0.85rem;
+                margin-bottom: 6px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .policy-hero {
+                padding: 50px 0 30px;
+            }
+            
+            .policy-hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .policy-hero p {
+                font-size: 0.85rem;
+                line-height: 1.3;
+            }
+            
+            .policy-content {
+                padding: 25px 0;
+            }
+            
+            .policy-section {
+                padding: 15px 12px;
+                margin-bottom: 12px;
+                border-radius: 4px;
+            }
+            
+            .policy-section h2 {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+            
+            .policy-section h3 {
+                font-size: 1rem;
+                margin: 12px 0 6px;
+            }
+            
+            .policy-section p {
+                font-size: 0.85rem;
+                line-height: 1.4;
+                margin-bottom: 8px;
+            }
+            
+            .policy-section ul {
+                margin: 8px 0;
+                padding-left: 14px;
+            }
+            
+            .policy-section li {
+                font-size: 0.85rem;
+                margin-bottom: 4px;
+                line-height: 1.3;
+            }
+            
+            .last-updated {
                 padding: 10px;
+                margin-bottom: 12px;
+                font-size: 0.8rem;
+            }
+            
+            .cookie-table {
+                font-size: 0.7rem;
+                margin: 10px 0;
+            }
+            
+            .cookie-table th,
+            .cookie-table td {
+                padding: 5px 3px;
+                vertical-align: top;
+            }
+            
+            .cookie-type {
+                font-size: 0.6rem;
+                padding: 2px 3px;
+            }
+            
+            .cookie-settings {
+                padding: 10px;
+                margin: 10px 0;
+            }
+            
+            .cookie-settings h4 {
+                font-size: 0.95rem;
+                margin-bottom: 8px;
+            }
+            
+            .cookie-settings h5 {
+                font-size: 0.9rem;
+                margin: 10px 0 5px;
+            }
+            
+            .cookie-settings ul {
+                margin: 5px 0;
+            }
+            
+            .cookie-settings li {
+                font-size: 0.8rem;
+                margin-bottom: 2px;
+            }
+            
+            .contact-info {
+                padding: 10px;
+                margin-top: 10px;
+            }
+            
+            .contact-info h4 {
+                font-size: 0.95rem;
+                margin-bottom: 5px;
+            }
+            
+            .contact-info p {
+                font-size: 0.8rem;
+                margin-bottom: 5px;
             }
         }
         
@@ -444,6 +792,6 @@
     <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/components-loader.js?v=1.7"></script>
 </body>
 </html> 

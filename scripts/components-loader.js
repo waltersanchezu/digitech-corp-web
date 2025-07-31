@@ -11,6 +11,8 @@ class ComponentLoader {
         this.mobileClose = null;
         this.dropdownToggles = [];
         this.mobileDropdownToggles = [];
+        console.log('🚀 ComponentLoader inicializado v1.7');
+        console.log('📍 Base path:', this.basePath);
     }
 
     /**
@@ -82,7 +84,15 @@ class ComponentLoader {
         images.forEach(img => {
             const src = img.getAttribute('src');
             if (src && !src.startsWith('http') && !src.startsWith('data:')) {
-                const newSrc = this.basePath + src;
+                let newSrc = src;
+                
+                // Si estamos en una página dentro de pages/ y la imagen ya tiene assets/, ajustar la ruta
+                if (this.basePath === '../' && src.startsWith('assets/')) {
+                    newSrc = this.basePath + src;
+                } else if (this.basePath === '') {
+                    newSrc = src;
+                }
+                
                 img.setAttribute('src', newSrc);
                 console.log(`🖼️ Imagen: ${src} → ${newSrc}`);
             }
@@ -93,7 +103,21 @@ class ComponentLoader {
         links.forEach(link => {
             const href = link.getAttribute('href');
             if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
-                const newHref = this.basePath + href;
+                let newHref = href;
+                
+                // Si estamos en una página dentro de pages/ y el enlace ya tiene pages/, quitar pages/
+                if (this.basePath === '../' && href.startsWith('pages/')) {
+                    newHref = href.replace('pages/', '');
+                } 
+                // Si estamos en una página dentro de pages/ y el enlace NO tiene pages/, agregar ../
+                else if (!href.startsWith('pages/') && this.basePath === '../') {
+                    newHref = this.basePath + href;
+                }
+                // Si estamos en la raíz, mantener la ruta original
+                else if (this.basePath === '') {
+                    newHref = href;
+                }
+                
                 link.setAttribute('href', newHref);
                 console.log(`🔗 Enlace: ${href} → ${newHref}`);
             }

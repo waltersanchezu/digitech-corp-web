@@ -3,32 +3,826 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes - DIGITECH CORP</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Nuestros Clientes - Casos de Éxito y Testimonios - DIGITECH CORP</title>
+    <meta name="description" content="Conoce nuestros clientes satisfechos y casos de éxito. Empresas que han transformado sus procesos con nuestras soluciones tecnológicas.">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
+    
+    <style>
+        /* ========================================
+           ESTILOS PARA PÁGINA CLIENTES
+           ======================================== */
+        
+        /* Hero Section */
+        .clientes-hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(51, 65, 85, 0.9) 50%, rgba(71, 85, 105, 0.85) 100%);
+        }
+        
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background-size: 250px 250px, 350px 350px;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 2rem 0;
+            min-height: calc(100vh - 140px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 600px;
+        }
+        
+        .hero-stat {
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .hero-stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-size: 4rem;
+            color: #60a5fa;
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-text {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        /* Clients Grid Section */
+        .clients-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .client-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        
+        .client-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .client-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: #64748b;
+        }
+        
+        .client-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .client-sector {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        /* Success Stories Section */
+        .success-stories-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .story-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .story-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .story-icon {
+            font-size: 3rem;
+            color: #60a5fa;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .story-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .story-metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 0.25rem;
+        }
+        
+        .metric-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #002141;
+            border: 2px solid white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .hero-stat-value {
+                font-size: 2rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .stories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+            
+            .hero-stat-value {
+                font-size: 1.8rem;
+            }
+            
+            .hero-stat-label {
+                font-size: 0.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .testimonial-card {
+                padding: 2rem;
+            }
+            
+            .stories-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .hero-stat-value {
+                font-size: 1.5rem;
+            }
+            
+            .hero-stat-label {
+                font-size: 0.7rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+            
+            .testimonial-text {
+                font-size: 1rem;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .client-card {
+                padding: 1.5rem;
+            }
+            
+            .client-logo {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .cta-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .hero-stat-value {
+                font-size: 1.3rem;
+            }
+            
+            .hero-stat-label {
+                font-size: 0.65rem;
+            }
+            
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar Container -->
     <div id="navbar-container"></div>
-
-    <!-- Contenido de la página -->
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>Nuestros Clientes</h1>
-                <p>Descubre las empresas que confían en DIGITECH CORP para su transformación digital</p>
+    
+    <!-- Hero Section -->
+    <section class="clientes-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-users"></i>
+                    Nuestros Clientes
+                </div>
+                
+                <h1 class="hero-title">
+                    Clientes que Confían en Nosotros
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Descubre cómo hemos ayudado a empresas de diferentes sectores a transformar 
+                    sus procesos y alcanzar sus objetivos tecnológicos.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">500+</span>
+                        <span class="hero-stat-label">Clientes Satisfechos</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">98%</span>
+                        <span class="hero-stat-label">Tasa de Retención</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">15+</span>
+                        <span class="hero-stat-label">Años de Experiencia</span>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
-
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
+                <p class="section-subtitle">
+                    Testimonios reales de empresas que han transformado sus procesos 
+                    con nuestras soluciones tecnológicas.
+                </p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "DIGITECH CORP transformó completamente nuestros procesos internos. 
+                        La implementación de su software a medida nos permitió reducir 
+                        los tiempos de procesamiento en un 60%."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Directora de Operaciones - Grupo Verástegui</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "La consultoría tecnológica que recibimos fue fundamental para 
+                        nuestra transformación digital. El equipo demostró un profundo 
+                        conocimiento del sector construcción."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>Gerente General - K&S Ingenieros</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "La implementación de BIM en nuestros proyectos nos ha permitido 
+                        optimizar costos y mejorar la coordinación entre equipos. 
+                        Los resultados han superado nuestras expectativas."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Ana Torres</h4>
+                            <p>Directora de Proyectos - Gesvias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Clients Grid Section -->
+    <section class="clients-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Clientes</h2>
+                <p class="section-subtitle">
+                    Empresas líderes en diferentes sectores que confían en nuestras 
+                    soluciones tecnológicas.
+                </p>
+            </div>
+            
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="client-name">Municipalidad de Pimentel</h3>
+                    <p class="client-sector">Sector Público</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="client-name">Hnos. Yaipén</h3>
+                    <p class="client-sector">Sector Privado</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="client-name">IOMEM Group</h3>
+                    <p class="client-sector">Consultoría</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="client-name">Gesvias</h3>
+                    <p class="client-sector">Construcción</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="client-name">K&S Ingenieros</h3>
+                    <p class="client-sector">Ingeniería</p>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3 class="client-name">Municipalidad de Esperanza</h3>
+                    <p class="client-sector">Sector Público</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Success Stories Section -->
+    <section class="success-stories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Casos de Éxito</h2>
+                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+                    Historias reales de transformación digital que han generado 
+                    resultados tangibles para nuestros clientes.
+                </p>
+            </div>
+            
+            <div class="stories-grid">
+                <div class="story-card">
+                    <i class="fas fa-chart-line story-icon"></i>
+                    <h3 class="story-title">Optimización de Procesos</h3>
+                    <p class="story-description">
+                        Implementamos un sistema de gestión integral que automatizó 
+                        los procesos de una empresa manufacturera, reduciendo costos 
+                        operativos y mejorando la eficiencia.
+                    </p>
+                    <div class="story-metrics">
+                        <div class="story-metric">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Reducción de Costos</div>
+                        </div>
+                        <div class="story-metric">
+                            <div class="metric-value">60%</div>
+                            <div class="metric-label">Mejora en Eficiencia</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <i class="fas fa-mobile-alt story-icon"></i>
+                    <h3 class="story-title">App Móvil Empresarial</h3>
+                    <p class="story-description">
+                        Desarrollamos una aplicación móvil que revolucionó la forma 
+                        en que una empresa de logística gestiona sus operaciones 
+                        en campo y coordina con su equipo.
+                    </p>
+                    <div class="story-metrics">
+                        <div class="story-metric">
+                            <div class="metric-value">80%</div>
+                            <div class="metric-label">Menos Tiempo de Respuesta</div>
+                        </div>
+                        <div class="story-metric">
+                            <div class="metric-value">95%</div>
+                            <div class="metric-label">Satisfacción Usuario</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-card">
+                    <i class="fas fa-cube story-icon"></i>
+                    <h3 class="story-title">Implementación BIM</h3>
+                    <p class="story-description">
+                        Guiamos a una empresa constructora en la adopción de 
+                        metodología BIM, mejorando la coordinación de proyectos 
+                        y reduciendo errores en construcción.
+                    </p>
+                    <div class="story-metrics">
+                        <div class="story-metric">
+                            <div class="metric-value">50%</div>
+                            <div class="metric-label">Menos Errores</div>
+                        </div>
+                        <div class="story-metric">
+                            <div class="metric-value">30%</div>
+                            <div class="metric-label">Ahorro en Tiempo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">¿Quieres ser nuestro próximo caso de éxito?</h2>
+            <p class="cta-subtitle">
+                Únete a las más de 500 empresas que ya han transformado sus procesos 
+                con nuestras soluciones tecnológicas.
+            </p>
+            <a href="contacto.html" class="cta-button">
+                <i class="fas fa-paper-plane"></i>
+                Solicitar Consulta Gratuita
+            </a>
+        </div>
+    </section>
+    
     <!-- Footer Container -->
     <div id="footer-container"></div>
-
+    
     <!-- Scripts -->
-    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/components-loader.js?v=1.7"></script>
 </body>
 </html> 

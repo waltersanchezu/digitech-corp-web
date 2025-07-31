@@ -3,32 +3,760 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias - DIGITECH CORP</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Noticias y Blog - Tecnología, Innovación y Transformación Digital - DIGITECH CORP</title>
+    <meta name="description" content="Mantente actualizado con las últimas noticias de tecnología, innovación y transformación digital. Artículos, casos de estudio y tendencias del sector.">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
+    
+    <style>
+        /* ========================================
+           ESTILOS PARA PÁGINA NOTICIAS
+           ======================================== */
+        
+        /* Hero Section */
+        .noticias-hero {
+            position: relative;
+            min-height: 70vh;
+            background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.95) 0%, rgba(139, 92, 246, 0.9) 50%, rgba(167, 139, 250, 0.85) 100%);
+        }
+        
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background-size: 250px 250px, 350px 350px;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 2rem 0;
+            min-height: calc(70vh - 140px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+        
+        /* Categories Section */
+        .categories-section {
+            padding: 3rem 0;
+            background: #f8fafc;
+        }
+        
+        .categories-grid {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .categories-grid::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .category-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            color: #64748b;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: #7c3aed;
+            border-color: #7c3aed;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+        
+        /* Articles Section */
+        .articles-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .article-content {
+            padding: 2rem;
+        }
+        
+        .article-category {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.1);
+            color: #7c3aed;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .article-excerpt {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .article-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .article-read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .read-more {
+            color: #7c3aed;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: #6d28d9;
+        }
+        
+        /* Featured Article */
+        .featured-article {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+        
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 400px;
+        }
+        
+        .featured-text {
+            padding: 3rem;
+        }
+        
+        .featured-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .featured-excerpt {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .featured-image {
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .newsletter-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .newsletter-button {
+            background: white;
+            color: #7c3aed;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .featured-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .featured-text {
+                padding: 2rem;
+            }
+            
+            .featured-image {
+                min-height: 200px;
+            }
+            
+            .articles-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .featured-title {
+                font-size: 1.5rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .newsletter-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .featured-text {
+                padding: 1.5rem;
+            }
+            
+            .featured-title {
+                font-size: 1.3rem;
+            }
+            
+            .article-content {
+                padding: 1.5rem;
+            }
+            
+            .article-title {
+                font-size: 1.1rem;
+            }
+            
+            .newsletter-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .categories-grid {
+                gap: 0.5rem;
+            }
+            
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar Container -->
     <div id="navbar-container"></div>
-
-    <!-- Contenido de la página -->
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>Noticias y Actualizaciones</h1>
-                <p>Mantente informado sobre las últimas novedades en tecnología y nuestros proyectos</p>
+    
+    <!-- Hero Section -->
+    <section class="noticias-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-newspaper"></i>
+                    Blog y Noticias
+                </div>
+                
+                <h1 class="hero-title">
+                    Noticias y Tendencias Tecnológicas
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Mantente actualizado con las últimas noticias de tecnología, 
+                    innovación y transformación digital que están moldeando el futuro.
+                </p>
             </div>
-        </section>
-    </main>
-
+        </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="categories-grid">
+                <button class="category-btn active">Todas</button>
+                <button class="category-btn">Transformación Digital</button>
+                <button class="category-btn">Inteligencia Artificial</button>
+                <button class="category-btn">Desarrollo de Software</button>
+                <button class="category-btn">BIM y Construcción</button>
+                <button class="category-btn">Gobierno Digital</button>
+                <button class="category-btn">Innovación</button>
+                <button class="category-btn">Casos de Éxito</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Articles Section -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Últimas Publicaciones</h2>
+                <p class="section-subtitle">
+                    Artículos, casos de estudio y análisis sobre las tendencias 
+                    más importantes en tecnología y transformación digital.
+                </p>
+            </div>
+            
+            <!-- Featured Article -->
+            <div class="featured-article">
+                <div class="featured-content">
+                    <div class="featured-text">
+                        <span class="featured-category">Transformación Digital</span>
+                        <h3 class="featured-title">
+                            Cómo la IA está Revolucionando la Gestión de Proyectos en 2024
+                        </h3>
+                        <p class="featured-excerpt">
+                            Descubre las herramientas de inteligencia artificial que están 
+                            transformando la forma en que las empresas gestionan sus proyectos, 
+                            desde la planificación hasta la ejecución y el seguimiento.
+                        </p>
+                        <a href="#" class="read-more">Leer Artículo Completo →</a>
+                    </div>
+                    <div class="featured-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Articles Grid -->
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-image">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">BIM y Construcción</span>
+                        <h3 class="article-title">
+                            Metodología BIM: El Futuro de la Construcción Sostenible
+                        </h3>
+                        <p class="article-excerpt">
+                            Exploramos cómo Building Information Modeling está impulsando 
+                            la construcción sostenible y reduciendo el impacto ambiental.
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>15 Mar 2024</span>
+                            </div>
+                            <div class="article-read-time">
+                                <i class="fas fa-clock"></i>
+                                <span>5 min</span>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Desarrollo de Software</span>
+                        <h3 class="article-title">
+                            Tendencias en Desarrollo de Apps Móviles para 2024
+                        </h3>
+                        <p class="article-excerpt">
+                            Las tecnologías emergentes que están definiendo el futuro 
+                            del desarrollo de aplicaciones móviles empresariales.
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>12 Mar 2024</span>
+                            </div>
+                            <div class="article-read-time">
+                                <i class="fas fa-clock"></i>
+                                <span>4 min</span>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Gobierno Digital</span>
+                        <h3 class="article-title">
+                            Digitalización del Sector Público: Casos de Éxito en Perú
+                        </h3>
+                        <p class="article-excerpt">
+                            Analizamos las iniciativas más exitosas de transformación 
+                            digital en instituciones gubernamentales peruanas.
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>10 Mar 2024</span>
+                            </div>
+                            <div class="article-read-time">
+                                <i class="fas fa-clock"></i>
+                                <span>6 min</span>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Innovación</span>
+                        <h3 class="article-title">
+                            Analytics Avanzado: Transformando Datos en Decisiones Estratégicas
+                        </h3>
+                        <p class="article-excerpt">
+                            Cómo las empresas están utilizando análisis de datos avanzado 
+                            para tomar decisiones más inteligentes y estratégicas.
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>8 Mar 2024</span>
+                            </div>
+                            <div class="article-read-time">
+                                <i class="fas fa-clock"></i>
+                                <span>7 min</span>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Ciberseguridad</span>
+                        <h3 class="article-title">
+                            Ciberseguridad en la Era de la Transformación Digital
+                        </h3>
+                        <p class="article-excerpt">
+                            Las mejores prácticas y estrategias para proteger 
+                            los activos digitales en un mundo cada vez más conectado.
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>5 Mar 2024</span>
+                            </div>
+                            <div class="article-read-time">
+                                <i class="fas fa-clock"></i>
+                                <span>5 min</span>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Casos de Éxito</span>
+                        <h3 class="article-title">
+                            Grupo Verástegui: Un Caso de Éxito en Automatización
+                        </h3>
+                        <p class="article-excerpt">
+                            Cómo ayudamos a esta empresa a optimizar sus procesos 
+                            y mejorar la eficiencia operativa con tecnología.
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                <span>3 Mar 2024</span>
+                            </div>
+                            <div class="article-read-time">
+                                <i class="fas fa-clock"></i>
+                                <span>4 min</span>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2 class="newsletter-title">Mantente Informado</h2>
+            <p class="newsletter-subtitle">
+                Suscríbete a nuestro newsletter para recibir las últimas noticias, 
+                tendencias tecnológicas y casos de éxito directamente en tu correo.
+            </p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="newsletter-button">
+                    <i class="fas fa-paper-plane"></i>
+                    Suscribirse
+                </button>
+            </form>
+        </div>
+    </section>
+    
     <!-- Footer Container -->
     <div id="footer-container"></div>
-
+    
     <!-- Scripts -->
-    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/components-loader.js?v=1.7"></script>
 </body>
 </html> 

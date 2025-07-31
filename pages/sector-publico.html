@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Sector Público - Transformación Digital Gubernamental - DIGITECH CORP</title>
+    <meta name="description" content="Soluciones tecnológicas integrales para el sector público. Gobierno digital, modernización de procesos, transparencia y eficiencia gubernamental.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../styles/inicio.css">
+    
+    <style>
+        /* ========================================
+           ESTILOS PARA PÁGINA SECTOR PÚBLICO
+           ======================================== */
+        
+        /* Hero Section */
+        .sector-publico-hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(59, 130, 246, 0.9) 50%, rgba(96, 165, 250, 0.85) 100%);
+        }
+        
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background-size: 250px 250px, 350px 350px;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem 0;
+            min-height: calc(100vh - 140px);
+            width: 100%;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(96, 165, 250, 0.6);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .sector-visualization {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            min-height: 350px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sector-icon {
+            font-size: 4rem;
+            color: #60a5fa;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .sector-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+        }
+        
+        .stat-item {
+            text-align: center;
+            color: white;
+            padding: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.3;
+            display: block;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .service-features li {
+            color: #475569;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: #60a5fa;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #002141;
+            border: 2px solid white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .sector-visualization {
+                min-height: 280px;
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+            
+            .sector-icon {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .sector-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .stat-item {
+                padding: 0.25rem;
+            }
+            
+            .stat-value {
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+                line-height: 1.2;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .sector-visualization {
+                min-height: 250px;
+                padding: 1rem;
+            }
+            
+            .sector-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .sector-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .stat-item {
+                padding: 0.25rem;
+            }
+            
+            .stat-value {
+                font-size: 1.3rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .stat-label {
+                font-size: 0.75rem;
+                line-height: 1.1;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .sector-visualization {
+                min-height: 220px;
+                padding: 0.75rem;
+            }
+            
+            .sector-icon {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .sector-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .stat-item {
+                padding: 0.25rem;
+            }
+            
+            .stat-value {
+                font-size: 1.1rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+                line-height: 1.1;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .cta-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .sector-visualization {
+                min-height: 200px;
+                padding: 0.75rem;
+            }
+            
+            .sector-icon {
+                font-size: 1.8rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .sector-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .stat-item {
+                padding: 0.25rem;
+            }
+            
+            .stat-value {
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .stat-label {
+                font-size: 0.65rem;
+                line-height: 1.1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+    
+    <!-- Hero Section -->
+    <section class="sector-publico-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-landmark"></i>
+                        Sector Público
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Transformación Digital para el Sector Público
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Modernizamos las instituciones gubernamentales con soluciones tecnológicas 
+                        que mejoran la eficiencia, transparencia y servicio al ciudadano.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="contacto.html" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Solicitar Consulta
+                        </a>
+                        <a href="#servicios" class="btn-secondary">
+                            <i class="fas fa-cogs"></i>
+                            Ver Servicios
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="sector-visualization">
+                        <i class="fas fa-government sector-icon"></i>
+                        <div class="sector-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">200+</span>
+                                <span class="stat-label">Instituciones</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">95%</span>
+                                <span class="stat-label">Eficiencia Mejorada</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">12+</span>
+                                <span class="stat-label">Años Experiencia</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">24/7</span>
+                                <span class="stat-label">Soporte Técnico</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Soluciones para el Sector Público</h2>
+                <p class="section-subtitle">
+                    Ofrecemos servicios especializados para modernizar y optimizar 
+                    los procesos gubernamentales con tecnología de vanguardia.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="service-title">Gobierno Digital</h3>
+                    <p class="service-description">
+                        Implementamos plataformas digitales que facilitan la interacción 
+                        entre ciudadanos y gobierno, mejorando la eficiencia y transparencia.
+                    </p>
+                    <ul class="service-features">
+                        <li>Portales ciudadanos integrados</li>
+                        <li>Tramites en línea</li>
+                        <li>Gestión documental digital</li>
+                        <li>Firmas electrónicas</li>
+                        <li>Interoperabilidad entre sistemas</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="service-title">Análisis de Datos Gubernamentales</h3>
+                    <p class="service-description">
+                        Desarrollamos sistemas de análisis de datos para mejorar 
+                        la toma de decisiones y la planificación estratégica.
+                    </p>
+                    <ul class="service-features">
+                        <li>Dashboards ejecutivos</li>
+                        <li>Reportes automatizados</li>
+                        <li>Análisis predictivo</li>
+                        <li>Visualización de datos</li>
+                        <li>Indicadores de gestión</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Ciberseguridad Gubernamental</h3>
+                    <p class="service-description">
+                        Protegemos la información sensible del gobierno con las mejores 
+                        prácticas de seguridad y cumplimiento normativo.
+                    </p>
+                    <ul class="service-features">
+                        <li>Auditorías de seguridad</li>
+                        <li>Implementación de firewalls</li>
+                        <li>Encriptación de datos</li>
+                        <li>Monitoreo 24/7</li>
+                        <li>Cumplimiento normativo</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="service-title">Modernización de Sistemas</h3>
+                    <p class="service-description">
+                        Actualizamos y optimizamos sistemas legacy para mejorar 
+                        la eficiencia operativa y reducir costos.
+                    </p>
+                    <ul class="service-features">
+                        <li>Migración de sistemas legacy</li>
+                        <li>Integración de plataformas</li>
+                        <li>Automatización de procesos</li>
+                        <li>Optimización de bases de datos</li>
+                        <li>Capacitación de usuarios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Beneficios para el Sector Público</h2>
+                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+                    Nuestras soluciones generan valor tangible para las instituciones 
+                    gubernamentales y los ciudadanos.
+                </p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-tachometer-alt benefit-icon"></i>
+                    <h3 class="benefit-title">Mayor Eficiencia</h3>
+                    <p class="benefit-description">
+                        Reducción significativa en tiempos de procesamiento 
+                        y mejora en la productividad operativa.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-eye benefit-icon"></i>
+                    <h3 class="benefit-title">Transparencia Total</h3>
+                    <p class="benefit-description">
+                        Mayor visibilidad en los procesos gubernamentales 
+                        y acceso público a la información.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-dollar-sign benefit-icon"></i>
+                    <h3 class="benefit-title">Ahorro de Costos</h3>
+                    <p class="benefit-description">
+                        Reducción de gastos operativos y optimización 
+                        del presupuesto público.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-users benefit-icon"></i>
+                    <h3 class="benefit-title">Mejor Servicio Ciudadano</h3>
+                    <p class="benefit-description">
+                        Atención más rápida y eficiente a las necesidades 
+                        de los ciudadanos.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-lock benefit-icon"></i>
+                    <h3 class="benefit-title">Seguridad Avanzada</h3>
+                    <p class="benefit-description">
+                        Protección robusta de la información sensible 
+                        y cumplimiento de estándares de seguridad.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line benefit-icon"></i>
+                    <h3 class="benefit-title">Toma de Decisiones Inteligente</h3>
+                    <p class="benefit-description">
+                        Datos en tiempo real para decisiones estratégicas 
+                        más informadas y efectivas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para modernizar tu institución?</h2>
+            <p class="cta-subtitle">
+                Contáctanos para conocer cómo podemos ayudarte a transformar 
+                digitalmente tu institución gubernamental.
+            </p>
+            <a href="contacto.html" class="cta-button">
+                <i class="fas fa-paper-plane"></i>
+                Solicitar Consulta Gratuita
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+    
+    <!-- Scripts -->
+    <script src="../scripts/components-loader.js?v=1.7"></script>
+</body>
+</html> 

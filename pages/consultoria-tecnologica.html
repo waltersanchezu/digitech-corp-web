@@ -3,16 +3,1096 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultoría Tecnológica - DIGITECH CORP</title>
+    <title>Consultoría Tecnológica - Asesoría Estratégica en Tecnología - DIGITECH CORP</title>
+    <meta name="description" content="Consultoría tecnológica integral para empresas. Análisis de sistemas, optimización de procesos, implementación de soluciones y asesoría estratégica en tecnología.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
-    <link rel="icon" href="../assets/images/logo/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ========================================
+           ESTILOS PARA PÁGINA CONSULTORÍA TECNOLÓGICA
+           ======================================== */
+        
+        /* Hero Section */
+        .consultoria-hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a87 50%, #3182ce 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.95) 0%, rgba(45, 90, 135, 0.9) 50%, rgba(49, 130, 206, 0.85) 100%);
+        }
+        
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background-size: 250px 250px, 350px 350px;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem 0;
+            min-height: calc(100vh - 140px);
+            width: 100%;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-title .highlight {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 0.75rem 1.25rem;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .consultoria-visualization {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            min-height: 350px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .consultoria-icon {
+            font-size: 4rem;
+            color: #60a5fa;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .consultoria-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+        }
+        
+        .stat-item {
+            text-align: center;
+            color: white;
+            padding: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.3;
+            display: block;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #475569;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .service-features li i {
+            color: #10b981;
+            font-size: 0.8rem;
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+        }
+        
+        .process-section .section-title {
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .process-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .process-step:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .process-step:hover::before {
+            opacity: 1;
+        }
+        
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .step-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: #1e293b;
+            padding: 1.25rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .process-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            
+            .process-step {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-actions {
+                justify-content: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .process-step {
+                padding: 2rem 1.5rem;
+            }
+            
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .step-title {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            
+            .step-description {
+                font-size: 0.95rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-features {
+                justify-content: center;
+            }
+            
+            .consultoria-visualization {
+                min-height: 280px;
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+            
+            .consultoria-icon {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .consultoria-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .stat-item {
+                padding: 0.25rem;
+            }
+            
+            .stat-value {
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+                line-height: 1.2;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .process-step {
+                padding: 1.5rem 1rem;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            
+            .step-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .step-description {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            
+            .process-grid {
+                gap: 1rem;
+            }
+            
+            .consultoria-visualization {
+                min-height: 250px;
+                padding: 1rem;
+            }
+            
+            .consultoria-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .consultoria-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .stat-item {
+                padding: 0.25rem;
+            }
+            
+            .stat-value {
+                font-size: 1.3rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .stat-label {
+                font-size: 0.75rem;
+                line-height: 1.1;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .consultoria-visualization {
+                min-height: 220px;
+                padding: 0.75rem;
+            }
+            
+            .consultoria-icon {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .consultoria-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .stat-item {
+                padding: 0.25rem;
+            }
+            
+            .stat-value {
+                font-size: 1.1rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+                line-height: 1.1;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Consultoría Tecnológica</h1>
-        <p>Página en construcción. Próximamente contenido completo sobre nuestros servicios de consultoría tecnológica.</p>
-        <a href="../index.html" class="btn btn-primary">Volver al inicio</a>
-    </div>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="consultoria-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Consultoría Tecnológica</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Asesoría <span class="highlight">Estratégica</span> en Tecnología
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Transformamos tu empresa con soluciones tecnológicas innovadoras. 
+                        Análisis integral, optimización de procesos e implementación de 
+                        tecnologías de vanguardia para maximizar tu competitividad.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Análisis Estratégico</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>Optimización</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Implementación</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Solicitar Consulta</span>
+                        </a>
+                        <a href="#services" class="btn btn-secondary">
+                            <i class="fas fa-list-check"></i>
+                            <span>Ver Servicios</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="consultoria-visualization">
+                        <div class="consultoria-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="consultoria-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">95%</div>
+                                <div class="stat-label">Éxito en Proyectos</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">500+</div>
+                                <div class="stat-label">Clientes Satisfechos</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">10+</div>
+                                <div class="stat-label">Años de Experiencia</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">24/7</div>
+                                <div class="stat-label">Soporte Técnico</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios de Consultoría</h2>
+                <p class="section-subtitle">
+                    Ofrecemos una gama completa de servicios de consultoría tecnológica 
+                    diseñados para impulsar la transformación digital de tu empresa
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="service-title">Auditoría Tecnológica</h3>
+                    <p class="service-description">
+                        Evaluación integral de tu infraestructura tecnológica actual, 
+                        identificando oportunidades de mejora y optimización.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Análisis de sistemas existentes</li>
+                        <li><i class="fas fa-check"></i> Identificación de vulnerabilidades</li>
+                        <li><i class="fas fa-check"></i> Recomendaciones de mejora</li>
+                        <li><i class="fas fa-check"></i> Plan de modernización</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3 class="service-title">Arquitectura de Soluciones</h3>
+                    <p class="service-description">
+                        Diseño de arquitecturas tecnológicas escalables y robustas 
+                        que se adapten a las necesidades específicas de tu negocio.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Diseño de sistemas</li>
+                        <li><i class="fas fa-check"></i> Integración de tecnologías</li>
+                        <li><i class="fas fa-check"></i> Escalabilidad garantizada</li>
+                        <li><i class="fas fa-check"></i> Documentación técnica</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="service-title">Gestión del Cambio</h3>
+                    <p class="service-description">
+                        Facilitamos la transición tecnológica con estrategias de 
+                        gestión del cambio que aseguran la adopción exitosa.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Capacitación de equipos</li>
+                        <li><i class="fas fa-check"></i> Comunicación estratégica</li>
+                        <li><i class="fas fa-check"></i> Seguimiento de adopción</li>
+                        <li><i class="fas fa-check"></i> Soporte continuo</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Ciberseguridad</h3>
+                    <p class="service-description">
+                        Protección integral de tus activos digitales con estrategias 
+                        de ciberseguridad avanzadas y cumplimiento normativo.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Evaluación de riesgos</li>
+                        <li><i class="fas fa-check"></i> Implementación de controles</li>
+                        <li><i class="fas fa-check"></i> Cumplimiento normativo</li>
+                        <li><i class="fas fa-check"></i> Monitoreo continuo</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="service-title">Migración a la Nube</h3>
+                    <p class="service-description">
+                        Estrategias de migración cloud que optimizan costos, 
+                        mejoran la flexibilidad y garantizan la continuidad del negocio.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Evaluación de cloud</li>
+                        <li><i class="fas fa-check"></i> Planificación de migración</li>
+                        <li><i class="fas fa-check"></i> Optimización de costos</li>
+                        <li><i class="fas fa-check"></i> Monitoreo post-migración</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="service-title">Análisis de Datos</h3>
+                    <p class="service-description">
+                        Transformamos tus datos en insights accionables con 
+                        herramientas de análisis avanzado y business intelligence.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> ETL y limpieza de datos</li>
+                        <li><i class="fas fa-check"></i> Dashboards interactivos</li>
+                        <li><i class="fas fa-check"></i> Machine Learning</li>
+                        <li><i class="fas fa-check"></i> Reportes automatizados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestra Metodología</h2>
+                <p class="section-subtitle">
+                    Un proceso probado y sistemático que garantiza resultados 
+                    excepcionales en cada proyecto de consultoría
+                </p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Diagnóstico Inicial</h3>
+                    <p class="step-description">
+                        Evaluación completa de tu situación actual, 
+                        identificando necesidades, desafíos y oportunidades 
+                        de mejora tecnológica.
+                    </p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Estrategia Personalizada</h3>
+                    <p class="step-description">
+                        Desarrollo de una hoja de ruta tecnológica 
+                        adaptada a tus objetivos de negocio y 
+                        recursos disponibles.
+                    </p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Implementación Guiada</h3>
+                    <p class="step-description">
+                        Ejecución del plan con acompañamiento continuo, 
+                        asegurando la correcta implementación y 
+                        adopción de las soluciones.
+                    </p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Optimización Continua</h3>
+                    <p class="step-description">
+                        Monitoreo y mejora continua de las soluciones 
+                        implementadas, adaptándose a los cambios 
+                        del mercado y tu negocio.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por Qué Elegir Nuestra Consultoría?</h2>
+                <p class="section-subtitle">
+                    Descubre las ventajas competitivas que obtienes al trabajar 
+                    con nuestro equipo de expertos en tecnología
+                </p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="benefit-title">Expertos Certificados</h3>
+                    <p class="benefit-description">
+                        Equipo con certificaciones internacionales en las 
+                        tecnologías más demandadas del mercado.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="benefit-title">Respuesta Rápida</h3>
+                    <p class="benefit-description">
+                        Tiempos de respuesta garantizados y soporte 
+                        técnico disponible 24/7 para emergencias.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="benefit-title">Acompañamiento Total</h3>
+                    <p class="benefit-description">
+                        No solo implementamos soluciones, te acompañamos 
+                        en todo el proceso de transformación digital.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">ROI Garantizado</h3>
+                    <p class="benefit-description">
+                        Nuestras soluciones están diseñadas para generar 
+                        retorno de inversión medible y sostenible.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Seguridad Integral</h3>
+                    <p class="benefit-description">
+                        Todas nuestras recomendaciones incluyen las mejores 
+                        prácticas de seguridad y cumplimiento normativo.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Innovación Continua</h3>
+                    <p class="benefit-description">
+                        Mantenemos actualizados con las últimas tendencias 
+                        tecnológicas para ofrecerte las mejores soluciones.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para Transformar tu Empresa?</h2>
+            <p class="cta-description">
+                Nuestros consultores están listos para ayudarte a alcanzar 
+                el siguiente nivel en tu transformación digital. 
+                ¡Agenda una consulta gratuita hoy mismo!
+            </p>
+            <a href="contacto.html" class="cta-button">
+                <i class="fas fa-calendar-check"></i>
+                <span>Agendar Consulta Gratuita</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../scripts/components-loader.js"></script>
 </body>
 </html>

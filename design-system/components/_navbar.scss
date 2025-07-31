@@ -50,10 +50,10 @@ $mobile-menu-width-tablet: 375px;
       border: 2px solid $color-primary;
       color: $color-primary;
       
-      .obra360-icon {
-        display: block;
-        content: url('../assets/images/logo/log_color-obra360.png');
-      }
+              .obra360-icon {
+          display: block;
+          content: url('../../assets/images/logo/log_color-obra360.png');
+        }
       
       .obra360-text {
         display: block;
@@ -71,7 +71,7 @@ $mobile-menu-width-tablet: 375px;
         
         .obra360-icon {
           display: block;
-          content: url('../assets/images/logo/log_white-obra360.png');
+          content: url('../../assets/images/logo/log_white-obra360.png');
         }
       }
     }
@@ -290,7 +290,7 @@ $mobile-menu-width-tablet: 375px;
     
     .obra360-icon {
       display: block;
-      content: url('../assets/images/logo/log_white-obra360.png');
+      content: url('../../assets/images/logo/log_white-obra360.png');
     }
   }
 }
