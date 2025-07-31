@@ -1,9 +1,9 @@
-# 📧 Configuración de EmailJS para DIGITECH CORP
+# 📧 Configuración de EmailJS y Solución de Problemas - DIGITECH CORP
 
 ## 🎯 Objetivo
-Este documento explica cómo configurar EmailJS para que el formulario de contacto funcione correctamente.
+Este documento explica cómo configurar EmailJS y solucionar problemas comunes como rutas de imágenes y formularios.
 
-## 📋 Pasos para Configurar EmailJS
+## 📋 Configuración de EmailJS
 
 ### 1. Crear cuenta en EmailJS
 1. Ve a [https://www.emailjs.com/](https://www.emailjs.com/)
@@ -81,6 +81,70 @@ const EMAILJS_CONFIG = {
 };
 ```
 
+## 🔧 Solución de Problemas
+
+### 📧 Problemas con EmailJS
+
+#### Error: "EmailJS no está cargado"
+- Verifica que el CDN de EmailJS esté incluido en `contacto.html`
+- Asegúrate de que no haya errores de red
+
+#### Error: "Configuración no encontrada"
+- Verifica que `emailjs-config.js` esté cargado correctamente
+- Revisa que las credenciales estén configuradas
+
+#### Error: "Error de autenticación"
+- Verifica que las credenciales sean correctas
+- Asegúrate de que el servicio esté activo en EmailJS
+- Verifica que tengas créditos disponibles en tu cuenta
+
+### 🖼️ Problemas con Rutas de Imágenes
+
+#### Los logos no aparecen en el servidor
+**Problema:** Los logos funcionan en local pero no en el servidor.
+
+**Causas comunes:**
+1. Rutas relativas incorrectas
+2. Diferencias entre entorno local y servidor
+3. Configuración del servidor web
+
+**Soluciones implementadas:**
+
+1. **Manejo automático de rutas:**
+   - El sistema detecta automáticamente si está en `/pages/` o en la raíz
+   - Ajusta las rutas según la ubicación
+
+2. **Fallbacks para logos:**
+   - Si el logo blanco falla, muestra el logo de color
+   - Si ambos fallan, muestra texto como fallback
+
+3. **Múltiples intentos de carga:**
+   - Intenta diferentes rutas automáticamente
+   - Logs detallados en consola para debugging
+
+#### Verificar rutas de imágenes:
+```javascript
+// En la consola del navegador
+console.log('Rutas de imágenes actuales:');
+document.querySelectorAll('img').forEach(img => {
+    console.log(img.src);
+});
+```
+
+### 📝 Problemas con Formularios
+
+#### Los datos aparecen en la URL
+**Solución implementada:**
+- Agregado `method="POST"` y `action="#"` al formulario
+- Prevención del comportamiento por defecto con JavaScript
+
+#### El formulario no envía emails
+**Verificar:**
+1. Credenciales de EmailJS correctas
+2. Servicio activo en EmailJS
+3. Plantilla publicada
+4. Créditos disponibles
+
 ## 🧪 Probar la Configuración
 
 ### Opción 1: Usar la Consola del Navegador
@@ -94,24 +158,10 @@ const EMAILJS_CONFIG = {
 2. Esto llenará el formulario con datos de prueba
 3. Haz clic en "Enviar Correo"
 
-## 🔧 Solución de Problemas
-
-### Error: "EmailJS no está cargado"
-- Verifica que el CDN de EmailJS esté incluido en `contacto.html`
-- Asegúrate de que no haya errores de red
-
-### Error: "Configuración no encontrada"
-- Verifica que `emailjs-config.js` esté cargado correctamente
-- Revisa que las credenciales estén configuradas
-
-### Error: "Error de autenticación"
-- Verifica que las credenciales sean correctas
-- Asegúrate de que el servicio esté activo en EmailJS
-- Verifica que tengas créditos disponibles en tu cuenta
-
-### Error: "Error de red"
-- Verifica tu conexión a internet
-- Revisa que no haya bloqueadores de red
+### Opción 3: Verificar Rutas de Imágenes
+1. En la consola, ejecuta: `testEmailJSConfig()`
+2. Revisa los logs para ver las rutas de imágenes
+3. Verifica que no haya errores 404
 
 ## 📊 Variables Disponibles en la Plantilla
 
@@ -130,11 +180,13 @@ const EMAILJS_CONFIG = {
 1. Verifica que todas las credenciales estén configuradas
 2. Prueba el formulario en un entorno de producción
 3. Monitorea los logs de EmailJS para detectar problemas
+4. Verifica que las imágenes se carguen correctamente
 
 ### Para Desarrollo
 1. Usa el script de prueba para verificar la configuración
 2. Revisa la consola del navegador para errores
 3. Usa datos de prueba para evitar spam
+4. Verifica las rutas de imágenes en diferentes páginas
 
 ## 📞 Soporte
 

@@ -25,19 +25,19 @@ class ComponentLoader {
         console.log('📍 Current path:', currentPath);
         console.log('📍 Path segments:', pathSegments);
         
-        // If at root (index.html)
+        // Si estamos en la raíz (index.html o /)
         if (pathSegments.length === 0 || pathSegments[0] === 'index.html') {
             console.log('📍 At root, returning empty string');
             return '';
         }
         
-        // If in pages folder (pages/contacto.html, pages/servicios/software-medida.html, etc.)
+        // Si estamos en la carpeta pages (pages/contacto.html, etc.)
         if (pathSegments.includes('pages')) {
             console.log('📍 In pages folder, returning ../');
             return '../';
         }
         
-        // If in other subfolders
+        // Si estamos en otras subcarpetas
         const depth = pathSegments.length - 1;
         const result = '../'.repeat(depth);
         console.log('📍 In other subfolder, returning:', result);
@@ -99,26 +99,16 @@ class ComponentLoader {
                     newSrc = 'assets/' + src.replace(/^\/+/, '');
                 }
                 
+                // Asegurar que la ruta sea absoluta desde la raíz del sitio
+                if (!newSrc.startsWith('/') && !newSrc.startsWith('http')) {
+                    // Si estamos en pages/, necesitamos subir un nivel
+                    if (this.basePath === '../') {
+                        newSrc = '../' + newSrc;
+                    }
+                }
+                
                 img.setAttribute('src', newSrc);
                 console.log(`🖼️ Imagen: ${src} → ${newSrc}`);
-                
-                // Agregar manejo de errores para las imágenes
-                img.addEventListener('error', function() {
-                    console.error(`❌ Error cargando imagen: ${newSrc}`);
-                    // Si es una imagen del logo, mostrar fallback
-                    if (this.classList.contains('logo-white') || this.classList.contains('logo-color')) {
-                        this.style.display = 'none';
-                        const otherLogo = this.classList.contains('logo-white') ? 
-                            this.nextElementSibling : this.previousElementSibling;
-                        if (otherLogo) {
-                            otherLogo.style.display = 'block';
-                        }
-                    }
-                });
-                
-                img.addEventListener('load', function() {
-                    console.log(`✅ Imagen cargada exitosamente: ${newSrc}`);
-                });
             }
         });
 
@@ -145,6 +135,79 @@ class ComponentLoader {
                 link.setAttribute('href', newHref);
                 console.log(`🔗 Enlace: ${href} → ${newHref}`);
             }
+        });
+        
+        // Aplicar corrección de rutas de imágenes
+        this.fixImagePaths(container);
+    }
+
+    /**
+     * Verifica y corrige las rutas de las imágenes
+     */
+    fixImagePaths(container) {
+        const images = container.querySelectorAll('img[src]');
+        images.forEach(img => {
+            const originalSrc = img.getAttribute('src');
+            
+            // Función para intentar cargar la imagen
+            const tryLoadImage = (src) => {
+                return new Promise((resolve, reject) => {
+                    const testImg = new Image();
+                    testImg.onload = () => resolve(src);
+                    testImg.onerror = () => reject(src);
+                    testImg.src = src;
+                });
+            };
+            
+            // Función para manejar errores de imagen
+            const handleImageError = (img, attemptedSrc) => {
+                console.error(`❌ Error cargando imagen: ${attemptedSrc}`);
+                
+                // Si es un logo, intentar rutas alternativas
+                if (img.classList.contains('logo-white') || img.classList.contains('logo-color')) {
+                    const alternatives = [
+                        attemptedSrc.replace('../', ''),
+                        attemptedSrc.replace('assets/', '../assets/'),
+                        attemptedSrc.replace('../assets/', 'assets/'),
+                        '/assets/images/logo/logo-white.png',
+                        '/assets/images/logo/logo-color.png'
+                    ];
+                    
+                    // Intentar cada alternativa
+                    alternatives.forEach((altSrc, index) => {
+                        if (altSrc !== attemptedSrc) {
+                            setTimeout(() => {
+                                tryLoadImage(altSrc).then(() => {
+                                    console.log(`✅ Imagen cargada con ruta alternativa: ${altSrc}`);
+                                    img.src = altSrc;
+                                }).catch(() => {
+                                    if (index === alternatives.length - 1) {
+                                        // Si todas fallan, mostrar fallback
+                                        if (img.classList.contains('logo-white')) {
+                                            img.style.display = 'none';
+                                            const colorLogo = img.nextElementSibling;
+                                            if (colorLogo && colorLogo.classList.contains('logo-color')) {
+                                                colorLogo.style.display = 'block';
+                                            }
+                                        } else if (img.classList.contains('logo-color')) {
+                                            img.style.display = 'none';
+                                            const whiteLogo = img.previousElementSibling;
+                                            if (whiteLogo && whiteLogo.classList.contains('logo-white')) {
+                                                whiteLogo.style.display = 'block';
+                                            }
+                                        }
+                                    }
+                                });
+                            }, index * 100);
+                        }
+                    });
+                }
+            };
+            
+            // Intentar cargar la imagen original
+            tryLoadImage(originalSrc).catch(() => {
+                handleImageError(img, originalSrc);
+            });
         });
     }
 
