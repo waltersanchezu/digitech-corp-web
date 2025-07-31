@@ -2,13 +2,39 @@
 // SCRIPT PARA PÁGINA DE CONTACTO
 // ========================================
 
+// Configuración de EmailJS (se carga desde emailjs-config.js)
+const EMAILJS_CONFIG = window.EMAILJS_CONFIG || {
+    serviceId: 'service_digitech_contact',
+    templateId: 'template_digitech_contact',
+    publicKey: 'YOUR_PUBLIC_KEY'
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
         initializeContactForm();
+        initializeEmailJS();
     }
 });
+
+function initializeEmailJS() {
+    // Verificar que EmailJS esté disponible
+    if (typeof emailjs === 'undefined') {
+        console.error('EmailJS no está cargado. Verifica que el CDN esté incluido.');
+        return;
+    }
+    
+    // Verificar que la configuración sea válida
+    if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
+        console.warn('EmailJS no está configurado. Por favor, configura las credenciales en emailjs-config.js');
+        return;
+    }
+    
+    // Inicializar EmailJS con la clave pública
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+    console.log('EmailJS inicializado correctamente');
+}
 
 function initializeContactForm() {
     const form = document.getElementById('contactForm');
@@ -193,6 +219,16 @@ async function handleFormSubmit(event) {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
     
     try {
+        // Verificar que EmailJS esté configurado
+        if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
+            throw new Error('EmailJS no está configurado. Por favor, configura las credenciales en emailjs-config.js');
+        }
+        
+        // Verificar que EmailJS esté disponible
+        if (typeof emailjs === 'undefined') {
+            throw new Error('EmailJS no está cargado. Verifica que el CDN esté incluido.');
+        }
+        
         // Recopilar datos del formulario
         const formData = new FormData(form);
         const data = {
@@ -206,18 +242,35 @@ async function handleFormSubmit(event) {
             privacy: formData.get('privacy') === 'on'
         };
         
-        // Enviar email usando mailto (solución temporal)
-        const emailBody = formatEmailBody(data);
-        const mailtoLink = `mailto:info@digitech-corp.pe?subject=Nueva consulta de ${encodeURIComponent(data.fullName)}&body=${encodeURIComponent(emailBody)}`;
+        // Enviar email usando EmailJS
+        const templateParams = {
+            to_email: 'info@digitech-corp.pe',
+            from_name: data.fullName,
+            from_email: data.email,
+            company: data.company,
+            ruc: data.ruc || 'No proporcionado',
+            phone: data.phone,
+            service: getServiceName(data.service),
+            message: data.message || 'No se proporcionó descripción del proyecto.',
+            date: new Date().toLocaleString('es-PE')
+        };
         
-        // Abrir cliente de email
-        window.location.href = mailtoLink;
+        // Enviar email
+        const response = await emailjs.send(
+            EMAILJS_CONFIG.serviceId,
+            EMAILJS_CONFIG.templateId,
+            templateParams
+        );
         
-        // Mostrar mensaje de éxito
-        showNotification('¡Gracias por tu consulta! Te contactaremos pronto.', 'success');
-        
-        // Resetear formulario
-        form.reset();
+        if (response.status === 200) {
+            // Mostrar mensaje de éxito
+            showNotification('¡Gracias por tu consulta! Te contactaremos pronto.', 'success');
+            
+            // Resetear formulario
+            form.reset();
+        } else {
+            throw new Error('Error en el envío del email');
+        }
         
     } catch (error) {
         console.error('Error al enviar formulario:', error);
@@ -229,7 +282,7 @@ async function handleFormSubmit(event) {
     }
 }
 
-function formatEmailBody(data) {
+function getServiceName(serviceKey) {
     const serviceNames = {
         'software-medida': 'Software a Medida',
         'apps-moviles': 'App\'s Móviles',
@@ -241,6 +294,10 @@ function formatEmailBody(data) {
         'multiple': 'Múltiples Servicios'
     };
     
+    return serviceNames[serviceKey] || serviceKey;
+}
+
+function formatEmailBody(data) {
     return `
 Nueva consulta recibida desde el formulario de contacto:
 
@@ -250,7 +307,7 @@ DATOS DEL CLIENTE:
 - RUC: ${data.ruc || 'No proporcionado'}
 - Correo Electrónico: ${data.email}
 - Número Celular: ${data.phone}
-- Servicio de Interés: ${serviceNames[data.service] || data.service}
+- Servicio de Interés: ${getServiceName(data.service)}
 
 DESCRIPCIÓN DEL PROYECTO:
 ${data.message || 'No se proporcionó descripción del proyecto.'}
