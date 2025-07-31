@@ -3,16 +3,912 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transformación Digital - DIGITECH CORP</title>
+    <title>Transformación Digital - Soluciones Tecnológicas Integrales - DIGITECH CORP</title>
+    <meta name="description" content="Transformación digital integral para empresas. Automatización, optimización de procesos, implementación de tecnologías emergentes y consultoría estratégica.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
-    <link rel="icon" href="../assets/images/logo/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ========================================
+           ESTILOS PARA PÁGINA TRANSFORMACIÓN DIGITAL
+           ======================================== */
+        
+        /* Hero Section */
+        .transformacion-hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #002141 0%, #003366 50%, #004080 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 33, 65, 0.95) 0%, rgba(0, 51, 102, 0.9) 50%, rgba(0, 64, 128, 0.85) 100%);
+        }
+        
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background-size: 200px 200px, 300px 300px;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem 0;
+            min-height: calc(100vh - 140px);
+            width: 100%;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-title .highlight {
+            background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 0.75rem 1.25rem;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .feature-item i {
+            color: #00D4FF;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .digital-transformation-visual {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .transformation-stages {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+        }
+        
+        .stage {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00D4FF, #0099CC);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .stage:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+        
+        .stage:nth-child(2) {
+            top: 30%;
+            right: 15%;
+            animation-delay: 0.5s;
+        }
+        
+        .stage:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 1s;
+        }
+        
+        .stage:nth-child(4) {
+            bottom: 10%;
+            right: 20%;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        /* Secciones de contenido */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #002141;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6C757D;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Servicios de Transformación */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #00D4FF, #0099CC);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #002141, #003366);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #002141;
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            color: #6C757D;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #6C757D;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00D4FF;
+            font-weight: bold;
+        }
+        
+        /* Proceso de Transformación */
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto 0;
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00D4FF, #0099CC);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin: 0 2rem;
+        }
+        
+        .step-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #002141;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-description {
+            color: #6C757D;
+            line-height: 1.6;
+        }
+        
+        /* Beneficios */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .benefit-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #002141, #003366);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #002141;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-description {
+            color: #6C757D;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #002141 0%, #003366 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: #002141;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background: transparent;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .transformacion-hero {
+                min-height: auto;
+                padding: 100px 0 60px;
+            }
+            
+            .hero-content {
+                min-height: auto;
+                padding: 1rem 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .hero-features {
+                justify-content: center;
+            }
+            
+            .hero-actions {
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-step,
+            .process-step:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin: 0 0 1rem 0;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .step-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Transformación Digital</h1>
-        <p>Página en construcción. Próximamente contenido completo sobre nuestros servicios de transformación digital.</p>
-        <a href="../index.html" class="btn btn-primary">Volver al inicio</a>
-    </div>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="transformacion-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-digital-tachograph"></i>
+                        <span>Transformación Digital</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Transformación <span class="highlight">Digital</span> Integral
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Revoluciona tu empresa con soluciones tecnológicas avanzadas. Automatización, 
+                        optimización de procesos e implementación de tecnologías emergentes para 
+                        impulsar el crecimiento y la competitividad.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-robot"></i>
+                            <span>Automatización</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Optimización</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-brain"></i>
+                            <span>IA & ML</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Solicitar Consulta</span>
+                        </a>
+                        <a href="#servicios" class="btn btn-secondary">
+                            <i class="fas fa-cogs"></i>
+                            <span>Ver Servicios</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="digital-transformation-visual">
+                        <div class="transformation-stages">
+                            <div class="stage">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="stage">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="stage">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stage">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios de Transformación Digital -->
+    <section id="servicios" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Servicios de Transformación Digital</h2>
+                <p class="section-subtitle">
+                    Soluciones integrales para modernizar y optimizar todos los aspectos de tu empresa
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="service-title">Automatización de Procesos</h3>
+                    <p class="service-description">
+                        Implementamos RPA (Robotic Process Automation) para automatizar tareas repetitivas 
+                        y aumentar la eficiencia operativa de tu empresa.
+                    </p>
+                    <ul class="service-features">
+                        <li>Automatización de workflows</li>
+                        <li>Reducción de errores manuales</li>
+                        <li>Aumento de productividad</li>
+                        <li>Integración con sistemas existentes</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-title">Inteligencia Artificial & Machine Learning</h3>
+                    <p class="service-description">
+                        Desarrollamos soluciones de IA y ML personalizadas para análisis predictivo, 
+                        toma de decisiones inteligente y optimización de procesos.
+                    </p>
+                    <ul class="service-features">
+                        <li>Análisis predictivo avanzado</li>
+                        <li>Chatbots inteligentes</li>
+                        <li>Reconocimiento de patrones</li>
+                        <li>Optimización de recursos</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="service-title">Migración a la Nube</h3>
+                    <p class="service-description">
+                        Facilitamos la transición a la nube con estrategias personalizadas que 
+                        optimizan costos, seguridad y escalabilidad.
+                    </p>
+                    <ul class="service-features">
+                        <li>Estrategia de migración</li>
+                        <li>Optimización de costos</li>
+                        <li>Seguridad y compliance</li>
+                        <li>Escalabilidad automática</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">Digitalización de Experiencias</h3>
+                    <p class="service-description">
+                        Creamos experiencias digitales omnicanal que conectan con tus clientes 
+                        en todos los puntos de contacto.
+                    </p>
+                    <ul class="service-features">
+                        <li>Apps móviles nativas</li>
+                        <li>Plataformas web modernas</li>
+                        <li>Experiencias omnicanal</li>
+                        <li>UX/UI optimizada</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="service-title">Big Data & Analytics</h3>
+                    <p class="service-description">
+                        Transformamos datos en insights accionables con soluciones de big data 
+                        y analytics avanzados.
+                    </p>
+                    <ul class="service-features">
+                        <li>Análisis de datos masivos</li>
+                        <li>Dashboards interactivos</li>
+                        <li>Reportes automatizados</li>
+                        <li>Insights en tiempo real</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Ciberseguridad Avanzada</h3>
+                    <p class="service-description">
+                        Protegemos tu infraestructura digital con soluciones de ciberseguridad 
+                        de última generación.
+                    </p>
+                    <ul class="service-features">
+                        <li>Detección de amenazas</li>
+                        <li>Compliance y auditorías</li>
+                        <li>Recuperación ante desastres</li>
+                        <li>Seguridad perimetral</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso de Transformación -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proceso de Transformación Digital</h2>
+                <p class="section-subtitle">
+                    Metodología probada para implementar la transformación digital de manera eficiente y exitosa
+                </p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Diagnóstico y Evaluación</h3>
+                        <p class="step-description">
+                            Analizamos tu empresa actual, identificamos oportunidades de mejora 
+                            y definimos la hoja de ruta de transformación digital.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Estrategia y Planificación</h3>
+                        <p class="step-description">
+                            Desarrollamos una estrategia integral personalizada con objetivos 
+                            claros, cronogramas y métricas de éxito.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Implementación Gradual</h3>
+                        <p class="step-description">
+                            Ejecutamos la transformación por fases, minimizando riesgos y 
+                            asegurando la continuidad operativa.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Optimización Continua</h3>
+                        <p class="step-description">
+                            Monitoreamos resultados, optimizamos procesos y escalamos 
+                            soluciones exitosas para máximo impacto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Beneficios de la Transformación Digital</h2>
+                <p class="section-subtitle">
+                    Descubre cómo la transformación digital puede revolucionar tu empresa
+                </p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Aumento de Productividad</h3>
+                    <p class="benefit-description">
+                        Incrementa la eficiencia operativa hasta un 40% con procesos automatizados 
+                        y optimizados.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="benefit-title">Reducción de Costos</h3>
+                    <p class="benefit-description">
+                        Reduce costos operativos entre 20-30% mediante la automatización 
+                        y optimización de recursos.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Mejor Experiencia del Cliente</h3>
+                    <p class="benefit-description">
+                        Ofrece experiencias digitales excepcionales que aumentan la satisfacción 
+                        y fidelización de clientes.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="benefit-title">Innovación Continua</h3>
+                    <p class="benefit-description">
+                        Mantén tu empresa a la vanguardia tecnológica con soluciones 
+                        innovadoras y escalables.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Mayor Seguridad</h3>
+                    <p class="benefit-description">
+                        Protege tus datos y sistemas con tecnologías de ciberseguridad 
+                        avanzadas y compliance.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="benefit-title">Escalabilidad</h3>
+                    <p class="benefit-description">
+                        Prepárate para el crecimiento con soluciones escalables que 
+                        se adaptan a tus necesidades.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para Transformar tu Empresa?</h2>
+            <p class="cta-description">
+                Únete a las empresas líderes que ya están revolucionando sus operaciones 
+                con nuestras soluciones de transformación digital.
+            </p>
+            <a href="../pages/contacto.html" class="cta-button">
+                <i class="fas fa-paper-plane"></i>
+                <span>Iniciar Transformación Digital</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../scripts/components-loader.js"></script>
 </body>
 </html>

@@ -10,19 +10,284 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/inicio.css">
+    <style>
+        .policy-hero {
+            background: linear-gradient(135deg, #002141 0%, #003366 50%, #004080 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .policy-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .policy-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .policy-content {
+            padding: 80px 0;
+            background: #f8f9fa;
+            margin-bottom: 0;
+        }
+        
+        .policy-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .policy-section h2 {
+            color: #002141;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .policy-section h3 {
+            color: #003366;
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        .policy-section p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .policy-section ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .policy-section li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .last-updated {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .contact-info {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .contact-info h4 {
+            color: #002141;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .policy-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .policy-hero p {
+                font-size: 1rem;
+            }
+            
+            .policy-section {
+                padding: 25px;
+            }
+            
+            .policy-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .policy-section h3 {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* Asegurar que el footer mantenga su diseño correcto */
+        .footer {
+            background: linear-gradient(135deg, #002141 0%, #001A35 100%) !important;
+            margin-top: 0 !important;
+        }
+        
+        .policy-content + .footer {
+            background: linear-gradient(135deg, #002141 0%, #001A35 100%) !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar Container -->
     <div id="navbar-container"></div>
 
+    <!-- Hero Section -->
+    <section class="policy-hero">
+        <div class="container">
+            <h1>Política de Privacidad</h1>
+            <p>Información sobre el tratamiento de datos personales en DIGITECH CORP</p>
+        </div>
+    </section>
+
     <!-- Contenido de la página -->
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>Política de Privacidad</h1>
-                <p>Información sobre el tratamiento de datos personales en DIGITECH CORP</p>
+    <main class="policy-content">
+        <div class="container">
+            <div class="last-updated">
+                <strong>Última actualización:</strong> 15 de enero de 2024
             </div>
-        </section>
+
+            <div class="policy-section">
+                <h2>1. Información General</h2>
+                <p>DIGITECH CORP ("nosotros", "nuestra empresa", "la empresa") se compromete a proteger la privacidad de sus usuarios y clientes. Esta Política de Privacidad describe cómo recopilamos, utilizamos, almacenamos y protegemos su información personal cuando utiliza nuestros servicios, incluyendo nuestro sitio web y aplicaciones.</p>
+                
+                <p>Al utilizar nuestros servicios, usted acepta las prácticas descritas en esta política. Si no está de acuerdo con alguna parte de esta política, le recomendamos que no utilice nuestros servicios.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>2. Información que Recopilamos</h2>
+                
+                <h3>2.1 Información Personal</h3>
+                <p>Recopilamos información que usted nos proporciona directamente, incluyendo:</p>
+                <ul>
+                    <li>Nombre completo y apellidos</li>
+                    <li>Dirección de correo electrónico</li>
+                    <li>Número de teléfono</li>
+                    <li>Información de la empresa (nombre, cargo, dirección)</li>
+                    <li>Información de contacto para soporte técnico</li>
+                </ul>
+
+                <h3>2.2 Información Automática</h3>
+                <p>También recopilamos automáticamente cierta información cuando utiliza nuestros servicios:</p>
+                <ul>
+                    <li>Dirección IP y ubicación geográfica</li>
+                    <li>Tipo de navegador y sistema operativo</li>
+                    <li>Páginas visitadas y tiempo de permanencia</li>
+                    <li>Información de cookies y tecnologías similares</li>
+                    <li>Datos de uso de aplicaciones móviles</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>3. Cómo Utilizamos su Información</h2>
+                <p>Utilizamos la información recopilada para los siguientes propósitos:</p>
+                <ul>
+                    <li>Proporcionar y mantener nuestros servicios</li>
+                    <li>Procesar solicitudes y transacciones</li>
+                    <li>Comunicarnos con usted sobre nuestros servicios</li>
+                    <li>Mejorar y personalizar la experiencia del usuario</li>
+                    <li>Enviar comunicaciones de marketing (con su consentimiento)</li>
+                    <li>Cumplir con obligaciones legales y regulatorias</li>
+                    <li>Prevenir fraudes y garantizar la seguridad</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>4. Compartir Información</h2>
+                <p>No vendemos, alquilamos ni compartimos su información personal con terceros, excepto en las siguientes circunstancias:</p>
+                <ul>
+                    <li><strong>Con su consentimiento:</strong> Solo compartimos información cuando usted nos autoriza explícitamente.</li>
+                    <li><strong>Proveedores de servicios:</strong> Trabajamos con terceros que nos ayudan a operar nuestros servicios (hosting, análisis, etc.).</li>
+                    <li><strong>Obligaciones legales:</strong> Podemos divulgar información cuando sea requerido por ley o para proteger nuestros derechos.</li>
+                    <li><strong>Seguridad:</strong> Para prevenir fraudes y garantizar la seguridad de nuestros servicios.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>5. Seguridad de Datos</h2>
+                <p>Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger su información personal contra:</p>
+                <ul>
+                    <li>Acceso no autorizado</li>
+                    <li>Alteración, divulgación o destrucción</li>
+                    <li>Pérdida accidental</li>
+                </ul>
+                <p>Estas medidas incluyen encriptación de datos, firewalls, acceso restringido y auditorías regulares de seguridad.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>6. Retención de Datos</h2>
+                <p>Conservamos su información personal solo durante el tiempo necesario para cumplir con los propósitos descritos en esta política, incluyendo:</p>
+                <ul>
+                    <li>Proporcionar nuestros servicios</li>
+                    <li>Cumplir con obligaciones legales</li>
+                    <li>Resolver disputas</li>
+                    <li>Hacer cumplir nuestros acuerdos</li>
+                </ul>
+                <p>Cuando ya no necesitemos su información, la eliminaremos de forma segura o la anonimizaremos.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>7. Sus Derechos</h2>
+                <p>Usted tiene los siguientes derechos respecto a su información personal:</p>
+                <ul>
+                    <li><strong>Acceso:</strong> Solicitar información sobre qué datos tenemos sobre usted.</li>
+                    <li><strong>Rectificación:</strong> Corregir información inexacta o incompleta.</li>
+                    <li><strong>Eliminación:</strong> Solicitar que eliminemos su información personal.</li>
+                    <li><strong>Portabilidad:</strong> Recibir sus datos en un formato estructurado.</li>
+                    <li><strong>Oposición:</strong> Oponerse al procesamiento de sus datos.</li>
+                    <li><strong>Restricción:</strong> Limitar cómo procesamos su información.</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>8. Cookies y Tecnologías Similares</h2>
+                <p>Utilizamos cookies y tecnologías similares para mejorar su experiencia en nuestro sitio web. Las cookies son pequeños archivos de texto que se almacenan en su dispositivo.</p>
+                
+                <h3>Tipos de cookies que utilizamos:</h3>
+                <ul>
+                    <li><strong>Cookies esenciales:</strong> Necesarias para el funcionamiento básico del sitio.</li>
+                    <li><strong>Cookies de rendimiento:</strong> Nos ayudan a entender cómo se utiliza el sitio.</li>
+                    <li><strong>Cookies de funcionalidad:</strong> Permiten recordar sus preferencias.</li>
+                    <li><strong>Cookies de marketing:</strong> Utilizadas para mostrar publicidad relevante.</li>
+                </ul>
+                
+                <p>Puede gestionar sus preferencias de cookies a través de la configuración de su navegador.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>9. Menores de Edad</h2>
+                <p>Nuestros servicios no están dirigidos a menores de 18 años. No recopilamos intencionalmente información personal de menores de edad. Si cree que hemos recopilado información de un menor, contáctenos inmediatamente.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>10. Transferencias Internacionales</h2>
+                <p>Su información puede ser transferida y procesada en países diferentes al suyo. Cuando esto ocurra, implementamos medidas de protección apropiadas para garantizar que su información personal reciba un nivel de protección adecuado.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>11. Cambios a esta Política</h2>
+                <p>Podemos actualizar esta Política de Privacidad ocasionalmente. Cuando hagamos cambios significativos, le notificaremos a través de:</p>
+                <ul>
+                    <li>Notificación en nuestro sitio web</li>
+                    <li>Correo electrónico</li>
+                    <li>Notificación en nuestras aplicaciones</li>
+                </ul>
+                <p>Le recomendamos revisar esta política periódicamente para mantenerse informado sobre cómo protegemos su información.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>12. Contacto</h2>
+                <p>Si tiene preguntas sobre esta Política de Privacidad o sobre cómo manejamos su información personal, contáctenos:</p>
+                
+                <div class="contact-info">
+                    <h4>DIGITECH CORP</h4>
+                    <p><strong>Email:</strong> privacidad@digitech-corp.pe</p>
+                    <p><strong>Teléfono:</strong> +51 989 975 369</p>
+                    <p><strong>Dirección:</strong> Lima, Perú</p>
+                </div>
+                
+                <p>Responderemos a su consulta en un plazo máximo de 30 días hábiles.</p>
+            </div>
+        </div>
     </main>
 
     <!-- Footer Container -->

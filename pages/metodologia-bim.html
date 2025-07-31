@@ -3,16 +3,638 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodología BIM - DIGITECH CORP</title>
+    <title>Metodología BIM - Implementación para Constructoras | DIGITECH CORP</title>
+    <meta name="description" content="Implementación de metodología BIM para constructoras. Optimiza procesos de construcción con estándares de alta calidad y gestión integral de proyectos.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
-    <link rel="icon" href="../assets/images/logo/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/metodologia-bim.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Metodología BIM</h1>
-        <p>Página en construcción. Próximamente contenido completo sobre nuestros servicios de implementación de metodología BIM.</p>
-        <a href="../index.html" class="btn btn-primary">Volver al inicio</a>
-    </div>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="bim-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-cube"></i>
+                        <span>Metodología BIM</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Implementación <span class="highlight">BIM</span> para Constructoras
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Transformamos constructoras con metodología BIM integral. Optimiza procesos, reduce costos y mejora la calidad de construcción con estándares internacionales.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Optimización</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>Procesos</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-award"></i>
+                            <span>Calidad</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Solicitar Consulta</span>
+                        </a>
+                        <a href="#bim-process" class="btn btn-secondary">
+                            <i class="fas fa-play"></i>
+                            <span>Ver Proceso</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="bim-visualization">
+                        <div class="bim-model">
+                            <div class="model-header">
+                                <div class="model-controls">
+                                    <span class="control red"></span>
+                                    <span class="control yellow"></span>
+                                    <span class="control green"></span>
+                                </div>
+                                <div class="model-title">BIM - Modelo 3D</div>
+                            </div>
+                            <div class="model-content">
+                                <div class="bim-layers">
+                                    <div class="layer-item">
+                                        <div class="layer-icon">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <div class="layer-info">
+                                            <div class="layer-name">Estructura</div>
+                                            <div class="layer-status">Completo</div>
+                                        </div>
+                                    </div>
+                                    <div class="layer-item">
+                                        <div class="layer-icon">
+                                            <i class="fas fa-plug"></i>
+                                        </div>
+                                        <div class="layer-info">
+                                            <div class="layer-name">Instalaciones</div>
+                                            <div class="layer-status">En Proceso</div>
+                                        </div>
+                                    </div>
+                                    <div class="layer-item">
+                                        <div class="layer-icon">
+                                            <i class="fas fa-paint-brush"></i>
+                                        </div>
+                                        <div class="layer-info">
+                                            <div class="layer-name">Acabados</div>
+                                            <div class="layer-status">Pendiente</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="floating-elements">
+                            <div class="floating-card card-1">
+                                <i class="fas fa-3d-model"></i>
+                                <span>Modelado 3D</span>
+                            </div>
+                            <div class="floating-card card-2">
+                                <i class="fas fa-coordination"></i>
+                                <span>Coordinación</span>
+                            </div>
+                            <div class="floating-card card-3">
+                                <i class="fas fa-documentation"></i>
+                                <span>Documentación</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIM Benefits Section -->
+    <section class="bim-benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Beneficios de la Metodología BIM</h2>
+                <p class="section-description">
+                    Descubre cómo BIM revoluciona la gestión de proyectos de construcción y optimiza todos los procesos
+                </p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Reducción de Costos</h3>
+                    <p class="benefit-description">
+                        Minimiza errores de diseño y construcción, reduciendo costos hasta en un 20% y optimizando el uso de materiales.
+                    </p>
+                    <div class="benefit-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">20%</span>
+                            <span class="stat-label">Menos Costos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="benefit-title">Aceleración de Proyectos</h3>
+                    <p class="benefit-description">
+                        Acelera la ejecución de proyectos mediante coordinación eficiente y detección temprana de conflictos.
+                    </p>
+                    <div class="benefit-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">30%</span>
+                            <span class="stat-label">Más Rápido</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="benefit-title">Mejora de Calidad</h3>
+                    <p class="benefit-description">
+                        Garantiza estándares de alta calidad mediante modelado preciso y control de calidad integrado.
+                    </p>
+                    <div class="benefit-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Precisión</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Colaboración Eficiente</h3>
+                    <p class="benefit-description">
+                        Mejora la comunicación entre equipos y stakeholders mediante plataformas colaborativas BIM.
+                    </p>
+                    <div class="benefit-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">50%</span>
+                            <span class="stat-label">Mejor Comunicación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIM Process Section -->
+    <section class="bim-process-section" id="bim-process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proceso de Implementación BIM</h2>
+                <p class="section-description">
+                    Metodología probada para implementar BIM en constructoras de manera eficiente y escalable
+                </p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="step-title">Evaluación Inicial</h3>
+                        <p class="step-description">
+                            Análisis completo de la constructora: procesos actuales, capacidades técnicas, necesidades específicas y objetivos de implementación BIM.
+                        </p>
+                        <ul class="step-features">
+                            <li>Auditoría de procesos actuales</li>
+                            <li>Evaluación de capacidades técnicas</li>
+                            <li>Definición de objetivos BIM</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="step-title">Planificación Estratégica</h3>
+                        <p class="step-description">
+                            Desarrollo de roadmap BIM personalizado con fases de implementación, cronogramas y recursos necesarios.
+                        </p>
+                        <ul class="step-features">
+                            <li>Roadmap BIM personalizado</li>
+                            <li>Cronograma de implementación</li>
+                            <li>Asignación de recursos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="step-title">Capacitación del Equipo</h3>
+                        <p class="step-description">
+                            Programa integral de capacitación BIM para todos los niveles: directivos, técnicos y operativos.
+                        </p>
+                        <ul class="step-features">
+                            <li>Capacitación ejecutiva</li>
+                            <li>Entrenamiento técnico</li>
+                            <li>Certificaciones BIM</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="step-title">Implementación Técnica</h3>
+                        <p class="step-description">
+                            Configuración de software BIM, desarrollo de plantillas, estándares y flujos de trabajo optimizados.
+                        </p>
+                        <ul class="step-features">
+                            <li>Configuración de software</li>
+                            <li>Desarrollo de plantillas</li>
+                            <li>Estándares BIM</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="step-title">Piloto y Escalamiento</h3>
+                        <p class="step-description">
+                            Implementación en proyecto piloto, seguimiento de resultados y escalamiento a toda la organización.
+                        </p>
+                        <ul class="step-features">
+                            <li>Proyecto piloto</li>
+                            <li>Medición de resultados</li>
+                            <li>Escalamiento gradual</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIM Services Section -->
+    <section class="bim-services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Servicios BIM Especializados</h2>
+                <p class="section-description">
+                    Soluciones integrales BIM adaptadas a las necesidades específicas de constructoras
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-3d-model"></i>
+                    </div>
+                    <h3 class="service-title">Modelado BIM 3D</h3>
+                    <p class="service-description">
+                        Creación de modelos BIM detallados para arquitectura, estructura, instalaciones y acabados con información paramétrica completa.
+                    </p>
+                    <ul class="service-features">
+                        <li>Modelado arquitectónico detallado</li>
+                        <li>Modelado estructural avanzado</li>
+                        <li>Coordinación MEP</li>
+                        <li>Documentación automática</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-coordination"></i>
+                    </div>
+                    <h3 class="service-title">Coordinación BIM</h3>
+                    <p class="service-description">
+                        Detección y resolución de conflictos entre disciplinas, optimización de espacios y coordinación de instalaciones.
+                    </p>
+                    <ul class="service-features">
+                        <li>Detección de conflictos</li>
+                        <li>Optimización de espacios</li>
+                        <li>Coordinación MEP</li>
+                        <li>Resolución de interferencias</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="service-title">Análisis y Simulación</h3>
+                    <p class="service-description">
+                        Análisis estructural, energético, de iluminación y simulación de construcción para optimizar el diseño.
+                    </p>
+                    <ul class="service-features">
+                        <li>Análisis estructural</li>
+                        <li>Simulación energética</li>
+                        <li>Análisis de iluminación</li>
+                        <li>Simulación 4D</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="service-title">Gestión de Procesos</h3>
+                    <p class="service-description">
+                        Implementación de flujos de trabajo BIM, estándares de calidad y procedimientos para optimizar procesos constructivos.
+                    </p>
+                    <ul class="service-features">
+                        <li>Flujos de trabajo BIM</li>
+                        <li>Estándares de calidad</li>
+                        <li>Procedimientos constructivos</li>
+                        <li>Control de calidad</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">BIM en Campo</h3>
+                    <p class="service-description">
+                        Soluciones móviles para acceso a modelos BIM en obra, verificación de construcción y control de calidad.
+                    </p>
+                    <ul class="service-features">
+                        <li>Acceso móvil a modelos</li>
+                        <li>Verificación en campo</li>
+                        <li>Control de calidad</li>
+                        <li>Reportes en tiempo real</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="service-title">Capacitación BIM</h3>
+                    <p class="service-description">
+                        Programas de capacitación integral BIM para todos los niveles de la organización, desde directivos hasta operarios.
+                    </p>
+                    <ul class="service-features">
+                        <li>Capacitación ejecutiva</li>
+                        <li>Entrenamiento técnico</li>
+                        <li>Certificaciones BIM</li>
+                        <li>Soporte continuo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIM Standards Section -->
+    <section class="bim-standards-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Estándares BIM Internacionales</h2>
+                <p class="section-description">
+                    Implementamos metodologías BIM basadas en estándares internacionales reconocidos
+                </p>
+            </div>
+            
+            <div class="standards-content">
+                <div class="standards-info">
+                    <div class="standard-item">
+                        <div class="standard-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="standard-content">
+                            <h3 class="standard-title">ISO 19650</h3>
+                            <p class="standard-description">
+                                Estándar internacional para gestión de información en el ciclo de vida de activos construidos.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="standard-content">
+                            <h3 class="standard-title">BIM Forum LOD</h3>
+                            <p class="standard-description">
+                                Especificaciones de nivel de desarrollo (LOD) para elementos de construcción.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="standard-content">
+                            <h3 class="standard-title">COBie</h3>
+                            <p class="standard-description">
+                                Estándar para intercambio de información de construcción-operación.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="standards-visual">
+                    <div class="bim-workflow">
+                        <div class="workflow-header">
+                            <h3>Flujo de Trabajo BIM</h3>
+                        </div>
+                        <div class="workflow-steps">
+                            <div class="workflow-step">
+                                <i class="fas fa-drafting-compass"></i>
+                                <span>Diseño</span>
+                            </div>
+                            <div class="workflow-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="workflow-step">
+                                <i class="fas fa-cogs"></i>
+                                <span>Coordinación</span>
+                            </div>
+                            <div class="workflow-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="workflow-step">
+                                <i class="fas fa-hammer"></i>
+                                <span>Construcción</span>
+                            </div>
+                            <div class="workflow-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="workflow-step">
+                                <i class="fas fa-tools"></i>
+                                <span>Operación</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Cases Section -->
+    <section class="success-cases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Casos de Éxito BIM</h2>
+                <p class="section-description">
+                    Constructoras que han transformado sus procesos con nuestra implementación BIM
+                </p>
+            </div>
+            
+            <div class="success-cases-grid">
+                <div class="success-case-card">
+                    <div class="case-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="case-title">Constructora Metropolitana</h3>
+                    <p class="case-description">
+                        Implementación BIM completa en proyectos residenciales de alto nivel, logrando reducción del 25% en tiempo de construcción.
+                    </p>
+                    <div class="case-results">
+                        <div class="result-item">
+                            <span class="result-number">25%</span>
+                            <span class="result-label">Menos Tiempo</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">30%</span>
+                            <span class="result-label">Menos Costos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-case-card">
+                    <div class="case-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="case-title">Industrial Constructora</h3>
+                    <p class="case-description">
+                        Optimización de procesos industriales con BIM, mejorando la coordinación entre equipos y reduciendo errores en un 40%.
+                    </p>
+                    <div class="case-results">
+                        <div class="result-item">
+                            <span class="result-number">40%</span>
+                            <span class="result-label">Menos Errores</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">50%</span>
+                            <span class="result-label">Mejor Coordinación</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-case-card">
+                    <div class="case-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3 class="case-title">Constructora Sanitaria</h3>
+                    <p class="case-description">
+                        Implementación BIM en proyectos de salud, logrando precisión en instalaciones médicas y reducción de conflictos MEP.
+                    </p>
+                    <div class="case-results">
+                        <div class="result-item">
+                            <span class="result-number">90%</span>
+                            <span class="result-label">Precisión</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number">60%</span>
+                            <span class="result-label">Menos Conflictos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">¿Listo para Transformar tu Constructora con BIM?</h2>
+                <p class="cta-description">
+                    Únete a las constructoras líderes que ya optimizan sus procesos con metodología BIM. 
+                    Reduce costos, acelera proyectos y mejora la calidad de construcción.
+                </p>
+                
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Evaluación Gratuita</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Plan Personalizado</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Soporte Continuo</span>
+                    </div>
+                </div>
+                
+                <div class="cta-actions">
+                    <a href="contacto.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Solicitar Consulta Gratuita</span>
+                    </a>
+                    <a href="tel:+51999999999" class="btn btn-secondary btn-large">
+                        <i class="fas fa-phone"></i>
+                        <span>Llamar Ahora</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/metodologia-bim.js"></script>
 </body>
 </html>

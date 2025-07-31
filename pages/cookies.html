@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Cookies - DIGITECH CORP</title>
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/inicio.css">
+    <style>
+        .policy-hero {
+            background: linear-gradient(135deg, #002141 0%, #003366 50%, #004080 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .policy-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .policy-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .policy-content {
+            padding: 80px 0;
+            background: #f8f9fa;
+            margin-bottom: 0;
+        }
+        
+        .policy-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .policy-section h2 {
+            color: #002141;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .policy-section h3 {
+            color: #003366;
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        .policy-section p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .policy-section ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .policy-section li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .last-updated {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .contact-info {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .contact-info h4 {
+            color: #002141;
+            margin-bottom: 10px;
+        }
+        
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cookie-table th {
+            background: #002141;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .cookie-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cookie-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .cookie-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .cookie-type {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .cookie-type.essential {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .cookie-type.performance {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .cookie-type.functional {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .cookie-type.marketing {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .cookie-settings {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .cookie-settings h4 {
+            color: #2d5a2d;
+            margin-bottom: 15px;
+        }
+        
+        .cookie-settings ul {
+            margin: 10px 0;
+        }
+        
+        .cookie-settings li {
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .policy-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .policy-hero p {
+                font-size: 1rem;
+            }
+            
+            .policy-section {
+                padding: 25px;
+            }
+            
+            .policy-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .policy-section h3 {
+                font-size: 1.25rem;
+            }
+            
+            .cookie-table {
+                font-size: 0.9rem;
+            }
+            
+            .cookie-table th,
+            .cookie-table td {
+                padding: 10px;
+            }
+        }
+        
+        /* Asegurar que el footer mantenga su diseño correcto */
+        .footer {
+            background: linear-gradient(135deg, #002141 0%, #001A35 100%) !important;
+            margin-top: 0 !important;
+        }
+        
+        .policy-content + .footer {
+            background: linear-gradient(135deg, #002141 0%, #001A35 100%) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="policy-hero">
+        <div class="container">
+            <h1>Política de Cookies</h1>
+            <p>Información sobre el uso de cookies y tecnologías de seguimiento en DIGITECH CORP</p>
+        </div>
+    </section>
+
+    <!-- Contenido de la página -->
+    <main class="policy-content">
+        <div class="container">
+            <div class="last-updated">
+                <strong>Última actualización:</strong> 15 de enero de 2024
+            </div>
+
+            <div class="policy-section">
+                <h2>1. ¿Qué son las Cookies?</h2>
+                <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo (computadora, tablet o teléfono móvil) cuando visita nuestro sitio web. Estas cookies nos permiten recordar sus preferencias, analizar el tráfico del sitio y mejorar su experiencia de navegación.</p>
+                
+                <p>Las cookies pueden ser creadas por nuestro sitio web (cookies propias) o por terceros que proporcionan servicios en nuestro sitio (cookies de terceros).</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>2. Tipos de Cookies que Utilizamos</h2>
+                
+                <h3>2.1 Cookies Esenciales</h3>
+                <p>Estas cookies son necesarias para el funcionamiento básico del sitio web y no se pueden desactivar. Incluyen cookies que:</p>
+                <ul>
+                    <li>Mantienen su sesión activa</li>
+                    <li>Recuerdan sus preferencias de idioma</li>
+                    <li>Garantizan la seguridad del sitio</li>
+                    <li>Permiten el funcionamiento de formularios</li>
+                </ul>
+
+                <h3>2.2 Cookies de Rendimiento</h3>
+                <p>Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web recopilando información anónima. Incluyen cookies que:</p>
+                <ul>
+                    <li>Analizan el tráfico del sitio</li>
+                    <li>Miden el tiempo de permanencia en las páginas</li>
+                    <li>Identifican páginas populares</li>
+                    <li>Detectan errores y problemas técnicos</li>
+                </ul>
+
+                <h3>2.3 Cookies de Funcionalidad</h3>
+                <p>Estas cookies permiten que el sitio web recuerde las elecciones que hace y proporcionen funcionalidades mejoradas. Incluyen cookies que:</p>
+                <ul>
+                    <li>Recuerdan sus preferencias de usuario</li>
+                    <li>Personalizan el contenido mostrado</li>
+                    <li>Mantienen configuraciones de accesibilidad</li>
+                    <li>Almacenan información de formularios</li>
+                </ul>
+
+                <h3>2.4 Cookies de Marketing</h3>
+                <p>Estas cookies se utilizan para mostrar publicidad relevante y medir la efectividad de nuestras campañas publicitarias. Incluyen cookies que:</p>
+                <ul>
+                    <li>Rastrean visitas a través de diferentes sitios</li>
+                    <li>Muestran anuncios personalizados</li>
+                    <li>Miden la efectividad de campañas</li>
+                    <li>Permiten compartir contenido en redes sociales</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>3. Cookies Específicas que Utilizamos</h2>
+                
+                <table class="cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre de la Cookie</th>
+                            <th>Tipo</th>
+                            <th>Propósito</th>
+                            <th>Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>session_id</td>
+                            <td><span class="cookie-type essential">Esencial</span></td>
+                            <td>Mantener la sesión del usuario activa</td>
+                            <td>Sesión</td>
+                        </tr>
+                        <tr>
+                            <td>language_pref</td>
+                            <td><span class="cookie-type functional">Funcional</span></td>
+                            <td>Recordar preferencia de idioma</td>
+                            <td>1 año</td>
+                        </tr>
+                        <tr>
+                            <td>_ga</td>
+                            <td><span class="cookie-type performance">Rendimiento</span></td>
+                            <td>Análisis de tráfico web (Google Analytics)</td>
+                            <td>2 años</td>
+                        </tr>
+                        <tr>
+                            <td>_gid</td>
+                            <td><span class="cookie-type performance">Rendimiento</span></td>
+                            <td>Identificar usuarios únicos (Google Analytics)</td>
+                            <td>24 horas</td>
+                        </tr>
+                        <tr>
+                            <td>_fbp</td>
+                            <td><span class="cookie-type marketing">Marketing</span></td>
+                            <td>Publicidad de Facebook</td>
+                            <td>3 meses</td>
+                        </tr>
+                        <tr>
+                            <td>cookie_consent</td>
+                            <td><span class="cookie-type functional">Funcional</span></td>
+                            <td>Recordar preferencias de cookies</td>
+                            <td>1 año</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="policy-section">
+                <h2>4. Cookies de Terceros</h2>
+                <p>Utilizamos servicios de terceros que pueden establecer cookies en su dispositivo:</p>
+                
+                <h3>4.1 Google Analytics</h3>
+                <p>Utilizamos Google Analytics para analizar el uso de nuestro sitio web. Google Analytics utiliza cookies para recopilar información sobre cómo los visitantes utilizan nuestro sitio.</p>
+                
+                <h3>4.2 Redes Sociales</h3>
+                <p>Nuestro sitio web incluye botones para compartir contenido en redes sociales. Estas plataformas pueden establecer cookies cuando interactúa con estos botones.</p>
+                
+                <h3>4.3 Servicios de Publicidad</h3>
+                <p>Podemos utilizar servicios de publicidad que establecen cookies para mostrar anuncios relevantes y medir la efectividad de las campañas.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>5. Gestión de Cookies</h2>
+                
+                <div class="cookie-settings">
+                    <h4><i class="fas fa-cog"></i> Cómo Gestionar sus Preferencias de Cookies</h4>
+                    <p>Usted tiene varias opciones para gestionar las cookies:</p>
+                    
+                    <h5>5.1 Configuración del Navegador</h5>
+                    <p>Puede configurar su navegador para:</p>
+                    <ul>
+                        <li>Bloquear todas las cookies</li>
+                        <li>Permitir solo cookies de sitios confiables</li>
+                        <li>Eliminar cookies al cerrar el navegador</li>
+                        <li>Recibir notificaciones cuando se establezcan cookies</li>
+                    </ul>
+                    
+                    <h5>5.2 Enlaces de Configuración por Navegador</h5>
+                    <ul>
+                        <li><strong>Chrome:</strong> Configuración > Privacidad y seguridad > Cookies y otros datos del sitio</li>
+                        <li><strong>Firefox:</strong> Opciones > Privacidad y seguridad > Cookies y datos del sitio</li>
+                        <li><strong>Safari:</strong> Preferencias > Privacidad > Cookies y datos del sitio web</li>
+                        <li><strong>Edge:</strong> Configuración > Cookies y permisos del sitio</li>
+                    </ul>
+                    
+                    <h5>5.3 Panel de Control de Cookies</h5>
+                    <p>Puede gestionar sus preferencias de cookies a través de nuestro panel de control que aparece cuando visita nuestro sitio por primera vez.</p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h2>6. Efectos de Desactivar Cookies</h2>
+                <p>Si decide desactivar las cookies, tenga en cuenta que:</p>
+                <ul>
+                    <li><strong>Cookies Esenciales:</strong> El sitio web puede no funcionar correctamente</li>
+                    <li><strong>Cookies de Rendimiento:</strong> No podremos mejorar el sitio basándonos en datos de uso</li>
+                    <li><strong>Cookies de Funcionalidad:</strong> Algunas características personalizadas pueden no estar disponibles</li>
+                    <li><strong>Cookies de Marketing:</strong> Los anuncios pueden ser menos relevantes</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>7. Tecnologías Similares</h2>
+                <p>Además de las cookies, utilizamos otras tecnologías de seguimiento:</p>
+                
+                <h3>7.1 Web Beacons</h3>
+                <p>Pequeñas imágenes transparentes que nos ayudan a entender cómo se utiliza nuestro sitio web.</p>
+                
+                <h3>7.2 Local Storage</h3>
+                <p>Almacenamiento local del navegador que nos permite guardar preferencias del usuario.</p>
+                
+                <h3>7.3 Session Storage</h3>
+                <p>Almacenamiento temporal durante la sesión del navegador.</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>8. Actualizaciones de esta Política</h2>
+                <p>Podemos actualizar esta Política de Cookies ocasionalmente para reflejar cambios en nuestras prácticas o por otras razones operativas, legales o regulatorias. Cuando hagamos cambios significativos, le notificaremos a través de:</p>
+                <ul>
+                    <li>Notificación en nuestro sitio web</li>
+                    <li>Actualización de la fecha de "Última actualización"</li>
+                    <li>Comunicación por correo electrónico si es necesario</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>9. Información Adicional</h2>
+                <p>Para obtener más información sobre cookies y cómo gestionarlas, puede visitar:</p>
+                <ul>
+                    <li><a href="https://www.allaboutcookies.org" target="_blank">All About Cookies</a></li>
+                    <li><a href="https://www.youronlinechoices.com" target="_blank">Your Online Choices</a></li>
+                    <li><a href="https://www.networkadvertising.org" target="_blank">Network Advertising Initiative</a></li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>10. Contacto</h2>
+                <p>Si tiene preguntas sobre nuestra Política de Cookies o sobre cómo utilizamos las cookies, contáctenos:</p>
+                
+                <div class="contact-info">
+                    <h4>DIGITECH CORP</h4>
+                    <p><strong>Email:</strong> cookies@digitech-corp.pe</p>
+                    <p><strong>Teléfono:</strong> +51 989 975 369</p>
+                    <p><strong>Dirección:</strong> Lima, Perú</p>
+                </div>
+                
+                <p>Responderemos a su consulta en un plazo máximo de 30 días hábiles.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="../scripts/components-loader.js"></script>
+</body>
+</html> 
