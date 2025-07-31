@@ -11,7 +11,7 @@
   overflow: hidden;
   display: flex;
   align-items: flex-start;
-  padding-top: 140px; /* Aumentado para navbar + margen extra */
+  padding-top: 100px; /* Aumentado para navbar + margen extra */
 }
 
 .hero-background {
@@ -750,7 +750,7 @@
   .apps-hero {
     height: 100vh;
     min-height: 100vh;
-    padding-top: 130px; /* Aumentado para navbar tablet + margen extra */
+    padding-top: 100px; /* Aumentado para navbar tablet + margen extra */
     align-items: flex-start;
   }
   
@@ -792,7 +792,7 @@
   .apps-hero {
     height: 100vh;
     min-height: 100vh;
-    padding-top: 120px; /* Aumentado para navbar móvil + margen extra */
+    padding-top: 100px; /* Aumentado para navbar móvil + margen extra */
     align-items: flex-start;
   }
   
@@ -892,7 +892,7 @@
   .apps-hero {
     height: 100vh;
     min-height: 100vh;
-    padding-top: 110px; /* Aumentado para navbar móvil pequeño + margen extra */
+    padding-top: 100px; /* Aumentado para navbar móvil pequeño + margen extra */
     align-items: flex-start;
   }
   
