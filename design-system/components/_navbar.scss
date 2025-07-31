@@ -113,12 +113,20 @@ $mobile-menu-width-tablet: 375px;
     height: 40px;
     width: auto;
     display: block;
+    // Fallback para asegurar que la imagen cargue
+    background: linear-gradient(135deg, #0056B3 0%, #0077CC 100%);
+    border-radius: 4px;
+    padding: 4px;
   }
   
   .logo-color {
     height: 40px;
     width: auto;
     display: none;
+    // Fallback para asegurar que la imagen cargue
+    background: linear-gradient(135deg, #002141 0%, #003366 100%);
+    border-radius: 4px;
+    padding: 4px;
   }
 }
 

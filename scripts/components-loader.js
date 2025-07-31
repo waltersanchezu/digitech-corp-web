@@ -11,7 +11,7 @@ class ComponentLoader {
         this.mobileClose = null;
         this.dropdownToggles = [];
         this.mobileDropdownToggles = [];
-        console.log('🚀 ComponentLoader inicializado v1.7');
+        console.log('🚀 ComponentLoader inicializado v1.9');
         console.log('📍 Base path:', this.basePath);
     }
 
@@ -89,12 +89,36 @@ class ComponentLoader {
                 // Si estamos en una página dentro de pages/ y la imagen ya tiene assets/, ajustar la ruta
                 if (this.basePath === '../' && src.startsWith('assets/')) {
                     newSrc = this.basePath + src;
-                } else if (this.basePath === '') {
+                } 
+                // Si estamos en la raíz y la imagen tiene assets/, mantener la ruta original
+                else if (this.basePath === '' && src.startsWith('assets/')) {
                     newSrc = src;
+                }
+                // Si estamos en la raíz y la imagen NO tiene assets/, agregar assets/
+                else if (this.basePath === '' && !src.startsWith('assets/')) {
+                    newSrc = 'assets/' + src.replace(/^\/+/, '');
                 }
                 
                 img.setAttribute('src', newSrc);
                 console.log(`🖼️ Imagen: ${src} → ${newSrc}`);
+                
+                // Agregar manejo de errores para las imágenes
+                img.addEventListener('error', function() {
+                    console.error(`❌ Error cargando imagen: ${newSrc}`);
+                    // Si es una imagen del logo, mostrar fallback
+                    if (this.classList.contains('logo-white') || this.classList.contains('logo-color')) {
+                        this.style.display = 'none';
+                        const otherLogo = this.classList.contains('logo-white') ? 
+                            this.nextElementSibling : this.previousElementSibling;
+                        if (otherLogo) {
+                            otherLogo.style.display = 'block';
+                        }
+                    }
+                });
+                
+                img.addEventListener('load', function() {
+                    console.log(`✅ Imagen cargada exitosamente: ${newSrc}`);
+                });
             }
         });
 

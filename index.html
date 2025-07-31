@@ -892,7 +892,52 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script src="scripts/components-loader.js?v=1.7"></script>
+    <script src="scripts/components-loader.js?v=1.9"></script>
     <script type="module" src="scripts/inicio.js"></script>
+    
+    <!-- Debug script para verificar rutas de imágenes -->
+    <script>
+        // Debug script para verificar rutas de imágenes
+        window.addEventListener('componentsLoaded', function() {
+            console.log('🔍 DEBUG: Verificando rutas de imágenes del navbar...');
+            
+            const logoWhite = document.querySelector('.logo-white');
+            const logoColor = document.querySelector('.logo-color');
+            const obra360Icon = document.querySelector('.obra360-icon');
+            
+            if (logoWhite) {
+                console.log('🖼️ Logo White src:', logoWhite.src);
+                console.log('🖼️ Logo White currentSrc:', logoWhite.currentSrc);
+                console.log('🖼️ Logo White complete:', logoWhite.complete);
+                console.log('🖼️ Logo White naturalWidth:', logoWhite.naturalWidth);
+            }
+            
+            if (logoColor) {
+                console.log('🖼️ Logo Color src:', logoColor.src);
+                console.log('🖼️ Logo Color currentSrc:', logoColor.currentSrc);
+                console.log('🖼️ Logo Color complete:', logoColor.complete);
+                console.log('🖼️ Logo Color naturalWidth:', logoColor.naturalWidth);
+            }
+            
+            if (obra360Icon) {
+                console.log('🖼️ Obra360 Icon src:', obra360Icon.src);
+                console.log('🖼️ Obra360 Icon currentSrc:', obra360Icon.currentSrc);
+                console.log('🖼️ Obra360 Icon complete:', obra360Icon.complete);
+                console.log('🖼️ Obra360 Icon naturalWidth:', obra360Icon.naturalWidth);
+            }
+            
+            // Verificar si las imágenes están cargando
+            const images = document.querySelectorAll('.navbar img');
+            images.forEach((img, index) => {
+                img.addEventListener('load', function() {
+                    console.log(`✅ Imagen ${index} cargada exitosamente:`, img.src);
+                });
+                
+                img.addEventListener('error', function() {
+                    console.error(`❌ Error cargando imagen ${index}:`, img.src);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
