@@ -3,16 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gobierno Digital - DIGITECH CORP</title>
+    <title>Gobierno Digital - Transformación Digital del Estado - DIGITECH CORP</title>
+    <meta name="description" content="Desarrollo de sistemas gubernamentales según los 22 ítems exigidos por la PCM. Transformación digital del estado peruano con normativas cumplidas.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
-    <link rel="icon" href="../assets/images/logo/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/gobierno-digital.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Gobierno Digital</h1>
-        <p>Página en construcción. Próximamente contenido completo sobre nuestros servicios de implementación de gobierno digital.</p>
-        <a href="../index.html" class="btn btn-primary">Volver al inicio</a>
-    </div>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="gobierno-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-government"></i>
+                        <span>Gobierno Digital</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Transformación <span class="highlight">Digital</span> del Estado Peruano
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Desarrollamos sistemas gubernamentales que cumplen con los 22 ítems exigidos por la PCM. 
+                        Transformación digital integral con normativas del estado peruano garantizadas.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>22 Ítems PCM</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Normativas</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-infrastructure"></i>
+                            <span>Infraestructura</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Solicitar Consulta</span>
+                        </a>
+                        <a href="#pcm-items" class="btn btn-secondary">
+                            <i class="fas fa-list-check"></i>
+                            <span>Ver 22 Ítems PCM</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="government-visualization">
+                        <div class="pcm-dashboard">
+                            <div class="dashboard-header">
+                                <div class="header-controls">
+                                    <span class="control red"></span>
+                                    <span class="control yellow"></span>
+                                    <span class="control green"></span>
+                                </div>
+                                <div class="dashboard-title">PCM - Gobierno Digital</div>
+                            </div>
+                            <div class="dashboard-content">
+                                <div class="metric-item">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <div class="metric-value">22/22</div>
+                                        <div class="metric-label">Ítems Cumplidos</div>
+                                    </div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <div class="metric-value">100%</div>
+                                        <div class="metric-label">Normativas</div>
+                                    </div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <div class="metric-value">24/7</div>
+                                        <div class="metric-label">Disponibilidad</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="floating-elements">
+                            <div class="floating-card card-1">
+                                <i class="fas fa-building"></i>
+                                <span>PCM</span>
+                            </div>
+                            <div class="floating-card card-2">
+                                <i class="fas fa-server"></i>
+                                <span>Infraestructura</span>
+                            </div>
+                            <div class="floating-card card-3">
+                                <i class="fas fa-code"></i>
+                                <span>Software</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/gobierno-digital.js"></script>
 </body>
 </html>
