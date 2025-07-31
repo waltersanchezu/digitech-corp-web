@@ -3,16 +3,536 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software a Medida - DIGITECH CORP</title>
+    <title>Desarrollo de Software a Medida - DIGITECH CORP</title>
+    <meta name="description" content="Desarrollo de software personalizado y a medida. Creamos soluciones tecnológicas únicas que se adaptan perfectamente a las necesidades específicas de tu empresa.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
-    <link rel="icon" href="../assets/images/logo/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/software-medida.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Software a Medida</h1>
-        <p>Página en construcción. Próximamente contenido completo sobre nuestros servicios de desarrollo de software personalizado.</p>
-        <a href="../index.html" class="btn btn-primary">Volver al inicio</a>
-    </div>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="software-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-code"></i>
+                        <span>Desarrollo Personalizado</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Software <span class="highlight">a Medida</span> para tu Negocio
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Transformamos tus ideas en soluciones tecnológicas únicas. Desarrollamos software personalizado 
+                        que se adapta perfectamente a los procesos y necesidades específicas de tu empresa.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>Personalizado</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Escalable</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Seguro</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Solicitar Cotización</span>
+                        </a>
+                        <a href="#process" class="btn btn-secondary">
+                            <i class="fas fa-play"></i>
+                            <span>Conocer Proceso</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="code-visualization">
+                        <div class="code-window">
+                            <div class="window-header">
+                                <div class="window-controls">
+                                    <span class="control red"></span>
+                                    <span class="control yellow"></span>
+                                    <span class="control green"></span>
+                                </div>
+                                <div class="file-name">software-personalizado.js</div>
+                            </div>
+                            <div class="code-content">
+                                <div class="code-line"><span class="keyword">class</span> <span class="class-name">SoftwarePersonalizado</span> {</div>
+                                <div class="code-line indent-1"><span class="method">constructor</span>(config) {</div>
+                                <div class="code-line indent-2"><span class="keyword">this</span>.<span class="property">escalable</span> = <span class="boolean">true</span>;</div>
+                                <div class="code-line indent-2"><span class="keyword">this</span>.<span class="property">seguro</span> = <span class="boolean">true</span>;</div>
+                                <div class="code-line indent-2"><span class="keyword">this</span>.<span class="property">personalizado</span> = <span class="boolean">true</span>;</div>
+                                <div class="code-line indent-1">}</div>
+                                <div class="code-line">}</div>
+                            </div>
+                        </div>
+                        <div class="floating-elements">
+                            <div class="floating-card card-1">
+                                <i class="fas fa-database"></i>
+                                <span>Backend</span>
+                            </div>
+                            <div class="floating-card card-2">
+                                <i class="fas fa-desktop"></i>
+                                <span>Frontend</span>
+                            </div>
+                            <div class="floating-card card-3">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Mobile</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por qué elegir nuestro desarrollo a medida?</h2>
+                <p class="section-description">
+                    Creamos soluciones tecnológicas que se adaptan perfectamente a tu negocio, 
+                    no al revés. Cada línea de código está pensada para optimizar tus procesos.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="feature-title">100% Personalizado</h3>
+                    <p class="feature-description">
+                        Desarrollamos desde cero según tus necesidades específicas. 
+                        No adaptamos soluciones existentes, creamos la tuya.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Escalabilidad Garantizada</h3>
+                    <p class="feature-description">
+                        Arquitectura robusta que crece con tu empresa. 
+                        Preparado para manejar el crecimiento futuro.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Seguridad Avanzada</h3>
+                    <p class="feature-description">
+                        Implementamos las mejores prácticas de seguridad. 
+                        Protección de datos y cumplimiento normativo.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Desarrollo Ágil</h3>
+                    <p class="feature-description">
+                        Metodología Scrum con entregas incrementales. 
+                        Visibilidad total del progreso del proyecto.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">Soporte Continuo</h3>
+                    <p class="feature-description">
+                        Mantenimiento, actualizaciones y soporte técnico. 
+                        Tu software siempre actualizado y funcionando.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Equipo Experto</h3>
+                    <p class="feature-description">
+                        Desarrolladores certificados con años de experiencia. 
+                        Especialistas en las últimas tecnologías.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestro proceso de desarrollo</h2>
+                <p class="section-description">
+                    Un enfoque estructurado y transparente que garantiza el éxito de tu proyecto
+                </p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Análisis y Planificación</h3>
+                        <p class="step-description">
+                            Entendemos tus necesidades, analizamos tus procesos actuales 
+                            y diseñamos la arquitectura de la solución.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Reuniones de descubrimiento</span>
+                            <span class="step-feature">Análisis de requerimientos</span>
+                            <span class="step-feature">Arquitectura técnica</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Diseño y Prototipado</h3>
+                        <p class="step-description">
+                            Creamos wireframes, mockups y prototipos interactivos 
+                            para validar la experiencia de usuario.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Wireframes y mockups</span>
+                            <span class="step-feature">Prototipos interactivos</span>
+                            <span class="step-feature">Validación de UX/UI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Desarrollo Iterativo</h3>
+                        <p class="step-description">
+                            Desarrollo en sprints con entregas incrementales. 
+                            Revisión constante y ajustes en tiempo real.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Sprints de 2 semanas</span>
+                            <span class="step-feature">Entregas incrementales</span>
+                            <span class="step-feature">Revisión continua</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Pruebas y Calidad</h3>
+                        <p class="step-description">
+                            Testing exhaustivo en todos los niveles: unitario, 
+                            integración, rendimiento y seguridad.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Testing automatizado</span>
+                            <span class="step-feature">Pruebas de rendimiento</span>
+                            <span class="step-feature">Auditoría de seguridad</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Despliegue y Lanzamiento</h3>
+                        <p class="step-description">
+                            Despliegue en producción con monitoreo continuo. 
+                            Capacitación del equipo y documentación completa.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Despliegue automatizado</span>
+                            <span class="step-feature">Monitoreo 24/7</span>
+                            <span class="step-feature">Capacitación del equipo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologías Section -->
+    <section class="technologies-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tecnologías que utilizamos</h2>
+                <p class="section-description">
+                    Trabajamos con las tecnologías más modernas y robustas del mercado
+                </p>
+            </div>
+            
+            <div class="technologies-grid">
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Frontend</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-vuejs"></i>
+                            <span>Vue.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-angular"></i>
+                            <span>Angular</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Backend</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>.NET</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Bases de Datos</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>Redis</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Cloud & DevOps</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-aws"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-google"></i>
+                            <span>Google Cloud</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casos de Uso Section -->
+    <section class="use-cases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Casos de uso comunes</h2>
+                <p class="section-description">
+                    Soluciones que hemos desarrollado para diferentes industrias
+                </p>
+            </div>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="use-case-title">E-commerce</h3>
+                    <p class="use-case-description">
+                        Plataformas de comercio electrónico personalizadas con 
+                        gestión de inventario, pagos y análisis avanzado.
+                    </p>
+                    <ul class="use-case-features">
+                        <li>Catálogo de productos dinámico</li>
+                        <li>Integración con pasarelas de pago</li>
+                        <li>Panel de administración completo</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="use-case-title">Sistemas de Gestión</h3>
+                    <p class="use-case-description">
+                        Software ERP y CRM personalizado para optimizar 
+                        procesos internos y gestión de clientes.
+                    </p>
+                    <ul class="use-case-features">
+                        <li>Gestión de inventarios</li>
+                        <li>Control de ventas y facturación</li>
+                        <li>Reportes y analytics</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="use-case-title">Aplicaciones Móviles</h3>
+                    <p class="use-case-description">
+                        Apps nativas e híbridas para iOS y Android con 
+                        funcionalidades específicas para tu negocio.
+                    </p>
+                    <ul class="use-case-features">
+                        <li>Desarrollo nativo e híbrido</li>
+                        <li>Integración con APIs</li>
+                        <li>Notificaciones push</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="use-case-title">Automatización</h3>
+                    <p class="use-case-description">
+                        Sistemas que automatizan procesos repetitivos, 
+                        reduciendo errores y aumentando la eficiencia.
+                    </p>
+                    <ul class="use-case-features">
+                        <li>Workflows automatizados</li>
+                        <li>Integración entre sistemas</li>
+                        <li>Reportes automáticos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">¿Listo para transformar tu negocio?</h2>
+                <p class="cta-description">
+                    Cuéntanos sobre tu proyecto y te ayudaremos a crear la solución 
+                    tecnológica perfecta para tu empresa.
+                </p>
+                
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Consulta gratuita</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Propuesta personalizada</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Presupuesto detallado</span>
+                    </div>
+                </div>
+                
+                <div class="cta-actions">
+                    <a href="../pages/contacto.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Solicitar Consulta Gratuita</span>
+                    </a>
+                    <a href="tel:+51999999999" class="btn btn-secondary btn-large">
+                        <i class="fas fa-phone"></i>
+                        <span>Llamar Ahora</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/software-medida.js"></script>
 </body>
 </html>
