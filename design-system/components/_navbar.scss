@@ -47,8 +47,8 @@ $mobile-menu-width-tablet: 375px;
     
     .btn-obra360 {
       background: transparent;
-      border: 2px solid $color-primary;
-      color: $color-primary;
+      border: 2px solid $color-obra360;
+      color: $color-obra360;
       
               .obra360-icon {
           display: block;
@@ -62,7 +62,7 @@ $mobile-menu-width-tablet: 375px;
       }
       
       &:hover {
-        background: $color-primary;
+        background: $color-obra360;
         color: $color-white;
         
         .obra360-text {
@@ -113,20 +113,12 @@ $mobile-menu-width-tablet: 375px;
     height: 40px;
     width: auto;
     display: block;
-    // Fallback para asegurar que la imagen cargue
-    background: linear-gradient(135deg, #0056B3 0%, #0077CC 100%);
-    border-radius: 4px;
-    padding: 4px;
   }
   
   .logo-color {
     height: 40px;
     width: auto;
     display: none;
-    // Fallback para asegurar que la imagen cargue
-    background: linear-gradient(135deg, #002141 0%, #003366 100%);
-    border-radius: 4px;
-    padding: 4px;
   }
 }
 
@@ -282,7 +274,7 @@ $mobile-menu-width-tablet: 375px;
   .obra360-icon {
     height: 20px;
     width: auto;
-    display: none;
+    display: block;
   }
   
   .obra360-text {
@@ -293,12 +285,13 @@ $mobile-menu-width-tablet: 375px;
   
   &:hover {
     background: $color-white;
-    color: $color-primary;
+    color: $color-obra360;
+    border-color: $color-obra360;
     text-decoration: none;
     
     .obra360-icon {
       display: block;
-      content: url('../../assets/images/logo/log_white-obra360.png');
+      content: url('../../assets/images/logo/log_color-obra360.png');
     }
   }
 }
