@@ -3,16 +3,665 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apps Móviles - DIGITECH CORP</title>
+    <title>Desarrollo de Apps Móviles - DIGITECH CORP</title>
+    <meta name="description" content="Desarrollo de aplicaciones móviles nativas e híbridas. Creamos apps innovadoras con diseño UX/UI experto para iOS y Android.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
-    <link rel="icon" href="../assets/images/logo/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/apps-moviles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Apps Móviles</h1>
-        <p>Página en construcción. Próximamente contenido completo sobre nuestros servicios de desarrollo de aplicaciones móviles.</p>
-        <a href="../index.html" class="btn btn-primary">Volver al inicio</a>
-    </div>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="apps-hero">
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="bg-pattern"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Desarrollo Móvil</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Apps Móviles <span class="highlight">Innovadoras</span> para tu Negocio
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Creamos aplicaciones móviles nativas e híbridas que conectan con tus usuarios. 
+                        Diseño UX/UI experto, desarrollo robusto y experiencia de usuario excepcional.
+                    </p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fab fa-apple"></i>
+                            <span>iOS</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fab fa-android"></i>
+                            <span>Android</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>UX/UI</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Solicitar Cotización</span>
+                        </a>
+                        <a href="#process" class="btn btn-secondary">
+                            <i class="fas fa-play"></i>
+                            <span>Ver Proceso</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="phones-showcase">
+                        <div class="phone-mockup phone-1">
+                            <div class="phone-frame">
+                                <div class="screen">
+                                    <div class="app-interface">
+                                        <div class="app-header">
+                                            <div class="status-bar"></div>
+                                            <div class="nav-bar">
+                                                <i class="fas fa-arrow-left"></i>
+                                                <span>Mi App</span>
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </div>
+                                        </div>
+                                        <div class="app-content">
+                                            <div class="content-card">
+                                                <div class="card-icon">
+                                                    <i class="fas fa-chart-line"></i>
+                                                </div>
+                                                <div class="card-text">
+                                                    <h4>Dashboard</h4>
+                                                    <p>Analytics en tiempo real</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="phone-mockup phone-2">
+                            <div class="phone-frame">
+                                <div class="screen">
+                                    <div class="app-interface">
+                                        <div class="app-header">
+                                            <div class="status-bar"></div>
+                                            <div class="nav-bar">
+                                                <i class="fas fa-home"></i>
+                                                <span>Inicio</span>
+                                                <i class="fas fa-bell"></i>
+                                            </div>
+                                        </div>
+                                        <div class="app-content">
+                                            <div class="content-card">
+                                                <div class="card-icon">
+                                                    <i class="fas fa-users"></i>
+                                                </div>
+                                                <div class="card-text">
+                                                    <h4>Usuarios</h4>
+                                                    <p>Gestión de perfiles</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-elements">
+                            <div class="floating-card card-1">
+                                <i class="fas fa-rocket"></i>
+                                <span>Rápido</span>
+                            </div>
+                            <div class="floating-card card-2">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Seguro</span>
+                            </div>
+                            <div class="floating-card card-3">
+                                <i class="fas fa-magic"></i>
+                                <span>Intuitivo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por qué elegir nuestro desarrollo móvil?</h2>
+                <p class="section-description">
+                    Combinamos diseño UX/UI experto con desarrollo técnico robusto para crear 
+                    aplicaciones móviles que destacan en el mercado.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="feature-title">Diseño UX/UI Experto</h3>
+                    <p class="feature-description">
+                        Interfaces intuitivas y atractivas diseñadas por expertos en experiencia 
+                        de usuario y diseño de interfaces móviles.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="feature-title">Desarrollo Nativo e Híbrido</h3>
+                    <p class="feature-description">
+                        Apps nativas para máximo rendimiento o híbridas para mayor compatibilidad. 
+                        Elegimos la mejor opción para tu proyecto.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Multiplataforma</h3>
+                    <p class="feature-description">
+                        Desarrollamos para iOS y Android simultáneamente. 
+                        Una sola app, múltiples plataformas.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">Integración Completa</h3>
+                    <p class="feature-description">
+                        APIs, bases de datos, servicios en la nube y sistemas existentes. 
+                        Integración perfecta con tu infraestructura.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Analytics y Monitoreo</h3>
+                    <p class="feature-description">
+                        Seguimiento completo del rendimiento, uso y comportamiento de usuarios. 
+                        Datos para optimización continua.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">Soporte Continuo</h3>
+                    <p class="feature-description">
+                        Mantenimiento, actualizaciones y soporte técnico. 
+                        Tu app siempre actualizada y funcionando perfectamente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectores Section -->
+    <section class="sectors-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Apps para todos los sectores</h2>
+                <p class="section-description">
+                    Desarrollamos aplicaciones móviles especializadas para diferentes industrias
+                </p>
+            </div>
+            
+            <div class="sectors-grid">
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="sector-title">E-commerce</h3>
+                    <p class="sector-description">
+                        Apps de comercio electrónico con catálogos dinámicos, 
+                        pasarelas de pago seguras y gestión de pedidos.
+                    </p>
+                    <ul class="sector-features">
+                        <li>Catálogo de productos</li>
+                        <li>Carrito de compras</li>
+                        <li>Pagos seguros</li>
+                        <li>Seguimiento de pedidos</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="sector-title">Empresarial</h3>
+                    <p class="sector-description">
+                        Apps corporativas para gestión interna, comunicación 
+                        y automatización de procesos empresariales.
+                    </p>
+                    <ul class="sector-features">
+                        <li>Gestión de empleados</li>
+                        <li>Comunicación interna</li>
+                        <li>Reportes móviles</li>
+                        <li>Workflows automatizados</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="sector-title">Salud</h3>
+                    <p class="sector-description">
+                        Aplicaciones médicas y de bienestar con funcionalidades 
+                        especializadas para el sector salud.
+                    </p>
+                    <ul class="sector-features">
+                        <li>Gestión de citas</li>
+                        <li>Historial médico</li>
+                        <li>Telemedicina</li>
+                        <li>Monitoreo de salud</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="sector-title">Educación</h3>
+                    <p class="sector-description">
+                        Apps educativas y de e-learning con contenido interactivo 
+                        y herramientas de aprendizaje móvil.
+                    </p>
+                    <ul class="sector-features">
+                        <li>Contenido educativo</li>
+                        <li>Evaluaciones</li>
+                        <li>Gestión de cursos</li>
+                        <li>Comunicación docente</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="sector-title">Logística</h3>
+                    <p class="sector-description">
+                        Aplicaciones de logística y transporte con seguimiento 
+                        en tiempo real y gestión de flotas.
+                    </p>
+                    <ul class="sector-features">
+                        <li>Seguimiento GPS</li>
+                        <li>Gestión de flotas</li>
+                        <li>Optimización de rutas</li>
+                        <li>Reportes de entrega</li>
+                    </ul>
+                </div>
+                
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="sector-title">Restaurantes</h3>
+                    <p class="sector-description">
+                        Apps para restaurantes con pedidos online, reservas 
+                        y gestión de menús digitales.
+                    </p>
+                    <ul class="sector-features">
+                        <li>Pedidos online</li>
+                        <li>Reservas de mesa</li>
+                        <li>Menús digitales</li>
+                        <li>Programa de fidelidad</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestro proceso de desarrollo móvil</h2>
+                <p class="section-description">
+                    Un enfoque estructurado que garantiza el éxito de tu aplicación móvil
+                </p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Análisis y Planificación</h3>
+                        <p class="step-description">
+                            Entendemos tus objetivos, analizamos el mercado y definimos 
+                            la estrategia de tu aplicación móvil.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Análisis de mercado</span>
+                            <span class="step-feature">Definición de funcionalidades</span>
+                            <span class="step-feature">Arquitectura técnica</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Diseño UX/UI</h3>
+                        <p class="step-description">
+                            Creamos wireframes, mockups y prototipos interactivos 
+                            enfocados en la experiencia móvil.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Wireframes móviles</span>
+                            <span class="step-feature">Diseño de interfaces</span>
+                            <span class="step-feature">Prototipos interactivos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Desarrollo</h3>
+                        <p class="step-description">
+                            Desarrollo nativo o híbrido con las mejores prácticas 
+                            y tecnologías móviles actuales.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Desarrollo nativo/híbrido</span>
+                            <span class="step-feature">Integración de APIs</span>
+                            <span class="step-feature">Optimización de rendimiento</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Testing y QA</h3>
+                        <p class="step-description">
+                            Pruebas exhaustivas en diferentes dispositivos y 
+                            sistemas operativos para garantizar calidad.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Testing en dispositivos</span>
+                            <span class="step-feature">Pruebas de usabilidad</span>
+                            <span class="step-feature">Optimización de performance</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Despliegue y Lanzamiento</h3>
+                        <p class="step-description">
+                            Publicación en App Store y Google Play Store con 
+                            estrategia de lanzamiento y marketing.
+                        </p>
+                        <div class="step-features">
+                            <span class="step-feature">Publicación en stores</span>
+                            <span class="step-feature">Configuración de analytics</span>
+                            <span class="step-feature">Estrategia de lanzamiento</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologías Section -->
+    <section class="technologies-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tecnologías móviles que utilizamos</h2>
+                <p class="section-description">
+                    Trabajamos con las tecnologías más modernas y robustas del desarrollo móvil
+                </p>
+            </div>
+            
+            <div class="technologies-grid">
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Desarrollo Nativo</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-swift"></i>
+                            <span>Swift</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-kotlin"></i>
+                            <span>Kotlin</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Desarrollo Híbrido</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-react"></i>
+                            <span>React Native</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-angular"></i>
+                            <span>Ionic</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-js"></i>
+                            <span>Flutter</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Diseño UX/UI</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-figma"></i>
+                            <span>Figma</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-adobe"></i>
+                            <span>Adobe XD</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-sketch"></i>
+                            <span>Sketch</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Backend & APIs</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-firebase"></i>
+                            <span>Firebase</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casos de Uso Section -->
+    <section class="use-cases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Casos de éxito</h2>
+                <p class="section-description">
+                    Aplicaciones móviles que hemos desarrollado con resultados excepcionales
+                </p>
+            </div>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3 class="use-case-title">E-commerce App</h3>
+                    <p class="use-case-description">
+                        App de comercio electrónico con más de 50,000 descargas. 
+                        Aumentó las ventas móviles en un 300%.
+                    </p>
+                    <ul class="use-case-features">
+                        <li>Catálogo dinámico</li>
+                        <li>Pagos seguros</li>
+                        <li>Push notifications</li>
+                        <li>Analytics avanzado</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="use-case-title">App Corporativa</h3>
+                    <p class="use-case-description">
+                        Aplicación interna para empresa con 500+ empleados. 
+                        Mejoró la productividad en un 40%.
+                    </p>
+                    <ul class="use-case-features">
+                        <li>Gestión de tareas</li>
+                        <li>Comunicación interna</li>
+                        <li>Reportes en tiempo real</li>
+                        <li>Integración con sistemas</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="use-case-title">App de Salud</h3>
+                    <p class="use-case-description">
+                        Aplicación médica con telemedicina integrada. 
+                        Más de 10,000 consultas virtuales mensuales.
+                    </p>
+                    <ul class="use-case-features">
+                        <li>Video consultas</li>
+                        <li>Historial médico</li>
+                        <li>Recordatorios de medicación</li>
+                        <li>Integración con wearables</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="use-case-title">App Educativa</h3>
+                    <p class="use-case-description">
+                        Plataforma de e-learning con contenido interactivo. 
+                        Más de 25,000 estudiantes activos.
+                    </p>
+                    <ul class="use-case-features">
+                        <li>Contenido multimedia</li>
+                        <li>Evaluaciones automáticas</li>
+                        <li>Gamificación</li>
+                        <li>Progreso personalizado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">¿Listo para crear tu app móvil?</h2>
+                <p class="cta-description">
+                    Cuéntanos sobre tu idea y te ayudaremos a crear la aplicación 
+                    móvil perfecta para tu negocio.
+                </p>
+                
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Consulta gratuita</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Propuesta personalizada</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Prototipo inicial</span>
+                    </div>
+                </div>
+                
+                <div class="cta-actions">
+                    <a href="../pages/contacto.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Solicitar Consulta Gratuita</span>
+                    </a>
+                    <a href="tel:+51999999999" class="btn btn-secondary btn-large">
+                        <i class="fas fa-phone"></i>
+                        <span>Llamar Ahora</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/apps-moviles.js"></script>
 </body>
 </html>
