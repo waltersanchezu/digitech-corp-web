@@ -22,544 +22,49 @@
     
     <!-- Estilos -->
     <link rel="stylesheet" href="../styles/inicio.css">
+    <link rel="stylesheet" href="../styles/clientes-refactorizado.css">
     
-    <style>
-        /* ========================================
-           ESTILOS PARA PÁGINA CLIENTES
-           ======================================== */
-        
-        /* Hero Section */
-        .clientes-hero {
-            position: relative;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .bg-gradient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(51, 65, 85, 0.9) 50%, rgba(71, 85, 105, 0.85) 100%);
-        }
-        
-        .bg-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-            background-size: 250px 250px, 350px 350px;
-            animation: float 25s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            padding: 2rem 0;
-            min-height: calc(100vh - 140px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 50px;
-            padding: 0.75rem 1.5rem;
-            margin-bottom: 2rem;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-            max-width: 600px;
-        }
-        
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-            max-width: 600px;
-        }
-        
-        .hero-stat {
-            text-align: center;
-            color: white;
-        }
-        
-        .hero-stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #60a5fa;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .hero-stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-        
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 5rem 0;
-            background: #f8fafc;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 1rem;
-            left: 2rem;
-            font-size: 4rem;
-            color: #60a5fa;
-            opacity: 0.2;
-            font-family: serif;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .testimonial-text {
-            color: #475569;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            font-style: italic;
-            font-size: 1.1rem;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .author-info h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.25rem;
-        }
-        
-        .author-info p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        /* Clients Grid Section */
-        .clients-section {
-            padding: 5rem 0;
-            background: white;
-        }
-        
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .client-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
-            text-align: center;
-        }
-        
-        .client-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .client-logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 2rem;
-            color: #64748b;
-        }
-        
-        .client-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-        
-        .client-sector {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        /* Success Stories Section */
-        .success-stories-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-        }
-        
-        .stories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .story-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .story-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-        }
-        
-        .story-icon {
-            font-size: 3rem;
-            color: #60a5fa;
-            margin-bottom: 1.5rem;
-        }
-        
-        .story-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .story-description {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .story-metrics {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-        
-        .story-metric {
-            text-align: center;
-        }
-        
-        .metric-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #60a5fa;
-            margin-bottom: 0.25rem;
-        }
-        
-        .metric-label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            text-align: center;
-            color: white;
-        }
-        
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-        
-        .cta-subtitle {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-button {
-            background: white;
-            color: #002141;
-            border: 2px solid white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
-        }
-        
-        .cta-button:hover {
-            background: transparent;
-            color: white;
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 3rem;
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Nuestros Clientes - Casos de Éxito y Testimonios - DIGITECH CORP",
+          "url": "https://digitech-corp.pe/pages/clientes.html",
+          "about": {
+            "@type": "Organization",
+            "name": "DIGITECH CORP",
+            "url": "https://digitech-corp.pe/"
+          },
+          "description": "Empresas y organizaciones que han transformado sus procesos con nuestras soluciones tecnológicas. Conoce nuestros clientes satisfechos y casos de éxito.",
+          "mainEntity": [
+            {
+              "@type": "Organization",
+              "name": "Municipalidad de Pimentel"
+            },
+            {
+              "@type": "Organization",
+              "name": "Hnos. Yaipén"
+            },
+            {
+              "@type": "Organization",
+              "name": "IOMEM Group"
+            },
+            {
+              "@type": "Organization",
+              "name": "Gesvias"
+            },
+            {
+              "@type": "Organization",
+              "name": "K&S Ingenieros"
+            },
+            {
+              "@type": "Organization",
+              "name": "Municipalidad de Esperanza"
             }
-            
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .hero-stat-value {
-                font-size: 2rem;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            
-            .stories-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            
-            .clients-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
+          ]
         }
-        
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-            }
-            
-            .hero-stat-value {
-                font-size: 1.8rem;
-            }
-            
-            .hero-stat-label {
-                font-size: 0.8rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .testimonial-card {
-                padding: 2rem;
-            }
-            
-            .stories-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .clients-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .cta-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.75rem;
-            }
-            
-            .hero-stat-value {
-                font-size: 1.5rem;
-            }
-            
-            .hero-stat-label {
-                font-size: 0.7rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .testimonial-card {
-                padding: 1.5rem;
-            }
-            
-            .testimonial-text {
-                font-size: 1rem;
-            }
-            
-            .clients-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            
-            .client-card {
-                padding: 1.5rem;
-            }
-            
-            .client-logo {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-            
-            .cta-title {
-                font-size: 1.8rem;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.5rem;
-            }
-            
-            .hero-stat-value {
-                font-size: 1.3rem;
-            }
-            
-            .hero-stat-label {
-                font-size: 0.65rem;
-            }
-            
-            .clients-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    </script>
 </head>
 <body>
     <!-- Navbar Container -->
@@ -666,7 +171,7 @@
         </div>
     </section>
     
-    <!-- Clients Grid Section -->
+    <!-- Clients Section -->
     <section class="clients-section">
         <div class="container">
             <div class="section-header">
@@ -677,6 +182,7 @@
                 </p>
             </div>
             
+            <!-- Desktop Grid -->
             <div class="clients-grid">
                 <div class="client-card">
                     <div class="client-logo">
@@ -726,6 +232,69 @@
                     <p class="client-sector">Sector Público</p>
                 </div>
             </div>
+            
+            <!-- Mobile Carousel -->
+            <div class="clients-carousel">
+                <div class="clients-carousel-container">
+                    <div class="client-carousel-card">
+                        <div class="client-logo">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="client-name">Municipalidad de Pimentel</h3>
+                        <p class="client-sector">Sector Público</p>
+                    </div>
+                    
+                    <div class="client-carousel-card">
+                        <div class="client-logo">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 class="client-name">Hnos. Yaipén</h3>
+                        <p class="client-sector">Sector Privado</p>
+                    </div>
+                    
+                    <div class="client-carousel-card">
+                        <div class="client-logo">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="client-name">IOMEM Group</h3>
+                        <p class="client-sector">Consultoría</p>
+                    </div>
+                    
+                    <div class="client-carousel-card">
+                        <div class="client-logo">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3 class="client-name">Gesvias</h3>
+                        <p class="client-sector">Construcción</p>
+                    </div>
+                    
+                    <div class="client-carousel-card">
+                        <div class="client-logo">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3 class="client-name">K&S Ingenieros</h3>
+                        <p class="client-sector">Ingeniería</p>
+                    </div>
+                    
+                    <div class="client-carousel-card">
+                        <div class="client-logo">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3 class="client-name">Municipalidad de Esperanza</h3>
+                        <p class="client-sector">Sector Público</p>
+                    </div>
+                </div>
+                
+                <!-- Carousel Navigation Dots -->
+                <div class="carousel-dots">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -733,8 +302,8 @@
     <section class="success-stories-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" style="color: white;">Casos de Éxito</h2>
-                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+                <h2 class="section-title">Casos de Éxito</h2>
+                <p class="section-subtitle">
                     Historias reales de transformación digital que han generado 
                     resultados tangibles para nuestros clientes.
                 </p>
@@ -823,6 +392,7 @@
     <div id="footer-container"></div>
     
     <!-- Scripts -->
-    <script src="../scripts/components-loader.js?v=1.7"></script>
+    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/clientes-carousel.js"></script>
 </body>
 </html> 
