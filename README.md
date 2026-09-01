@@ -38,17 +38,10 @@ website_DC/
 │   │   ├── hero/           # Imágenes del carousel
 │   │   ├── logo/           # Logos de la empresa
 │   │   └── index/          # Imágenes específicas del index
-├── design-system/
-│   ├── _variables.scss     # Variables globales
-│   ├── _mixins.scss        # Mixins reutilizables
-│   ├── _typography.scss    # Sistema de tipografía
-│   ├── _buttons.scss       # Sistema de botones
-│   ├── global.scss         # Estilos globales
-│   └── components/
-│       └── _navbar.scss    # Estilos del navbar
 ├── styles/
-│   ├── inicio.scss         # Estilos específicos del index
-│   └── inicio.css          # CSS compilado
+│   ├── inicio.css          # Hoja global: se carga en TODAS las páginas.
+│   │                       # Incluye la paleta en variables CSS (:root).
+│   └── <pagina>.css        # Estilos propios de cada página
 ├── scripts/
 │   ├── inicio.js           # JavaScript principal
 │   └── components/
@@ -133,16 +126,16 @@ website_DC/
    http://localhost:8015
    ```
 
-### Compilación SASS
+### Estilos
 
-> ⚠️ **No recompiles sin leer esto.** `styles/inicio.css` diverge de
-> `styles/inicio.scss` en unas 700 líneas porque se editó a mano. Ejecutar
-> `sass` ahora sobrescribiría esos cambios y alteraría el diseño.
-> Hasta reconciliar ambos archivos, edita el `.css` y el `.scss` en paralelo.
+No hay paso de compilación. `styles/inicio.css` se edita directamente y es la
+hoja global del sitio; cada página añade encima su propio `.css` si lo necesita.
 
-```bash
-sass styles/inicio.scss styles/inicio.css
-```
+La capa SASS (`design-system/*.scss` e `inicio.scss`) se eliminó: llevaba unas
+700 líneas desviada del CSS que realmente se publicaba, así que recompilarla
+habría cambiado el diseño. Los colores de marca viven ahora como variables CSS
+en el bloque `:root` del principio de `inicio.css`.
+
 
 ## 📱 Responsive Design
 
@@ -215,17 +208,32 @@ crítica (~1.4 MB con todo el carrusel ya cargado). `DOMContentLoaded` bajó de
 - `sitemap.xml` con las 17 URLs y `robots.txt`.
 - `rel="noopener noreferrer"` en todos los enlaces con `target="_blank"`.
 
+### Animaciones de entrada
+
+Un único sistema, definido en `ScrollReveal` (`scripts/inicio.js`) y en el bloque
+final de `inicio.css`:
+
+- Cada elemento se revela **una sola vez**. El sistema anterior quitaba la clase
+  al salir del viewport, así que las secciones se reiniciaban a mitad de scroll.
+- Se observan los elementos, no las secciones enteras. Antes se exigía que un 30%
+  de una sección de 2000px estuviera visible, lo que hacía parpadear los bloques
+  altos.
+- El escalonado está acotado a 350ms (antes llegaba a 1.6s).
+- Si el JavaScript no llega a ejecutarse, la clase `.js-reveal` nunca se añade
+  a `<html>` y **todo el contenido queda visible**: nada depende de que el
+  navegador soporte `IntersectionObserver`.
+- Los contadores usan `requestAnimationFrame` y arrancan una sola vez.
+
+Para animar algo nuevo basta con añadirlo a `ScrollReveal.GRUPOS`.
+
 ### Deuda técnica pendiente
-- **`styles/inicio.css` y `styles/inicio.scss` están desincronizados** (~700 líneas
-  de diferencia): el CSS fue editado a mano después de la última compilación.
-  Recompilar con `sass` hoy cambiaría el aspecto del sitio. Antes de volver a usar
-  el flujo SASS hay que reconciliar ambos archivos. Mientras tanto, **todo cambio
-  de estilos debe aplicarse en los dos archivos**.
-- El carrusel automático infla la métrica LCP: cada slide que entra se registra
-  como un candidato nuevo. Corregirlo implica replantear las animaciones de entrada.
+
+- El carrusel automático de la portada infla la métrica LCP: cada slide que
+  entra se registra como candidato nuevo. Corregirlo implica replantear las
+  animaciones del hero.
 - `components-loader.js` reescribe rutas de imágenes y enlaces en tiempo de
-  ejecución. Funciona para la raíz y para `pages/`, pero se rompería con un tercer
-  nivel de carpetas.
+  ejecución. Funciona para la raíz y para `pages/`, pero se rompería con un
+  tercer nivel de carpetas.
 
 ## 🔄 Mantenimiento
 
