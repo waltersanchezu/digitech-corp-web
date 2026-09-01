@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "digitech-local",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "/Users/waltersanchezuceda/Documents/digitech-corp-web"],
+      "port": 8080
+    }
+  ]
+}
