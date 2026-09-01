@@ -23,10 +23,6 @@ const EMAILJS_CONFIG = {
 };
 
 // Verificar que las credenciales estén configuradas correctamente
-console.log('🔧 Verificando configuración de EmailJS...');
-console.log('Service ID:', EMAILJS_CONFIG.serviceId);
-console.log('Template ID:', EMAILJS_CONFIG.templateId);
-console.log('Public Key:', EMAILJS_CONFIG.publicKey);
 
 // Validar que las credenciales no sean placeholders
 if (EMAILJS_CONFIG.serviceId === 'service_digitech_contact' || 
@@ -35,7 +31,6 @@ if (EMAILJS_CONFIG.serviceId === 'service_digitech_contact' ||
     console.error('❌ ERROR: Las credenciales de EmailJS no están configuradas correctamente');
     console.error('Por favor, actualiza las credenciales en este archivo con los valores reales de tu cuenta EmailJS');
 } else {
-    console.log('✅ Configuración de EmailJS verificada');
 }
 
 // ========================================

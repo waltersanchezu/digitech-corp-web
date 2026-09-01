@@ -24,7 +24,6 @@ class ClientsCarousel {
             return;
         }
         
-        console.log('Carousel initialized with', this.totalCards, 'cards');
         
         this.setupEventListeners();
         this.updateCarousel(0, false);
@@ -214,6 +213,5 @@ class ClientsCarousel {
 
 // Initialize carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initializing clients carousel...');
     new ClientsCarousel();
 }); 

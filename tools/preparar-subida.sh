@@ -18,7 +18,7 @@ if ! git rev-parse deployed >/dev/null 2>&1; then
 fi
 
 # Rutas que NUNCA se suben al servidor (solo desarrollo)
-EXCLUIR='^(tools/|\.claude/|\.gitignore$|.*\.scss$|.*\.css\.map$)'
+EXCLUIR='^(tools/|\.claude/|\.gitignore$)'
 
 CAMBIOS=$(git diff --name-only --diff-filter=ACMR deployed^{} main | grep -Ev "$EXCLUIR" || true)
 BORRADOS=$(git diff --name-only --diff-filter=D deployed^{} main | grep -Ev "$EXCLUIR" || true)

@@ -38,17 +38,10 @@ website_DC/
 │   │   ├── hero/           # Imágenes del carousel
 │   │   ├── logo/           # Logos de la empresa
 │   │   └── index/          # Imágenes específicas del index
-├── design-system/
-│   ├── _variables.scss     # Variables globales
-│   ├── _mixins.scss        # Mixins reutilizables
-│   ├── _typography.scss    # Sistema de tipografía
-│   ├── _buttons.scss       # Sistema de botones
-│   ├── global.scss         # Estilos globales
-│   └── components/
-│       └── _navbar.scss    # Estilos del navbar
 ├── styles/
-│   ├── inicio.scss         # Estilos específicos del index
-│   └── inicio.css          # CSS compilado
+│   ├── inicio.css          # Hoja global: se carga en TODAS las páginas.
+│   │                       # Incluye la paleta en variables CSS (:root).
+│   └── <pagina>.css        # Estilos propios de cada página
 ├── scripts/
 │   ├── inicio.js           # JavaScript principal
 │   └── components/
@@ -133,17 +126,16 @@ website_DC/
    http://localhost:8015
    ```
 
-### Compilación SASS
+### Estilos
 
-Para compilar los estilos SASS:
+No hay paso de compilación. `styles/inicio.css` se edita directamente y es la
+hoja global del sitio; cada página añade encima su propio `.css` si lo necesita.
 
-```bash
-# Compilación normal
-sass styles/inicio.scss styles/inicio.css
+La capa SASS (`design-system/*.scss` e `inicio.scss`) se eliminó: llevaba unas
+700 líneas desviada del CSS que realmente se publicaba, así que recompilarla
+habría cambiado el diseño. Los colores de marca viven ahora como variables CSS
+en el bloque `:root` del principio de `inicio.css`.
 
-# Compilación comprimida
-sass --style compressed styles/inicio.scss styles/inicio.css
-```
 
 ## 📱 Responsive Design
 
@@ -170,34 +162,76 @@ El sitio está optimizado para:
 ## 🔗 Enlaces Importantes
 
 - **Obra360**: App móvil para sector construcción
-- **Contacto**: +51 989 975 369
-- **Email**: info@digitech-corp.pe
+- **WhatsApp**: +51 989 975 369
+- **Email**: info@digitech-corp.com
 
-## 🏢 Oficinas
+## 🏢 Oficina
 
-- **Principal**: Jade Mz. J Lote 17, Urb. Los Cedros - Trujillo
-- **Chiclayo**: Los Naranjos 362, Urb. Magisterial - Chiclayo
-- **Lima**: Mayta Capac 838, Jesus María - Lima
+Jade Mz. J Lote 17 2do piso, Urb. Los Cedros, Trujillo
 
 ## 🚀 Optimizaciones Implementadas
 
+_Revisión de septiembre 2026._
+
 ### Performance
-- Imágenes optimizadas y responsive
-- CSS y JS minificados
-- Lazy loading de componentes
-- Debounce y throttle en eventos
+- **Imágenes en WebP con respaldo**: cada `.png/.jpg` tiene su gemelo `.webp`.
+  El HTML usa `<picture><source type="image/webp">` y el CSS usa `image-set()`,
+  así que los navegadores antiguos siguen recibiendo el formato original.
+- **Imágenes redimensionadas** a su tamaño real de uso (antes había un logo de
+  8514px de ancho para mostrarse a 155px).
+- **Fondos del carrusel diferidos**: solo el primer slide se descarga en la carga
+  inicial; los otros cinco entran al dispararse `window.load` mediante la clase
+  `.heroes-listos` que añade `HeroCarousel.cargarFondosRestantes()`.
+- **Fuentes sin bloquear el render**: Google Fonts se enlaza desde el `<head>`
+  (antes era un `@import` dentro del CSS, que encadenaba HTML → CSS → CSS → fuente).
+  Font Awesome carga con `media="print" onload` y un respaldo en `<noscript>`.
+- `loading="lazy"`, `decoding="async"` y `width`/`height` en todas las imágenes.
+- Compresión gzip/brotli y cache del navegador configuradas en `.htaccess`.
+
+**Resultado en la portada:** de ~7.3 MB y 46 peticiones a ~0.7 MB en la ruta
+crítica (~1.4 MB con todo el carrusel ya cargado). `DOMContentLoaded` bajó de
+1253 ms a ~210 ms.
 
 ### Accesibilidad
-- ARIA labels implementados
-- Navegación por teclado
-- Contraste de colores optimizado
-- Estructura semántica HTML5
+- Áreas táctiles de 44×44 px como mínimo (menú, indicadores de carrusel,
+  enlaces del footer y de servicios).
+- `:focus-visible` con contorno visible para navegación por teclado.
+- Campos de formulario a 16px en móvil, para que iOS no haga zoom al enfocarlos.
+- Soporte de `prefers-reduced-motion`.
+- `autocomplete` e `inputmode` en el formulario de contacto.
 
 ### SEO
-- Meta tags completos
-- Open Graph tags
-- Twitter Cards
-- Estructura de headings optimizada
+- `<link rel="canonical">`, Open Graph y Twitter Cards en las 17 páginas.
+- Un solo `<h1>` por página (la portada tenía seis, uno por slide).
+- `sitemap.xml` con las 17 URLs y `robots.txt`.
+- `rel="noopener noreferrer"` en todos los enlaces con `target="_blank"`.
+
+### Animaciones de entrada
+
+Un único sistema, definido en `ScrollReveal` (`scripts/inicio.js`) y en el bloque
+final de `inicio.css`:
+
+- Cada elemento se revela **una sola vez**. El sistema anterior quitaba la clase
+  al salir del viewport, así que las secciones se reiniciaban a mitad de scroll.
+- Se observan los elementos, no las secciones enteras. Antes se exigía que un 30%
+  de una sección de 2000px estuviera visible, lo que hacía parpadear los bloques
+  altos.
+- El escalonado está acotado a 350ms (antes llegaba a 1.6s).
+- Si el JavaScript no llega a ejecutarse, la clase `.js-reveal` nunca se añade
+  a `<html>` y **todo el contenido queda visible**: nada depende de que el
+  navegador soporte `IntersectionObserver`.
+- Los contadores usan `requestAnimationFrame` y arrancan una sola vez.
+
+Para animar algo nuevo basta con añadirlo a `ScrollReveal.GRUPOS`.
+
+### Deuda técnica pendiente
+
+- El carrusel automático de la portada infla la métrica LCP: cada slide que
+  entra se registra como candidato nuevo. Corregirlo implica replantear las
+  animaciones del hero.
+- `components-loader.js` reescribe rutas de imágenes y enlaces en tiempo de
+  ejecución. Funciona para la raíz y para `pages/`, pero se rompería con un
+  tercer nivel de carpetas.
 
 ## 🔄 Mantenimiento
 
@@ -234,9 +268,9 @@ Este proyecto es propiedad de DIGITECH CORP. Todos los derechos reservados.
 ## 📞 Contacto
 
 - **Empresa**: DIGITECH CORP
-- **Teléfono**: +51 989 975 369
-- **Email**: info@digitech-corp.pe
-- **Website**: https://digitech-corp.pe
+- **WhatsApp**: +51 989 975 369
+- **Email**: info@digitech-corp.com
+- **Web**: https://digitech-corp.com
 
 ---
 

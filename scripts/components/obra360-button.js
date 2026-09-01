@@ -1,98 +1,61 @@
-// Manejo de íconos del botón obra360
+// Manejo de íconos del botón obra360.
+// El navbar se inyecta de forma asíncrona (components-loader.js), por eso
+// esperamos al evento `componentsLoaded` en lugar de a DOMContentLoaded.
+
 function initObra360Button() {
     const obra360Buttons = document.querySelectorAll('.btn-obra360');
     const navbar = document.getElementById('navbar');
-    
-    if (!navbar) {
-        console.error('Obra360: Navbar not found');
-        return;
+
+    if (!navbar || obra360Buttons.length === 0) {
+        return false;
     }
-    
-    console.log('Obra360 script loaded. Found buttons:', obra360Buttons.length);
-    
-    // Función para actualizar íconos según el estado del navbar
+
+    // Las páginas de /pages necesitan subir un nivel para llegar a /assets
+    const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+    const ICON_WHITE = basePath + 'assets/images/logo/log_white-obra360.png';
+    const ICON_COLOR = basePath + 'assets/images/logo/log_color-obra360.png';
+
+    // Precarga para que el swap en hover no parpadee
+    [ICON_WHITE, ICON_COLOR].forEach(src => { new Image().src = src; });
+
+    const setIcon = (img, src) => {
+        if (img && !img.src.endsWith(src.replace('../', ''))) {
+            img.src = src;
+        }
+    };
+
     function updateObra360Icons() {
         const isScrolled = navbar.classList.contains('scrolled');
-        console.log('Updating Obra360 icons. Navbar scrolled:', isScrolled);
-        
-        obra360Buttons.forEach((button, index) => {
-            const img = button.querySelector('img');
-            if (!img) {
-                console.log(`No img found in button ${index}`);
-                return;
-            }
-            
-            // Estado normal (navbar transparente)
-            if (!isScrolled) {
-                img.src = 'assets/images/logo/log_white-obra360.png';
-                console.log(`Button ${index}: Set white icon for transparent navbar`);
-            } else {
-                // Estado scrolled (navbar blanco)
-                img.src = 'assets/images/logo/log_color-obra360.png';
-                console.log(`Button ${index}: Set blue icon for white navbar`);
-            }
+        obra360Buttons.forEach(button => {
+            setIcon(button.querySelector('img'), isScrolled ? ICON_COLOR : ICON_WHITE);
         });
     }
-    
-    // Función para manejar hover del botón obra360
+
     function handleObra360Hover() {
-        obra360Buttons.forEach((button, index) => {
+        obra360Buttons.forEach(button => {
             const img = button.querySelector('img');
-            if (!img) {
-                console.log(`No img found in button ${index} for hover events`);
-                return;
-            }
-            
-            button.addEventListener('mouseenter', function() {
-                const isScrolled = navbar.classList.contains('scrolled');
-                console.log(`Button ${index}: Obra360 hover enter. Navbar scrolled:`, isScrolled);
-                
-                if (!isScrolled) {
-                    // Hover con navbar transparente - ícono azul
-                    img.src = 'assets/images/logo/log_color-obra360.png';
-                    console.log(`Button ${index}: Set blue icon for hover (transparent navbar)`);
-                } else {
-                    // Hover con navbar blanco - ícono blanco
-                    img.src = 'assets/images/logo/log_white-obra360.png';
-                    console.log(`Button ${index}: Set white icon for hover (white navbar)`);
-                }
+            if (!img) return;
+
+            button.addEventListener('mouseenter', () => {
+                // En hover el ícono se invierte respecto al estado del navbar
+                setIcon(img, navbar.classList.contains('scrolled') ? ICON_WHITE : ICON_COLOR);
             });
-            
-            button.addEventListener('mouseleave', function() {
-                console.log(`Button ${index}: Obra360 hover leave`);
-                updateObra360Icons();
-            });
+            button.addEventListener('mouseleave', updateObra360Icons);
         });
     }
-    
-    // Observar cambios en la clase del navbar
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                updateObra360Icons();
-            }
-        });
-    });
-    
-    // Inicializar
-    updateObra360Icons();
-    handleObra360Hover();
-    
-    // Observar cambios en el navbar
-    observer.observe(navbar, {
+
+    // El navbar cambia de clase al hacer scroll; el observer ya cubre ese caso,
+    // por eso no hace falta un listener de scroll adicional.
+    new MutationObserver(updateObra360Icons).observe(navbar, {
         attributes: true,
         attributeFilter: ['class']
     });
-    
-    // También actualizar cuando se hace scroll
-    window.addEventListener('scroll', function() {
-        updateObra360Icons();
-    });
+
+    updateObra360Icons();
+    handleObra360Hover();
+    return true;
 }
 
-// Inicializar cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initObra360Button);
-} else {
-    initObra360Button();
-} 
+if (!initObra360Button()) {
+    window.addEventListener('componentsLoaded', initObra360Button, { once: true });
+}
