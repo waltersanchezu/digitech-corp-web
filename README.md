@@ -135,14 +135,13 @@ website_DC/
 
 ### Compilación SASS
 
-Para compilar los estilos SASS:
+> ⚠️ **No recompiles sin leer esto.** `styles/inicio.css` diverge de
+> `styles/inicio.scss` en unas 700 líneas porque se editó a mano. Ejecutar
+> `sass` ahora sobrescribiría esos cambios y alteraría el diseño.
+> Hasta reconciliar ambos archivos, edita el `.css` y el `.scss` en paralelo.
 
 ```bash
-# Compilación normal
 sass styles/inicio.scss styles/inicio.css
-
-# Compilación comprimida
-sass --style compressed styles/inicio.scss styles/inicio.css
 ```
 
 ## 📱 Responsive Design
@@ -181,23 +180,52 @@ El sitio está optimizado para:
 
 ## 🚀 Optimizaciones Implementadas
 
+_Revisión de septiembre 2026._
+
 ### Performance
-- Imágenes optimizadas y responsive
-- CSS y JS minificados
-- Lazy loading de componentes
-- Debounce y throttle en eventos
+- **Imágenes en WebP con respaldo**: cada `.png/.jpg` tiene su gemelo `.webp`.
+  El HTML usa `<picture><source type="image/webp">` y el CSS usa `image-set()`,
+  así que los navegadores antiguos siguen recibiendo el formato original.
+- **Imágenes redimensionadas** a su tamaño real de uso (antes había un logo de
+  8514px de ancho para mostrarse a 155px).
+- **Fondos del carrusel diferidos**: solo el primer slide se descarga en la carga
+  inicial; los otros cinco entran al dispararse `window.load` mediante la clase
+  `.heroes-listos` que añade `HeroCarousel.cargarFondosRestantes()`.
+- **Fuentes sin bloquear el render**: Google Fonts se enlaza desde el `<head>`
+  (antes era un `@import` dentro del CSS, que encadenaba HTML → CSS → CSS → fuente).
+  Font Awesome carga con `media="print" onload` y un respaldo en `<noscript>`.
+- `loading="lazy"`, `decoding="async"` y `width`/`height` en todas las imágenes.
+- Compresión gzip/brotli y cache del navegador configuradas en `.htaccess`.
+
+**Resultado en la portada:** de ~7.3 MB y 46 peticiones a ~0.7 MB en la ruta
+crítica (~1.4 MB con todo el carrusel ya cargado). `DOMContentLoaded` bajó de
+1253 ms a ~210 ms.
 
 ### Accesibilidad
-- ARIA labels implementados
-- Navegación por teclado
-- Contraste de colores optimizado
-- Estructura semántica HTML5
+- Áreas táctiles de 44×44 px como mínimo (menú, indicadores de carrusel,
+  enlaces del footer y de servicios).
+- `:focus-visible` con contorno visible para navegación por teclado.
+- Campos de formulario a 16px en móvil, para que iOS no haga zoom al enfocarlos.
+- Soporte de `prefers-reduced-motion`.
+- `autocomplete` e `inputmode` en el formulario de contacto.
 
 ### SEO
-- Meta tags completos
-- Open Graph tags
-- Twitter Cards
-- Estructura de headings optimizada
+- `<link rel="canonical">`, Open Graph y Twitter Cards en las 17 páginas.
+- Un solo `<h1>` por página (la portada tenía seis, uno por slide).
+- `sitemap.xml` con las 17 URLs y `robots.txt`.
+- `rel="noopener noreferrer"` en todos los enlaces con `target="_blank"`.
+
+### Deuda técnica pendiente
+- **`styles/inicio.css` y `styles/inicio.scss` están desincronizados** (~700 líneas
+  de diferencia): el CSS fue editado a mano después de la última compilación.
+  Recompilar con `sass` hoy cambiaría el aspecto del sitio. Antes de volver a usar
+  el flujo SASS hay que reconciliar ambos archivos. Mientras tanto, **todo cambio
+  de estilos debe aplicarse en los dos archivos**.
+- El carrusel automático infla la métrica LCP: cada slide que entra se registra
+  como un candidato nuevo. Corregirlo implica replantear las animaciones de entrada.
+- `components-loader.js` reescribe rutas de imágenes y enlaces en tiempo de
+  ejecución. Funciona para la raíz y para `pages/`, pero se rompería con un tercer
+  nivel de carpetas.
 
 ## 🔄 Mantenimiento
 

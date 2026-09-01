@@ -27,7 +27,6 @@ class HeroCarousel {
     
     init() {
         if (this.slides.length === 0) {
-            console.warn('HeroCarousel: No se encontraron slides');
             return;
         }
         
@@ -35,6 +34,21 @@ class HeroCarousel {
         this.startAutoPlay();
         this.updateIndicators();
         this.triggerSlideAnimations();
+        this.cargarFondosRestantes();
+    }
+
+    /**
+     * Los slides 2 a 6 tienen su fondo detras de la clase .heroes-listos
+     * (ver inicio.scss). Se activa una vez terminada la carga inicial para
+     * que la primera pantalla solo descargue la imagen que se ve.
+     */
+    cargarFondosRestantes() {
+        const activar = () => document.querySelector('.hero-carousel')?.classList.add('heroes-listos');
+        if (document.readyState === 'complete') {
+            activar();
+        } else {
+            window.addEventListener('load', activar, { once: true });
+        }
     }
     
     setupEventListeners() {
@@ -163,7 +177,6 @@ class BackToTop {
     
     init() {
         if (!this.button) {
-            console.warn('BackToTop: No se encontró el botón back-to-top');
             return;
         }
         
@@ -243,17 +256,13 @@ class InnovationAnimations {
                     rootMargin: isMobile ? '-30px' : '-50px' // Menos margen en mobile
                 };
                 
-                console.log(`${name} animations: Configurando observer para`, isMobile ? 'mobile' : 'desktop');
                 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        console.log(`${name} animations: Intersection ratio:`, entry.intersectionRatio);
                         
                         if (entry.isIntersecting) {
-                            console.log(`${name} animations: Activando animaciones`);
                             entry.target.classList.add('animate');
                         } else {
-                            console.log(`${name} animations: Desactivando animaciones`);
                             entry.target.classList.remove('animate');
                         }
                     });
@@ -268,7 +277,6 @@ class InnovationAnimations {
                         const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
                         
                         if (isVisible && !section.classList.contains('animate')) {
-                            console.log(`${name} animations: Fallback mobile - activando animaciones`);
                             section.classList.add('animate');
                         }
                     }, 1000);
@@ -279,7 +287,6 @@ class InnovationAnimations {
     
     init() {
         if (!this.section) {
-            console.warn('InnovationAnimations: No se encontró la sección innovation-section');
             return;
         }
         
@@ -288,7 +295,6 @@ class InnovationAnimations {
         // Reajustar en cambios de orientación (especialmente importante en mobile)
         window.addEventListener('resize', () => {
             const isMobile = window.innerWidth <= 768;
-            console.log('InnovationAnimations: Resize detectado, mobile:', isMobile);
             
             // Si cambió a mobile y las animaciones no se han activado, intentar activarlas
             if (isMobile && !this.hasAnimated) {
@@ -297,7 +303,6 @@ class InnovationAnimations {
                     const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
                     
                     if (isVisible) {
-                        console.log('InnovationAnimations: Activando animaciones después de resize');
                         this.triggerAnimations();
                         this.hasAnimated = true;
                     }
@@ -314,18 +319,14 @@ class InnovationAnimations {
             rootMargin: isMobile ? '-50px' : '-100px' // Menos margen en mobile
         };
         
-        console.log('InnovationAnimations: Configurando observer para', isMobile ? 'mobile' : 'desktop');
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                console.log('InnovationAnimations: Intersection ratio:', entry.intersectionRatio);
                 
                 if (entry.isIntersecting && !this.hasAnimated) {
-                    console.log('InnovationAnimations: Activando animaciones');
                     this.triggerAnimations();
                     this.hasAnimated = true;
                 } else if (!entry.isIntersecting && this.hasAnimated) {
-                    console.log('InnovationAnimations: Reseteando animaciones');
                     this.resetAnimations();
                     this.hasAnimated = false;
                 }
@@ -341,7 +342,6 @@ class InnovationAnimations {
                 const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
                 
                 if (isVisible && !this.hasAnimated) {
-                    console.log('InnovationAnimations: Fallback mobile - activando animaciones');
                     this.triggerAnimations();
                     this.hasAnimated = true;
                 }
@@ -350,7 +350,6 @@ class InnovationAnimations {
     }
     
     triggerAnimations() {
-        console.log('InnovationAnimations: Ejecutando triggerAnimations');
         this.section.classList.add('animate');
         this.startCounters();
         
@@ -359,7 +358,6 @@ class InnovationAnimations {
         if (isMobile) {
             setTimeout(() => {
                 if (!this.section.classList.contains('animate')) {
-                    console.log('InnovationAnimations: Fallback - forzando animaciones en mobile');
                     this.section.classList.add('animate');
                     this.startCounters();
                 }
@@ -419,11 +417,9 @@ class ServicesCarousel {
     
     init() {
         if (!this.carousel || !this.track) {
-            console.log('ServicesCarousel: Carousel no encontrado');
             return;
         }
         
-        console.log('ServicesCarousel: Inicializando carousel');
         this.updateSlidesPerView();
         this.setupEventListeners();
         this.updateControls();
@@ -433,7 +429,6 @@ class ServicesCarousel {
     updateSlidesPerView() {
         const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
         this.slidesPerView = isTablet ? 2 : 1;
-        console.log('ServicesCarousel: Slides por vista:', this.slidesPerView);
     }
     
     setupEventListeners() {
@@ -516,7 +511,6 @@ class ServicesCarousel {
         this.updateControls();
         this.updateIndicators();
         
-        console.log('ServicesCarousel: Slide actual:', this.currentSlide, 'de', this.totalSlides);
     }
     
     updateControls() {
@@ -561,11 +555,9 @@ class SectorsCarousel {
     
     init() {
         if (!this.carousel || !this.track) {
-            console.log('SectorsCarousel: Carousel no encontrado');
             return;
         }
         
-        console.log('SectorsCarousel: Inicializando carousel');
         this.updateSlidesPerView();
         this.setupEventListeners();
         this.updateControls();
@@ -575,7 +567,6 @@ class SectorsCarousel {
     updateSlidesPerView() {
         const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
         this.slidesPerView = isTablet ? 2 : 1;
-        console.log('SectorsCarousel: Slides por vista:', this.slidesPerView);
     }
     
     setupEventListeners() {
@@ -658,7 +649,6 @@ class SectorsCarousel {
         this.updateControls();
         this.updateIndicators();
         
-        console.log('SectorsCarousel: Slide actual:', this.currentSlide, 'de', this.totalSlides);
     }
     
     updateControls() {
@@ -703,11 +693,9 @@ class ClientsCarousel {
     
     init() {
         if (!this.carousel || !this.track) {
-            console.log('ClientsCarousel: Carousel no encontrado');
             return;
         }
         
-        console.log('ClientsCarousel: Inicializando carousel');
         this.updateSlidesPerView();
         this.setupEventListeners();
         this.updateControls();
@@ -726,7 +714,6 @@ class ClientsCarousel {
             this.slidesPerView = 1;
         }
         
-        console.log('ClientsCarousel: Slides por vista:', this.slidesPerView);
     }
     
     setupEventListeners() {
@@ -817,7 +804,6 @@ class ClientsCarousel {
         this.updateControls();
         this.updateIndicators();
         
-        console.log('ClientsCarousel: Slide actual:', this.currentSlide, 'de', this.totalSlides);
     }
     
     updateControls() {
@@ -901,7 +887,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reajustar animaciones en cambios de orientación
         window.addEventListener('resize', () => {
             const isMobile = window.innerWidth <= 768;
-            console.log('Resize detectado, mobile:', isMobile);
             
             // Recrear las animaciones si cambió el tamaño
             InnovationAnimations.addSectionAnimations();
@@ -920,7 +905,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Log de inicialización exitosa
-        console.log('✅ DIGITECH CORP - Sitio web inicializado correctamente');
         
     } catch (error) {
         console.error('❌ Error durante la inicialización:', error);

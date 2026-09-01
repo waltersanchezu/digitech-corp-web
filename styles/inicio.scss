@@ -59,49 +59,66 @@
     // Imágenes específicas para cada slide
     &[data-slide="1"] .slide-background {
       background-image: url('../assets/images/hero/software-medida.jpeg');
+      background-image: image-set(url('../assets/images/hero/software-medida.webp') type("image/webp"), url('../assets/images/hero/software-medida.jpeg') type("image/jpeg"));
       
       @media (max-width: 1023px) {
         background-image: url('../assets/images/hero/m-software-medida.jpeg');
+        background-image: image-set(url('../assets/images/hero/m-software-medida.webp') type("image/webp"), url('../assets/images/hero/m-software-medida.jpeg') type("image/jpeg"));
       }
     }
     
-    &[data-slide="2"] .slide-background {
+    // Fondo diferido: solo se descarga cuando el JS marca el carrusel como listo
+    @at-root .hero-carousel.heroes-listos .carousel-slide[data-slide="2"] .slide-background {
       background-image: url('../assets/images/hero/apps-moviles.jpeg');
+      background-image: image-set(url('../assets/images/hero/apps-moviles.webp') type("image/webp"), url('../assets/images/hero/apps-moviles.jpeg') type("image/jpeg"));
       
       @media (max-width: 1023px) {
         background-image: url('../assets/images/hero/m-apps-moviles.jpeg');
+        background-image: image-set(url('../assets/images/hero/m-apps-moviles.webp') type("image/webp"), url('../assets/images/hero/m-apps-moviles.jpeg') type("image/jpeg"));
       }
     }
     
-    &[data-slide="3"] .slide-background {
+    // Fondo diferido: solo se descarga cuando el JS marca el carrusel como listo
+    @at-root .hero-carousel.heroes-listos .carousel-slide[data-slide="3"] .slide-background {
       background-image: url('../assets/images/hero/gobierno-digital.jpg');
+      background-image: image-set(url('../assets/images/hero/gobierno-digital.webp') type("image/webp"), url('../assets/images/hero/gobierno-digital.jpg') type("image/jpeg"));
       
       @media (max-width: 1023px) {
         background-image: url('../assets/images/hero/m-gobierno-digital.jpg');
+        background-image: image-set(url('../assets/images/hero/m-gobierno-digital.webp') type("image/webp"), url('../assets/images/hero/m-gobierno-digital.jpg') type("image/jpeg"));
       }
     }
     
-    &[data-slide="4"] .slide-background {
+    // Fondo diferido: solo se descarga cuando el JS marca el carrusel como listo
+    @at-root .hero-carousel.heroes-listos .carousel-slide[data-slide="4"] .slide-background {
       background-image: url('../assets/images/hero/bim.jpg');
+      background-image: image-set(url('../assets/images/hero/bim.webp') type("image/webp"), url('../assets/images/hero/bim.jpg') type("image/jpeg"));
       
       @media (max-width: 1023px) {
         background-image: url('../assets/images/hero/m-bim.jpeg');
+        background-image: image-set(url('../assets/images/hero/m-bim.webp') type("image/webp"), url('../assets/images/hero/m-bim.jpeg') type("image/jpeg"));
       }
     }
     
-    &[data-slide="5"] .slide-background {
+    // Fondo diferido: solo se descarga cuando el JS marca el carrusel como listo
+    @at-root .hero-carousel.heroes-listos .carousel-slide[data-slide="5"] .slide-background {
       background-image: url('../assets/images/hero/transformacion-digital.jpeg');
+      background-image: image-set(url('../assets/images/hero/transformacion-digital.webp') type("image/webp"), url('../assets/images/hero/transformacion-digital.jpeg') type("image/jpeg"));
       
       @media (max-width: 1023px) {
         background-image: url('../assets/images/hero/m-transformacion-digital.jpeg');
+        background-image: image-set(url('../assets/images/hero/m-transformacion-digital.webp') type("image/webp"), url('../assets/images/hero/m-transformacion-digital.jpeg') type("image/jpeg"));
       }
     }
     
-    &[data-slide="6"] .slide-background {
+    // Fondo diferido: solo se descarga cuando el JS marca el carrusel como listo
+    @at-root .hero-carousel.heroes-listos .carousel-slide[data-slide="6"] .slide-background {
       background-image: url('../assets/images/hero/consultoria-tecnologica.jpeg');
+      background-image: image-set(url('../assets/images/hero/consultoria-tecnologica.webp') type("image/webp"), url('../assets/images/hero/consultoria-tecnologica.jpeg') type("image/jpeg"));
       
       @media (max-width: 1023px) {
         background-image: url('../assets/images/hero/m-consultoria-tecnologica.jpeg');
+        background-image: image-set(url('../assets/images/hero/m-consultoria-tecnologica.webp') type("image/webp"), url('../assets/images/hero/m-consultoria-tecnologica.jpeg') type("image/jpeg"));
       }
     }
     

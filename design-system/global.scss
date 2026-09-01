@@ -309,3 +309,108 @@ img {
   .desktop-block { display: block; }
   .desktop-flex { display: flex; }
 }
+
+/* ============================================================
+   MEJORAS GLOBALES - accesibilidad, mobile y rendimiento
+   Añadido en la revisión de optimización (2026-09)
+   ============================================================ */
+
+/* <picture> es solo un contenedor de formatos: no debe crear caja
+   propia ni alterar los layouts flex/grid que envuelven a la imagen. */
+picture {
+  display: contents;
+}
+
+/* Nunca desbordar horizontalmente por una imagen */
+img {
+  max-width: 100%;
+}
+
+/* --- Foco visible para navegación por teclado (WCAG 2.4.7) --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #0056B3;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- Áreas táctiles mínimas de 44px (WCAG 2.5.8 / iOS HIG) --- */
+
+/* Botón hamburguesa: era 40x30 */
+.navbar-toggler {
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Indicadores de TODOS los carruseles (hero, servicios, sectores, clientes):
+   el punto conserva su tamaño visual, pero el área pulsable se extiende
+   a 44x44 mediante un pseudo-elemento transparente. */
+.carousel-indicators .indicator {
+  position: relative;
+}
+.carousel-indicators .indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+
+/* Enlaces "Conocer más" de las tarjetas de servicio: eran 22px de alto */
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* Enlaces del footer en movil: eran 20-25px de alto */
+@media (max-width: 1023px) {
+  .footer .footer-links a,
+  .footer .footer-legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* --- iOS: evitar el zoom automático al enfocar un campo --- */
+/* Safari en iOS hace zoom si el input mide menos de 16px. */
+@media (max-width: 1023px) {
+  input,
+  select,
+  textarea,
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 16px;
+  }
+}
+
+/* --- Altura real del viewport en móvil --- */
+/* 100vh no descuenta la barra de direcciones de Safari/Chrome iOS;
+   dvh sí. Se deja 100vh antes como respaldo. */
+@supports (height: 100dvh) {
+  .hero-carousel {
+    height: 100dvh;
+  }
+}
+
+/* --- Respetar "reducir movimiento" del sistema (WCAG 2.3.3) --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

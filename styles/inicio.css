@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Be+Vietnam+Pro:wght@200;300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap");
 body {
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 1rem;
@@ -346,7 +345,7 @@ ol {
       color: #0075C5; }
       .navbar.scrolled .btn-obra360 .obra360-icon {
         display: block;
-        content: url("../../assets/images/logo/log_color-obra360.png"); }
+        content: url("../assets/images/logo/log_color-obra360.png"); }
       .navbar.scrolled .btn-obra360 .obra360-text {
         display: block;
         font-family: 'Comfortaa', cursive;
@@ -358,7 +357,7 @@ ol {
           color: #FFFFFF; }
         .navbar.scrolled .btn-obra360:hover .obra360-icon {
           display: block;
-          content: url("../../assets/images/logo/log_white-obra360.png"); }
+          content: url("../assets/images/logo/log_white-obra360.png"); }
 
 .navbar-container {
   width: 100%;
@@ -515,7 +514,7 @@ ol {
     text-decoration: none; }
     .btn-obra360:hover .obra360-icon {
       display: block;
-      content: url("../../assets/images/logo/log_color-obra360.png"); }
+      content: url("../assets/images/logo/log_color-obra360.png"); }
 
 .navbar-toggler {
   display: none;
@@ -1240,7 +1239,7 @@ ol {
     background: #FFFFFF;
     color: #0075C5; }
     .btn-obra360:hover img {
-      content: url("../../assets/images/logo/log_color-obra360.png"); }
+      content: url("../assets/images/logo/log_color-obra360.png"); }
     .btn-obra360:hover .logo-text {
       color: #0075C5; }
 
@@ -1670,35 +1669,47 @@ img {
       z-index: 1;
       animation: zoomIn 1.2s ease-out; }
     .hero-carousel .carousel-slide[data-slide="1"] .slide-background {
-      background-image: url("../assets/images/hero/software-medida.jpeg"); }
+      background-image: url("../assets/images/hero/software-medida.jpeg");
+      background-image: image-set(url("../assets/images/hero/software-medida.webp") type("image/webp"), url("../assets/images/hero/software-medida.jpeg") type("image/jpeg")); }
       @media (max-width: 1023px) {
         .hero-carousel .carousel-slide[data-slide="1"] .slide-background {
-          background-image: url("../assets/images/hero/m-software-medida.jpeg"); } }
-    .hero-carousel .carousel-slide[data-slide="2"] .slide-background {
-      background-image: url("../assets/images/hero/apps-moviles.jpeg"); }
+          background-image: url("../assets/images/hero/m-software-medida.jpeg");
+          background-image: image-set(url("../assets/images/hero/m-software-medida.webp") type("image/webp"), url("../assets/images/hero/m-software-medida.jpeg") type("image/jpeg")); } }
+    .hero-carousel.heroes-listos .carousel-slide[data-slide="2"] .slide-background {
+      background-image: url("../assets/images/hero/apps-moviles.jpeg");
+      background-image: image-set(url("../assets/images/hero/apps-moviles.webp") type("image/webp"), url("../assets/images/hero/apps-moviles.jpeg") type("image/jpeg")); }
       @media (max-width: 1023px) {
-        .hero-carousel .carousel-slide[data-slide="2"] .slide-background {
-          background-image: url("../assets/images/hero/m-apps-moviles.jpeg"); } }
-    .hero-carousel .carousel-slide[data-slide="3"] .slide-background {
-      background-image: url("../assets/images/hero/gobierno-digital.jpg"); }
+        .hero-carousel.heroes-listos .carousel-slide[data-slide="2"] .slide-background {
+          background-image: url("../assets/images/hero/m-apps-moviles.jpeg");
+          background-image: image-set(url("../assets/images/hero/m-apps-moviles.webp") type("image/webp"), url("../assets/images/hero/m-apps-moviles.jpeg") type("image/jpeg")); } }
+    .hero-carousel.heroes-listos .carousel-slide[data-slide="3"] .slide-background {
+      background-image: url("../assets/images/hero/gobierno-digital.jpg");
+      background-image: image-set(url("../assets/images/hero/gobierno-digital.webp") type("image/webp"), url("../assets/images/hero/gobierno-digital.jpg") type("image/jpeg")); }
       @media (max-width: 1023px) {
-        .hero-carousel .carousel-slide[data-slide="3"] .slide-background {
-          background-image: url("../assets/images/hero/m-gobierno-digital.jpg"); } }
-    .hero-carousel .carousel-slide[data-slide="4"] .slide-background {
-      background-image: url("../assets/images/hero/bim.jpg"); }
+        .hero-carousel.heroes-listos .carousel-slide[data-slide="3"] .slide-background {
+          background-image: url("../assets/images/hero/m-gobierno-digital.jpg");
+          background-image: image-set(url("../assets/images/hero/m-gobierno-digital.webp") type("image/webp"), url("../assets/images/hero/m-gobierno-digital.jpg") type("image/jpeg")); } }
+    .hero-carousel.heroes-listos .carousel-slide[data-slide="4"] .slide-background {
+      background-image: url("../assets/images/hero/bim.jpg");
+      background-image: image-set(url("../assets/images/hero/bim.webp") type("image/webp"), url("../assets/images/hero/bim.jpg") type("image/jpeg")); }
       @media (max-width: 1023px) {
-        .hero-carousel .carousel-slide[data-slide="4"] .slide-background {
-          background-image: url("../assets/images/hero/m-bim.jpeg"); } }
-    .hero-carousel .carousel-slide[data-slide="5"] .slide-background {
-      background-image: url("../assets/images/hero/transformacion-digital.jpeg"); }
+        .hero-carousel.heroes-listos .carousel-slide[data-slide="4"] .slide-background {
+          background-image: url("../assets/images/hero/m-bim.jpeg");
+          background-image: image-set(url("../assets/images/hero/m-bim.webp") type("image/webp"), url("../assets/images/hero/m-bim.jpeg") type("image/jpeg")); } }
+    .hero-carousel.heroes-listos .carousel-slide[data-slide="5"] .slide-background {
+      background-image: url("../assets/images/hero/transformacion-digital.jpeg");
+      background-image: image-set(url("../assets/images/hero/transformacion-digital.webp") type("image/webp"), url("../assets/images/hero/transformacion-digital.jpeg") type("image/jpeg")); }
       @media (max-width: 1023px) {
-        .hero-carousel .carousel-slide[data-slide="5"] .slide-background {
-          background-image: url("../assets/images/hero/m-transformacion-digital.jpeg"); } }
-    .hero-carousel .carousel-slide[data-slide="6"] .slide-background {
-      background-image: url("../assets/images/hero/consultoria-tecnologica.jpeg"); }
+        .hero-carousel.heroes-listos .carousel-slide[data-slide="5"] .slide-background {
+          background-image: url("../assets/images/hero/m-transformacion-digital.jpeg");
+          background-image: image-set(url("../assets/images/hero/m-transformacion-digital.webp") type("image/webp"), url("../assets/images/hero/m-transformacion-digital.jpeg") type("image/jpeg")); } }
+    .hero-carousel.heroes-listos .carousel-slide[data-slide="6"] .slide-background {
+      background-image: url("../assets/images/hero/consultoria-tecnologica.jpeg");
+      background-image: image-set(url("../assets/images/hero/consultoria-tecnologica.webp") type("image/webp"), url("../assets/images/hero/consultoria-tecnologica.jpeg") type("image/jpeg")); }
       @media (max-width: 1023px) {
-        .hero-carousel .carousel-slide[data-slide="6"] .slide-background {
-          background-image: url("../assets/images/hero/m-consultoria-tecnologica.jpeg"); } }
+        .hero-carousel.heroes-listos .carousel-slide[data-slide="6"] .slide-background {
+          background-image: url("../assets/images/hero/m-consultoria-tecnologica.jpeg");
+          background-image: image-set(url("../assets/images/hero/m-consultoria-tecnologica.webp") type("image/webp"), url("../assets/images/hero/m-consultoria-tecnologica.jpeg") type("image/jpeg")); } }
     .hero-carousel .carousel-slide .slide-overlay {
       position: absolute;
       top: 0;
@@ -3335,3 +3346,108 @@ img {
     animation-delay: 1.3s; }
 
 /*# sourceMappingURL=inicio.css.map */
+
+/* ============================================================
+   MEJORAS GLOBALES - accesibilidad, mobile y rendimiento
+   Añadido en la revisión de optimización (2026-09)
+   ============================================================ */
+
+/* <picture> es solo un contenedor de formatos: no debe crear caja
+   propia ni alterar los layouts flex/grid que envuelven a la imagen. */
+picture {
+  display: contents;
+}
+
+/* Nunca desbordar horizontalmente por una imagen */
+img {
+  max-width: 100%;
+}
+
+/* --- Foco visible para navegación por teclado (WCAG 2.4.7) --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #0056B3;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- Áreas táctiles mínimas de 44px (WCAG 2.5.8 / iOS HIG) --- */
+
+/* Botón hamburguesa: era 40x30 */
+.navbar-toggler {
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Indicadores de TODOS los carruseles (hero, servicios, sectores, clientes):
+   el punto conserva su tamaño visual, pero el área pulsable se extiende
+   a 44x44 mediante un pseudo-elemento transparente. */
+.carousel-indicators .indicator {
+  position: relative;
+}
+.carousel-indicators .indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+
+/* Enlaces "Conocer más" de las tarjetas de servicio: eran 22px de alto */
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* Enlaces del footer en movil: eran 20-25px de alto */
+@media (max-width: 1023px) {
+  .footer .footer-links a,
+  .footer .footer-legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* --- iOS: evitar el zoom automático al enfocar un campo --- */
+/* Safari en iOS hace zoom si el input mide menos de 16px. */
+@media (max-width: 1023px) {
+  input,
+  select,
+  textarea,
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 16px;
+  }
+}
+
+/* --- Altura real del viewport en móvil --- */
+/* 100vh no descuenta la barra de direcciones de Safari/Chrome iOS;
+   dvh sí. Se deja 100vh antes como respaldo. */
+@supports (height: 100dvh) {
+  .hero-carousel {
+    height: 100dvh;
+  }
+}
+
+/* --- Respetar "reducir movimiento" del sistema (WCAG 2.3.3) --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

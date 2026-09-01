@@ -4,14 +4,12 @@
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 DOM cargado, inicializando formulario de contacto...');
     
     // Inicializar EmailJS primero
     if (typeof emailjs !== 'undefined') {
         // Usar la configuración global de emailjs-config.js
         if (window.EMAILJS_CONFIG) {
             emailjs.init(window.EMAILJS_CONFIG.publicKey);
-            console.log('✅ EmailJS inicializado con configuración global');
         } else {
             console.error('❌ Configuración de EmailJS no encontrada');
             return;
@@ -24,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Buscar y configurar el formulario
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        console.log('✅ Formulario encontrado, configurando...');
         setupContactForm(contactForm);
     } else {
         console.error('❌ Formulario no encontrado');
@@ -35,12 +32,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupContactForm(form) {
-    console.log('🔧 Configurando formulario...');
     
     // Agregar event listener para el envío
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        console.log('📤 Formulario enviado, procesando...');
         
         // Obtener datos del formulario
         const formData = new FormData(form);
@@ -55,7 +50,6 @@ function setupContactForm(form) {
             privacy: formData.get('privacy') === 'on'
         };
         
-        console.log('📋 Datos del formulario:', data);
         
         // Validar datos requeridos
         if (!data.fullName) {
@@ -103,7 +97,6 @@ function setupContactForm(form) {
                 date: new Date().toLocaleString('es-PE')
             };
             
-            console.log('📧 Enviando email con datos:', templateParams);
             
             // Verificar que EmailJS esté configurado
             if (!window.EMAILJS_CONFIG) {
@@ -118,7 +111,6 @@ function setupContactForm(form) {
             );
             
             if (response.status === 200) {
-                console.log('✅ Email enviado exitosamente');
                 showNotification('¡Gracias por tu consulta! Te contactaremos pronto.', 'success');
                 form.reset();
             } else {
@@ -147,7 +139,6 @@ function setupContactForm(form) {
         }
     });
     
-    console.log('✅ Formulario configurado correctamente');
 }
 
 function getServiceName(serviceKey) {

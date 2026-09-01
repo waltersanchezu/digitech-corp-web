@@ -10,16 +10,39 @@
     <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png">
     
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Estilos -->
-    <link rel="stylesheet" href="../styles/inicio.css">
-    <link rel="stylesheet" href="../styles/contacto.css">
+    <link rel="canonical" href="https://digitech-corp.pe/pages/contacto.html">
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DIGITECH CORP">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:url" content="https://digitech-corp.pe/pages/contacto.html">
+    <meta property="og:title" content="Contacto - DIGITECH CORP">
+    <meta property="og:description" content="Contáctanos para iniciar tu transformación digital. Consulta gratuita y sin compromiso.">
+    <meta property="og:image" content="https://digitech-corp.pe/assets/images/logo/logo-color.png">
+    <meta property="og:image:width" content="480">
+    <meta property="og:image:height" content="124">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://digitech-corp.pe/pages/contacto.html">
+    <meta name="twitter:title" content="Contacto - DIGITECH CORP">
+    <meta name="twitter:description" content="Contáctanos para iniciar tu transformación digital. Consulta gratuita y sin compromiso.">
+    <meta name="twitter:image" content="https://digitech-corp.pe/assets/images/logo/logo-color.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap">
+    <!-- Font Awesome sin bloquear el render: se aplica al terminar de cargar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="../styles/inicio.css?v=2.0">
+    <link rel="stylesheet" href="../styles/contacto.css?v=2.0">
     <!-- JSON-LD para contacto.html -->
 <script type="application/ld+json">
     {
@@ -135,7 +158,7 @@
                                 <i class="fas fa-user"></i>
                                 Nombre Completo *
                             </label>
-                            <input type="text" id="fullName" name="fullName" class="form-input" required>
+                            <input type="text" id="fullName" name="fullName" class="form-input" required autocomplete="name">
                         </div>
                         
                         <div class="form-group">
@@ -143,7 +166,7 @@
                                 <i class="fas fa-building"></i>
                                 Razón Social *
                             </label>
-                            <input type="text" id="company" name="company" class="form-input" required>
+                            <input type="text" id="company" name="company" class="form-input" required autocomplete="organization">
                         </div>
                         
                         <div class="form-group">
@@ -151,7 +174,7 @@
                                 <i class="fas fa-id-card"></i>
                                 RUC (11 dígitos)
                             </label>
-                            <input type="text" id="ruc" name="ruc" class="form-input" maxlength="11" placeholder="12345678901">
+                            <input type="text" id="ruc" name="ruc" class="form-input" maxlength="11" placeholder="12345678901" autocomplete="off" inputmode="numeric" pattern="[0-9]{11}">
                         </div>
                     </div>
                     
@@ -161,7 +184,7 @@
                                 <i class="fas fa-envelope"></i>
                                 Correo Electrónico *
                             </label>
-                            <input type="email" id="email" name="email" class="form-input" required>
+                            <input type="email" id="email" name="email" class="form-input" required autocomplete="email" inputmode="email">
                         </div>
                         
                         <div class="form-group">
@@ -169,7 +192,7 @@
                                 <i class="fas fa-phone"></i>
                                 Número Celular *
                             </label>
-                            <input type="tel" id="phone" name="phone" class="form-input" required>
+                            <input type="tel" id="phone" name="phone" class="form-input" required autocomplete="tel" inputmode="tel">
                         </div>
                     </div>
                     
@@ -203,7 +226,7 @@
                         <label class="checkbox-label">
                             <input type="checkbox" id="privacy" name="privacy" required>
                             <span class="checkmark"></span>
-                            Acepto la <a href="privacidad.html" target="_blank">Política de Privacidad</a> y autorizo el tratamiento de mis datos personales *
+                            Acepto la <a href="privacidad.html" target="_blank" rel="noopener noreferrer">Política de Privacidad</a> y autorizo el tratamiento de mis datos personales *
                         </label>
                     </div>
                     
@@ -256,10 +279,9 @@
     <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script src="../scripts/components-loader.js"></script>
+    <script src="../scripts/components-loader.js?v=2.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="../scripts/emailjs-config.js"></script>
-    <script src="../scripts/contacto.js"></script>
-    <script src="../scripts/test-emailjs.js"></script>
+    <script src="../scripts/emailjs-config.js?v=2.0"></script>
+    <script src="../scripts/contacto.js?v=2.0"></script>
 </body>
 </html> 

@@ -1,7 +1,6 @@
 // ===== Obra360 Page JavaScript =====
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Obra360 page loaded');
     
     // Inicializar funcionalidades específicas de la página
     initializeObra360Page();
@@ -65,7 +64,6 @@ function initializeEntranceAnimations() {
 
 function initializeScreenshotsCarousel() {
     // Si se implementa un carousel de screenshots en el futuro
-    console.log('📱 Screenshots carousel ready for implementation');
 }
 
 function initializeFeatureCards() {
@@ -221,4 +219,3 @@ document.addEventListener('DOMContentLoaded', function() {
     handleResponsiveDesign();
 });
 
-console.log('✅ Obra360 JavaScript initialized'); 

@@ -11,8 +11,6 @@ class ComponentLoader {
         this.mobileClose = null;
         this.dropdownToggles = [];
         this.mobileDropdownToggles = [];
-        console.log('🚀 ComponentLoader inicializado v1.9');
-        console.log('📍 Base path:', this.basePath);
     }
 
     /**
@@ -22,25 +20,20 @@ class ComponentLoader {
         const currentPath = window.location.pathname;
         const pathSegments = currentPath.split('/').filter(segment => segment !== '');
         
-        console.log('📍 Current path:', currentPath);
-        console.log('📍 Path segments:', pathSegments);
         
         // Si estamos en la raíz (index.html o /)
         if (pathSegments.length === 0 || pathSegments[0] === 'index.html') {
-            console.log('📍 At root, returning empty string');
             return '';
         }
         
         // Si estamos en la carpeta pages (pages/contacto.html, etc.)
         if (pathSegments.includes('pages')) {
-            console.log('📍 In pages folder, returning ../');
             return '../';
         }
         
         // Si estamos en otras subcarpetas
         const depth = pathSegments.length - 1;
         const result = '../'.repeat(depth);
-        console.log('📍 In other subfolder, returning:', result);
         return result;
     }
 
@@ -60,7 +53,6 @@ class ComponentLoader {
                 target.innerHTML = html;
                 this.adjustRelativePaths(target);
                 target.setAttribute('data-component-loaded', 'true');
-                console.log(`✅ Componente ${componentName} cargado exitosamente`);
                 return true;
             } else {
                 console.error(`❌ Selector ${targetSelector} no encontrado`);
@@ -76,8 +68,6 @@ class ComponentLoader {
      * Ajusta las rutas relativas en el componente cargado
      */
     adjustRelativePaths(container) {
-        console.log('🔧 Ajustando rutas relativas...');
-        console.log('📍 Base path:', this.basePath);
         
         // Ajustar todas las imágenes
         const images = container.querySelectorAll('img[src]');
@@ -108,7 +98,6 @@ class ComponentLoader {
                 }
                 
                 img.setAttribute('src', newSrc);
-                console.log(`🖼️ Imagen: ${src} → ${newSrc}`);
             }
         });
 
@@ -133,7 +122,6 @@ class ComponentLoader {
                 }
                 
                 link.setAttribute('href', newHref);
-                console.log(`🔗 Enlace: ${href} → ${newHref}`);
             }
         });
         
@@ -178,7 +166,6 @@ class ComponentLoader {
                         if (altSrc !== attemptedSrc) {
                             setTimeout(() => {
                                 tryLoadImage(altSrc).then(() => {
-                                    console.log(`✅ Imagen cargada con ruta alternativa: ${altSrc}`);
                                     img.src = altSrc;
                                 }).catch(() => {
                                     if (index === alternatives.length - 1) {
@@ -215,11 +202,9 @@ class ComponentLoader {
     async loadFooter() { return await this.loadComponent('footer', '#footer-container'); }
 
     async loadAllComponents() {
-        console.log('🔄 Cargando componentes...');
         const navbarLoaded = await this.loadNavbar();
         const footerLoaded = await this.loadFooter();
         if (navbarLoaded && footerLoaded) {
-            console.log('✅ Todos los componentes cargados exitosamente');
             this.initializeNavbar();
             window.dispatchEvent(new CustomEvent('componentsLoaded'));
         } else {
@@ -246,7 +231,6 @@ class ComponentLoader {
         this.initializeKeyboardSupport();
         this.initializeClickOutside();
         
-        console.log('🎯 Navbar inicializado correctamente');
     }
 
     /**
@@ -296,7 +280,6 @@ class ComponentLoader {
         this.navbarToggler.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
         
-        console.log('📱 Menú móvil abierto');
     }
 
     /**
@@ -313,7 +296,6 @@ class ComponentLoader {
         // Cerrar todos los dropdowns móviles
         this.closeAllMobileDropdowns();
         
-        console.log('📱 Menú móvil cerrado');
     }
 
     /**
@@ -421,7 +403,6 @@ class ComponentLoader {
             if (icon) {
                 icon.style.transform = 'rotate(0deg)';
             }
-            console.log('📱 Dropdown móvil cerrado');
         } else {
             // Abrir dropdown
             toggle.setAttribute('aria-expanded', 'true');
@@ -430,7 +411,6 @@ class ComponentLoader {
             if (icon) {
                 icon.style.transform = 'rotate(180deg)';
             }
-            console.log('📱 Dropdown móvil abierto');
         }
     }
 
