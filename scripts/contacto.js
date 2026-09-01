@@ -86,7 +86,7 @@ function setupContactForm(form) {
         try {
             // Preparar datos para EmailJS
             const templateParams = {
-                to_email: 'info@digitech-corp.pe',
+                to_email: 'info@digitech-corp.com',
                 from_name: data.fullName,
                 from_email: data.email,
                 company: data.company,

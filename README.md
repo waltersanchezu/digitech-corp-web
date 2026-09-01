@@ -162,14 +162,12 @@ El sitio está optimizado para:
 ## 🔗 Enlaces Importantes
 
 - **Obra360**: App móvil para sector construcción
-- **Contacto**: +51 989 975 369
-- **Email**: info@digitech-corp.pe
+- **WhatsApp**: +51 989 975 369
+- **Email**: info@digitech-corp.com
 
-## 🏢 Oficinas
+## 🏢 Oficina
 
-- **Principal**: Jade Mz. J Lote 17, Urb. Los Cedros - Trujillo
-- **Chiclayo**: Los Naranjos 362, Urb. Magisterial - Chiclayo
-- **Lima**: Mayta Capac 838, Jesus María - Lima
+Jade Mz. J Lote 17 2do piso, Urb. Los Cedros, Trujillo
 
 ## 🚀 Optimizaciones Implementadas
 
@@ -270,9 +268,9 @@ Este proyecto es propiedad de DIGITECH CORP. Todos los derechos reservados.
 ## 📞 Contacto
 
 - **Empresa**: DIGITECH CORP
-- **Teléfono**: +51 989 975 369
-- **Email**: info@digitech-corp.pe
-- **Website**: https://digitech-corp.pe
+- **WhatsApp**: +51 989 975 369
+- **Email**: info@digitech-corp.com
+- **Web**: https://digitech-corp.com
 
 ---
 
