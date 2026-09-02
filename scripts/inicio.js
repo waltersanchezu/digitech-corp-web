@@ -27,7 +27,6 @@ class HeroCarousel {
     
     init() {
         if (this.slides.length === 0) {
-            console.warn('HeroCarousel: No se encontraron slides');
             return;
         }
         
@@ -35,6 +34,21 @@ class HeroCarousel {
         this.startAutoPlay();
         this.updateIndicators();
         this.triggerSlideAnimations();
+        this.cargarFondosRestantes();
+    }
+
+    /**
+     * Los slides 2 a 6 tienen su fondo detras de la clase .heroes-listos
+     * (ver inicio.css). Se activa una vez terminada la carga inicial para
+     * que la primera pantalla solo descargue la imagen que se ve.
+     */
+    cargarFondosRestantes() {
+        const activar = () => document.querySelector('.hero-carousel')?.classList.add('heroes-listos');
+        if (document.readyState === 'complete') {
+            activar();
+        } else {
+            window.addEventListener('load', activar, { once: true });
+        }
     }
     
     setupEventListeners() {
@@ -163,7 +177,6 @@ class BackToTop {
     
     init() {
         if (!this.button) {
-            console.warn('BackToTop: No se encontró el botón back-to-top');
             return;
         }
         
@@ -210,189 +223,228 @@ class BackToTop {
 }
 
 // ========================================
-// CLASE INNOVATION ANIMATIONS
+// REVELADO AL SCROLL Y CONTADORES
 // ========================================
 
-class InnovationAnimations {
+class ScrollReveal {
+    /**
+     * Qué se anima y cómo. Cada grupo se resuelve dentro de su sección y
+     * recibe un escalonado propio, así el orden de aparición sigue la
+     * lectura natural en lugar de depender de nth-child en el CSS.
+     *
+     *   efecto : dirección de entrada (up | left | right | zoom)
+     *   paso   : ms entre elementos del mismo grupo
+     *   tope   : nº de elementos tras el cual el retardo deja de crecer
+     */
+    static GRUPOS = [
+        { seccion: '.innovation-section', grupos: [
+            { sel: '.innovation-title, .innovation-description', efecto: 'left' },
+            { sel: '.innovation-stats .stat-item', efecto: 'up', paso: 80 },
+            { sel: '.innovation-visual', efecto: 'right' }
+        ]},
+        { seccion: '.obra360-section', grupos: [
+            { sel: '.obra360-logo, .obra360-title, .obra360-subtitle', efecto: 'left', paso: 80 },
+            { sel: '.obra360-benefits h3, .benefit-item', efecto: 'up', paso: 70 },
+            { sel: '.obra360-results h3, .result-item', efecto: 'up', paso: 70 },
+            { sel: '.obra360-actions', efecto: 'up' },
+            { sel: '.obra360-visual', efecto: 'right' }
+        ]},
+        { seccion: '.services-section', grupos: [
+            { sel: '.services-title, .services-subtitle', efecto: 'left', paso: 80 },
+            { sel: '.service-card', efecto: 'zoom', paso: 70 }
+        ]},
+        { seccion: '.sectors-section', grupos: [
+            { sel: '.sectors-title, .sectors-subtitle', efecto: 'left', paso: 80 },
+            { sel: '.sector-card', efecto: 'zoom', paso: 70 }
+        ]},
+        { seccion: '.clients-section', grupos: [
+            { sel: '.clients-title, .clients-subtitle', efecto: 'left', paso: 80 },
+            { sel: '.client-logo', efecto: 'zoom', paso: 60 }
+        ]},
+        { seccion: '.cta-section', grupos: [
+            { sel: '.cta-title, .cta-description', efecto: 'up', paso: 80 },
+            { sel: '.benefit-item', efecto: 'up', paso: 70 },
+            { sel: '.cta-button, .cta-note', efecto: 'up', paso: 80 }
+        ]}
+    ];
+
     constructor() {
-        this.section = document.querySelector('.innovation-section');
-        this.stats = document.querySelectorAll('.stat-number');
-        this.hasAnimated = false;
-        
+        this.observer = null;
+        this.pendientes = [];
+        this.chequeoEnCola = false;
         this.init();
     }
-    
-    // Método para agregar animaciones a otras secciones
-    static addSectionAnimations() {
-        // Configuración para secciones con animaciones
-        const sections = [
-            { selector: '.obra360-section', name: 'Obra360' },
-            { selector: '.services-section', name: 'Services' },
-            { selector: '.sectors-section', name: 'Sectors' },
-            { selector: '.clients-section', name: 'Clients' },
-            { selector: '.cta-section', name: 'CTA' }
-        ];
-        
-        sections.forEach(({ selector, name }) => {
-            const section = document.querySelector(selector);
-            if (section) {
-                // Configuración más sensible para mobile
-                const isMobile = window.innerWidth <= 768;
-                const options = {
-                    threshold: isMobile ? 0.1 : 0.3, // Más sensible en mobile
-                    rootMargin: isMobile ? '-30px' : '-50px' // Menos margen en mobile
-                };
-                
-                console.log(`${name} animations: Configurando observer para`, isMobile ? 'mobile' : 'desktop');
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        console.log(`${name} animations: Intersection ratio:`, entry.intersectionRatio);
-                        
-                        if (entry.isIntersecting) {
-                            console.log(`${name} animations: Activando animaciones`);
-                            entry.target.classList.add('animate');
-                        } else {
-                            console.log(`${name} animations: Desactivando animaciones`);
-                            entry.target.classList.remove('animate');
-                        }
+
+    init() {
+        const elementos = this.marcarElementos();
+        if (elementos.length === 0) return;
+
+        // Solo a partir de aquí el CSS puede ocultar: ya hay un mecanismo
+        // capaz de revelar. Si algo falla antes, el contenido queda visible.
+        document.documentElement.classList.add('js-reveal');
+        this.pendientes = elementos;
+
+        // Vía principal: IntersectionObserver.
+        if ('IntersectionObserver' in window) {
+            this.observer = new IntersectionObserver(
+                entradas => {
+                    entradas.forEach(entrada => {
+                        if (entrada.isIntersecting) this.revelar(entrada.target);
                     });
-                }, options);
-                
-                observer.observe(section);
-                
-                // Fallback para mobile: activar animaciones si la sección está visible al cargar
-                if (isMobile) {
-                    setTimeout(() => {
-                        const rect = section.getBoundingClientRect();
-                        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                        
-                        if (isVisible && !section.classList.contains('animate')) {
-                            console.log(`${name} animations: Fallback mobile - activando animaciones`);
-                            section.classList.add('animate');
-                        }
-                    }, 1000);
+                },
+                {
+                    // Se dispara cuando el elemento asoma un 12% desde abajo,
+                    // no cuando la sección ocupa un porcentaje del viewport:
+                    // eso era lo que hacía parpadear las secciones altas.
+                    threshold: 0,
+                    rootMargin: '0px 0px -12% 0px'
                 }
-            }
+            );
+            elementos.forEach(el => this.observer.observe(el));
+        }
+
+        // Red de seguridad: si el observer no llega a disparar (navegador raro,
+        // pestaña en segundo plano, política de ahorro de energía), el scroll
+        // resuelve la visibilidad a mano. Se apaga solo al terminar.
+        this.onScroll = () => this.programarChequeo();
+        window.addEventListener('scroll', this.onScroll, { passive: true });
+        window.addEventListener('resize', this.onScroll, { passive: true });
+
+        this.chequear();
+
+        // Al terminar de cargar las imágenes el layout cambia de alto, así que
+        // se repasa: puede haber quedado algo visible que antes no lo estaba.
+        if (document.readyState !== 'complete') {
+            window.addEventListener('load', () => this.chequear(), { once: true });
+        }
+    }
+
+    /** Etiqueta los elementos con data-reveal y su retardo escalonado. */
+    marcarElementos() {
+        const marcados = [];
+        ScrollReveal.GRUPOS.forEach(({ seccion, grupos }) => {
+            const contenedor = document.querySelector(seccion);
+            if (!contenedor) return;
+
+            grupos.forEach(({ sel, efecto, paso = 0, tope = 5 }) => {
+                contenedor.querySelectorAll(sel).forEach((el, i) => {
+                    if (el.hasAttribute('data-reveal')) return;
+                    el.setAttribute('data-reveal', efecto);
+                    if (paso) {
+                        el.style.setProperty('--reveal-delay', `${Math.min(i, tope) * paso}ms`);
+                    }
+                    marcados.push(el);
+                });
+            });
+        });
+        return marcados;
+    }
+
+    programarChequeo() {
+        if (this.chequeoEnCola) return;
+        this.chequeoEnCola = true;
+        requestAnimationFrame(() => {
+            this.chequeoEnCola = false;
+            this.chequear();
         });
     }
-    
+
+    /** Revela lo que ya asoma en pantalla. */
+    chequear() {
+        const limite = window.innerHeight * 0.88;
+        this.pendientes
+            .filter(el => {
+                const r = el.getBoundingClientRect();
+                return r.top < limite && r.bottom > 0;
+            })
+            .forEach(el => this.revelar(el));
+    }
+
+    revelar(el) {
+        if (el.classList.contains('is-visible')) return;
+        el.classList.add('is-visible');
+        // Una vez revelado no se vuelve a tocar: nada lo puede ocultar de nuevo.
+        if (this.observer) this.observer.unobserve(el);
+        this.pendientes = this.pendientes.filter(x => x !== el);
+        if (this.pendientes.length === 0) this.desmontar();
+    }
+
+    desmontar() {
+        window.removeEventListener('scroll', this.onScroll);
+        window.removeEventListener('resize', this.onScroll);
+        if (this.observer) {
+            this.observer.disconnect();
+            this.observer = null;
+        }
+    }
+}
+
+class ContadoresInnovacion {
+    constructor() {
+        this.stats = document.querySelectorAll('.stat-number');
+        this.yaCorrio = false;
+        this.init();
+    }
+
     init() {
-        if (!this.section) {
-            console.warn('InnovationAnimations: No se encontró la sección innovation-section');
+        if (this.stats.length === 0) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            this.mostrarValoresFinales();
             return;
         }
-        
-        this.setupIntersectionObserver();
-        
-        // Reajustar en cambios de orientación (especialmente importante en mobile)
-        window.addEventListener('resize', () => {
-            const isMobile = window.innerWidth <= 768;
-            console.log('InnovationAnimations: Resize detectado, mobile:', isMobile);
-            
-            // Si cambió a mobile y las animaciones no se han activado, intentar activarlas
-            if (isMobile && !this.hasAnimated) {
-                setTimeout(() => {
-                    const rect = this.section.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                    
-                    if (isVisible) {
-                        console.log('InnovationAnimations: Activando animaciones después de resize');
-                        this.triggerAnimations();
-                        this.hasAnimated = true;
-                    }
-                }, 500);
-            }
-        });
-    }
-    
-    setupIntersectionObserver() {
-        // Configuración más sensible para mobile
-        const isMobile = window.innerWidth <= 768;
-        const options = {
-            threshold: isMobile ? 0.1 : 0.3, // Más sensible en mobile
-            rootMargin: isMobile ? '-50px' : '-100px' // Menos margen en mobile
+
+        this.arrancarSiSeVe = () => {
+            if (this.yaCorrio) return;
+            const r = this.stats[0].getBoundingClientRect();
+            // Basta con que el bloque asome por la mitad inferior de la pantalla
+            if (r.top < window.innerHeight * 0.85 && r.bottom > 0) this.arrancar();
         };
-        
-        console.log('InnovationAnimations: Configurando observer para', isMobile ? 'mobile' : 'desktop');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                console.log('InnovationAnimations: Intersection ratio:', entry.intersectionRatio);
-                
-                if (entry.isIntersecting && !this.hasAnimated) {
-                    console.log('InnovationAnimations: Activando animaciones');
-                    this.triggerAnimations();
-                    this.hasAnimated = true;
-                } else if (!entry.isIntersecting && this.hasAnimated) {
-                    console.log('InnovationAnimations: Reseteando animaciones');
-                    this.resetAnimations();
-                    this.hasAnimated = false;
-                }
-            });
-        }, options);
-        
-        observer.observe(this.section);
-        
-        // Fallback para mobile: activar animaciones si la sección está visible al cargar
-        if (isMobile) {
-            setTimeout(() => {
-                const rect = this.section.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                
-                if (isVisible && !this.hasAnimated) {
-                    console.log('InnovationAnimations: Fallback mobile - activando animaciones');
-                    this.triggerAnimations();
-                    this.hasAnimated = true;
-                }
-            }, 1000);
+
+        if ('IntersectionObserver' in window) {
+            this.observer = new IntersectionObserver(entradas => {
+                if (entradas.some(e => e.isIntersecting)) this.arrancar();
+            }, { threshold: 0.4 });
+            this.observer.observe(this.stats[0]);
         }
+
+        // Mismo criterio que el revelado: el scroll es la red de seguridad,
+        // así los contadores nunca se quedan clavados en +0.
+        window.addEventListener('scroll', this.arrancarSiSeVe, { passive: true });
+        this.arrancarSiSeVe();
     }
-    
-    triggerAnimations() {
-        console.log('InnovationAnimations: Ejecutando triggerAnimations');
-        this.section.classList.add('animate');
-        this.startCounters();
-        
-        // Fallback adicional para mobile: forzar animaciones si no se activan
-        const isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-            setTimeout(() => {
-                if (!this.section.classList.contains('animate')) {
-                    console.log('InnovationAnimations: Fallback - forzando animaciones en mobile');
-                    this.section.classList.add('animate');
-                    this.startCounters();
-                }
-            }, 2000);
-        }
+
+    arrancar() {
+        if (this.yaCorrio) return;
+        this.yaCorrio = true;
+        window.removeEventListener('scroll', this.arrancarSiSeVe);
+        if (this.observer) this.observer.disconnect();
+        this.contar();
     }
-    
-    resetAnimations() {
-        this.section.classList.remove('animate');
-        this.resetCounters();
-    }
-    
-    startCounters() {
-        this.stats.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-target') || '0');
-            const duration = 2000; // 2 segundos
-            const step = target / (duration / 16); // 60fps
-            let current = 0;
-            
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                stat.textContent = '+' + Math.floor(current);
-            }, 16);
+
+    mostrarValoresFinales() {
+        this.stats.forEach(s => {
+            s.textContent = '+' + (parseInt(s.dataset.target, 10) || 0);
         });
     }
-    
-    resetCounters() {
+
+    /**
+     * Cuenta con requestAnimationFrame en lugar de setInterval: no acumula
+     * temporizadores si se llama dos veces y no salta fotogramas.
+     */
+    contar() {
+        const DURACION = 1600;
         this.stats.forEach(stat => {
-            stat.textContent = '+0';
+            const destino = parseInt(stat.dataset.target, 10) || 0;
+            const inicio = performance.now();
+            const paso = ahora => {
+                const t = Math.min((ahora - inicio) / DURACION, 1);
+                // Desaceleración al final para que no se corte en seco
+                const eased = 1 - Math.pow(1 - t, 3);
+                stat.textContent = '+' + Math.round(destino * eased);
+                if (t < 1) requestAnimationFrame(paso);
+            };
+            requestAnimationFrame(paso);
         });
     }
 }
@@ -419,11 +471,9 @@ class ServicesCarousel {
     
     init() {
         if (!this.carousel || !this.track) {
-            console.log('ServicesCarousel: Carousel no encontrado');
             return;
         }
         
-        console.log('ServicesCarousel: Inicializando carousel');
         this.updateSlidesPerView();
         this.setupEventListeners();
         this.updateControls();
@@ -433,7 +483,6 @@ class ServicesCarousel {
     updateSlidesPerView() {
         const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
         this.slidesPerView = isTablet ? 2 : 1;
-        console.log('ServicesCarousel: Slides por vista:', this.slidesPerView);
     }
     
     setupEventListeners() {
@@ -516,7 +565,6 @@ class ServicesCarousel {
         this.updateControls();
         this.updateIndicators();
         
-        console.log('ServicesCarousel: Slide actual:', this.currentSlide, 'de', this.totalSlides);
     }
     
     updateControls() {
@@ -561,11 +609,9 @@ class SectorsCarousel {
     
     init() {
         if (!this.carousel || !this.track) {
-            console.log('SectorsCarousel: Carousel no encontrado');
             return;
         }
         
-        console.log('SectorsCarousel: Inicializando carousel');
         this.updateSlidesPerView();
         this.setupEventListeners();
         this.updateControls();
@@ -575,7 +621,6 @@ class SectorsCarousel {
     updateSlidesPerView() {
         const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
         this.slidesPerView = isTablet ? 2 : 1;
-        console.log('SectorsCarousel: Slides por vista:', this.slidesPerView);
     }
     
     setupEventListeners() {
@@ -658,7 +703,6 @@ class SectorsCarousel {
         this.updateControls();
         this.updateIndicators();
         
-        console.log('SectorsCarousel: Slide actual:', this.currentSlide, 'de', this.totalSlides);
     }
     
     updateControls() {
@@ -703,11 +747,9 @@ class ClientsCarousel {
     
     init() {
         if (!this.carousel || !this.track) {
-            console.log('ClientsCarousel: Carousel no encontrado');
             return;
         }
         
-        console.log('ClientsCarousel: Inicializando carousel');
         this.updateSlidesPerView();
         this.setupEventListeners();
         this.updateControls();
@@ -726,7 +768,6 @@ class ClientsCarousel {
             this.slidesPerView = 1;
         }
         
-        console.log('ClientsCarousel: Slides por vista:', this.slidesPerView);
     }
     
     setupEventListeners() {
@@ -817,7 +858,6 @@ class ClientsCarousel {
         this.updateControls();
         this.updateIndicators();
         
-        console.log('ClientsCarousel: Slide actual:', this.currentSlide, 'de', this.totalSlides);
     }
     
     updateControls() {
@@ -887,45 +927,26 @@ class Utilities {
 
 document.addEventListener('DOMContentLoaded', () => {
     try {
-        // Inicializar componentes
-        const heroCarousel = new HeroCarousel();
-        const backToTop = new BackToTop();
-        const innovationAnimations = new InnovationAnimations();
-        const servicesCarousel = new ServicesCarousel();
-        const sectorsCarousel = new SectorsCarousel();
-        const clientsCarousel = new ClientsCarousel();
-        
-        // Agregar animaciones a otras secciones
-        InnovationAnimations.addSectionAnimations();
-        
-        // Reajustar animaciones en cambios de orientación
-        window.addEventListener('resize', () => {
-            const isMobile = window.innerWidth <= 768;
-            console.log('Resize detectado, mobile:', isMobile);
-            
-            // Recrear las animaciones si cambió el tamaño
-            InnovationAnimations.addSectionAnimations();
-        });
-        
-        // Optimizar scroll performance
-        const optimizedScrollHandler = Utilities.throttle(() => {
-            // Aquí se pueden agregar más optimizaciones de scroll
-        }, 16);
-        
-        window.addEventListener('scroll', optimizedScrollHandler);
-        
-        // Manejo de errores global
+        new HeroCarousel();
+        new BackToTop();
+        new ServicesCarousel();
+        new SectorsCarousel();
+        new ClientsCarousel();
+
+        // El revelado se monta una sola vez: el observer sigue a los propios
+        // elementos, así que un resize no obliga a reconstruirlo (antes se
+        // recreaba en cada resize y los observers se acumulaban).
+        new ScrollReveal();
+        new ContadoresInnovacion();
+
         window.addEventListener('error', (e) => {
             console.error('Error global:', e.error);
         });
-        
-        // Log de inicialización exitosa
-        console.log('✅ DIGITECH CORP - Sitio web inicializado correctamente');
-        
+
     } catch (error) {
         console.error('❌ Error durante la inicialización:', error);
     }
 });
 
 // Exportar clases para uso en otros módulos si es necesario
-export { HeroCarousel, BackToTop, InnovationAnimations, ServicesCarousel, SectorsCarousel, ClientsCarousel, Utilities };
+export { HeroCarousel, BackToTop, ScrollReveal, ContadoresInnovacion, ServicesCarousel, SectorsCarousel, ClientsCarousel, Utilities };

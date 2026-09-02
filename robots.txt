@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Recursos que no aportan a la indexación
+Disallow: /components/
+Disallow: /tools/
+
+Sitemap: https://digitech-corp.com/sitemap.xml
