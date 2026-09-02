@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada (404) | DIGITECH CORP</title>
+    <meta name="description" content="La página que buscas no existe o fue movida. Vuelve al inicio de DIGITECH CORP o contáctanos para ayudarte a encontrar lo que necesitas.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" href="assets/images/logo/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/logo/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap">
+    <!-- Font Awesome sin bloquear el render: se aplica al terminar de cargar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="styles/inicio.css?v=2.0">
+    <style>
+        .error-404 {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 160px 24px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #002141 0%, #003366 50%, #004080 100%);
+            color: #fff;
+        }
+        .error-404 .error-code {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(5rem, 15vw, 9rem);
+            line-height: 1;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #7fb8ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .error-404 h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            margin: 0.5rem 0 1rem;
+        }
+        .error-404 p {
+            max-width: 520px;
+            margin: 0 auto 2rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+        .error-404 .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .error-404 .error-links {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            justify-content: center;
+        }
+        .error-404 .error-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .error-404 .error-links a:hover {
+            color: #fff;
+            border-bottom-color: currentColor;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <main>
+        <section class="error-404">
+            <div class="container">
+                <p class="error-code">404</p>
+                <h1>No encontramos esta página</h1>
+                <p>
+                    El enlace que seguiste puede estar roto o la página fue movida.
+                    Vuelve al inicio o escríbenos y te ayudamos a encontrar lo que buscas.
+                </p>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary">Ir al inicio</a>
+                    <a href="https://wa.me/51989975369" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i>
+                        Escríbenos
+                    </a>
+                </div>
+                <nav class="error-links" aria-label="Enlaces útiles">
+                    <a href="pages/software-medida.html">Software a Medida</a>
+                    <a href="pages/apps-moviles.html">Apps Móviles</a>
+                    <a href="pages/gobierno-digital.html">Gobierno Digital</a>
+                    <a href="pages/metodologia-bim.html">Metodología BIM</a>
+                    <a href="pages/contacto.html">Contacto</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script src="scripts/components-loader.js?v=2.0"></script>
+</body>
+</html>

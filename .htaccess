@@ -4,6 +4,21 @@
 # lo ignora en vez de devolver un error 500.
 # ============================================================
 
+# ---------- Canonicalizacion: https + sin "www" ----------
+# Unifica las 4 variantes (http/https x www/sin-www) en un solo salto
+# a https://digitech-corp.com, que es la version que ya usan el
+# canonical, Open Graph, JSON-LD y el sitemap. Evita contenido
+# duplicado en el indice de Google.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.digitech-corp\.com$ [NC]
+  RewriteRule ^(.*)$ https://digitech-corp.com/$1 [L,R=301]
+</IfModule>
+
+# ---------- Pagina de error 404 ----------
+ErrorDocument 404 /404.html
+
 # ---------- Compresion ----------
 # inicio.css pesa ~113 KB sin comprimir y ~20 KB con gzip.
 <IfModule mod_deflate.c>
@@ -69,6 +84,9 @@
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # El sitio ya fuerza https arriba; max-age moderado (180 dias) y sin
+  # "preload" para poder revertirlo facil si hiciera falta.
+  Header always set Strict-Transport-Security "max-age=15552000"
 </IfModule>
 
 # ---------- No listar el contenido de las carpetas ----------
